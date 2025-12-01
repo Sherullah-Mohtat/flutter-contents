@@ -1,0 +1,28 @@
+.custom-footer {
+    text-align: right;   /* aligns the footer content to the right */
+    color: rgb(106, 102, 139);         /* makes text gray */
+    margin-top: 20px;    /* adds space above the footer */
+    margin-right: 20px;  /* optional: gives a little right padding */
+}
+
+/* Hide Furo default footer */
+footer {
+    display: none !important;
+}
+
+/* Shrink the sidebar photo/logo in Furo */
+img.sidebar-logo {
+    max-height: 100% !important; 
+    width: auto !important;
+}
+
+/* optional: also limit the container so it doesn't stretch */
+.sidebar-brand {
+    max-height: 30% !important;
+    overflow: hidden;
+}
+
+.responsive-img {
+    max-width: 50%;
+    height: auto;
+}

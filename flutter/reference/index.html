@@ -1,0 +1,597 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Widget" href="0_widget.html"><link rel="prev" title="Configuration" href="../guides/configuration.html">
+        <link rel="prefetch" href="../_static/logo.jpeg" as="image">
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
+        <title>Reference - Flutter</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=79de87b2" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Flutter</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/logo.jpeg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Flutter</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">🚀 Get Started</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><input aria-label="Toggle navigation of Tutorials" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/first_project.html">First Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/index.html">Guides</a><input aria-label="Toggle navigation of Guides" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/configuration.html">Configuration</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">⚙️ Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Reference</a><input aria-label="Toggle navigation of Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_widget.html">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html">MaterialApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html">MaterialApp.router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html">GoRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html">GoRoute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html">Scaffold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html">AppBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_center.html">Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html">RouterConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html">Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html">Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html">Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html">MaterialPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html">CustomTransitionPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="callbacks_handlers.html">Callback and Handlers</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🧠 Explanations</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../explanation/index.html">Explanations</a><input aria-label="Toggle navigation of Explanations" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/design-decisions.html">Design Decisions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🌍 Community</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../community/index.html">Community</a><input aria-label="Toggle navigation of Community" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../community/contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">¶</a></h1>
+<p>Authoritative, factual details.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="0_widget.html">Widget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_materialapp.html">MaterialApp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#all-named-parameters">All Named Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#home">✅ 1. home:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#title">✅ 2. title:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#theme">✅ 3. theme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#routes">✅ 4. routes:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#initialroute">✅ 5. initialRoute:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#debugshowcheckedmodebanner">✅ 6. debugShowCheckedModeBanner:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#locale">✅ 7. locale:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#localizationsdelegates">✅ 8. localizationsDelegates:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#navigatorkey">✅ 9. navigatorKey:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#ongenerateroute">✅ 10. onGenerateRoute:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#onunknownroute">✅ 11. onUnknownRoute:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#navigatorobservers">✅ 12. navigatorObservers:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#builder">✅ 13. builder:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#thememode">✅ 14. themeMode:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#darktheme">✅ 15. darkTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#color">✅ 16. color:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#highcontrasttheme">✅ 17. highContrastTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#highcontrastdarktheme">✅ 18. highContrastDarkTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#localeresolutioncallback">✅ 19. localeResolutionCallback:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#supportedlocales">✅ 20. supportedLocales:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#scrollbehavior">✅ 21. scrollBehavior:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#checkerboardrastercacheimages">✅ 22. checkerboardRasterCacheImages:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#checkerboardoffscreenlayers">✅ 23. checkerboardOffscreenLayers:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#useinheritedmediaquery">✅ 24. useInheritedMediaQuery:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#restorationscopeid">✅ 25. restorationScopeId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#ongeneratetitle">✅ 26. onGenerateTitle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#actions">✅ 27. actions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#ongenerateinitialroutes">✅ 28. onGenerateInitialRoutes:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#shortcuts">✅ 29. shortcuts:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#scaffoldmessengerkey">✅ 30. scaffoldMessengerKey:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#showperformanceoverlay">✅ 31. showPerformanceOverlay:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#key">✅ 32. key:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#onnavigationnotification">✅ 33. onNavigationNotification:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#debugshowmaterialgrid">✅ 34. debugShowMaterialGrid:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#showsemanticsdebugger">✅ 35. showSemanticsDebugger:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#localelistresolutioncallback">✅ 36. localeListResolutionCallback:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#themeanimationduration">✅ 37. themeAnimationDuration:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#themeanimationcurve">✅ 38. themeAnimationCurve:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html#themeanimationstyle">✅ 39. themeAnimationStyle:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="1_2_materialapp_router.html">MaterialApp.router</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#what-is-materialapp-router">📌 What is MaterialApp.router()?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#all-named-parameters">All named parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#routerconfig">✅1.routerConfig:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#routerdelegate">✅2.routerDelegate:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#routeinformationparser">✅3.routeInformationParser:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#routeinformationprovider">✅4.routeInformationProvider:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#backbuttondispatcher">✅5.backButtonDispatcher:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#builder">✅6.builder:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#title">✅7.title:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#ongeneratetitle">✅8.onGenerateTitle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#color">✅9.color:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#theme">✅10.theme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#darktheme">✅11.darkTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#highcontrasttheme">✅12.highContrastTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#highcontrastdarktheme">✅13.highContrastDarkTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#thememode">✅14.themeMode:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#themeanimationduration">✅15.themeAnimationDuration:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#themeanimationcurve">✅16.themeAnimationCurve:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#themeanimationstyle">✅17.themeAnimationStyle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#locale">✅18.locale:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#supportedlocales">✅19.supportedLocales:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#localizationsdelegates">✅20.localizationsDelegates:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#localeresolutioncallback">✅21.localeResolutionCallback:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#localelistresolutioncallback">✅22.localeListResolutionCallback:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#debugshowcheckedmodebanner">✅23.debugShowCheckedModeBanner:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#debugshowmaterialgrid">✅24.debugShowMaterialGrid:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#showperformanceoverlay">✅25.showPerformanceOverlay:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#showsemanticsdebugger">✅26.showSemanticsDebugger:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#shortcuts">✅27.shortcuts:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#actions">✅28.actions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#restorationscopeid">✅29.restorationScopeId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#scrollbehavior">✅30.scrollBehavior:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html#onnavigationnotification">✅31.onNavigationNotification:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="1_3_gorouter.html">GoRouter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#all-named-parameters">All named parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#routes">✅1.routes:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#extracodec">✅2.extraCodec:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#initiallocation">✅3.initialLocation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#observers">✅4.observers:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#debuglogdiagnostics">✅5.debugLogDiagnostics:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#redirect">✅6.redirect:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#redirectlimit">✅7.redirectLimit:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#navigatorkey">✅8.navigatorKey:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#restorationscopeid">✅9.restorationScopeId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#routerneglect">✅10.routerNeglect:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html#onexception">✅11.onException:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="1_4_goroute.html">GoRoute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#all-named-parameters">All named parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#path">✅1.path:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#name">✅2.name:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#builder">✅3.builder:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#pagebuilder">✅4.pageBuilder:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#routes">✅5.routes:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#redirect">✅6.redirect:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#onexit">✅7.onExit:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html#parentnavigatorkey">✅8.parentNavigatorKey:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2_scaffold.html">Scaffold</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#appbar">✅1.appBar:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#body">✅2.body:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#floatingactionbutton">✅3.floatingActionButton:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#floatingactionbuttonlocation">✅4.floatingActionButtonLocation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#floatingactionbuttonanimator">✅5.floatingActionButtonAnimator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#persistentfooterbuttons">✅6.persistentFooterButtons:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#drawer">✅7.drawer:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#enddrawer">✅8.endDrawer:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#bottomnavigationbar">✅9.bottomNavigationBar:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#bottomsheet">✅10.bottomSheet:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#backgroundcolor">✅11.backgroundColor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#resizetoavoidbottominset">✅12.resizeToAvoidBottomInset:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#primary">✅13.primary:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#drawerscrimcolor">✅14.drawerScrimColor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#extendbody">✅15.extendBody:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html#extendbodybehindappbar">✅16.extendBodyBehindAppBar:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3_appbar.html">AppBar</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#named-parameters">Named Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#leading">✅ 1. leading:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#automaticallyimplyleading">✅ 2. automaticallyImplyLeading:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#title">✅ 3. title:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#actions">✅ 4. actions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#flexiblespace">✅ 5. flexibleSpace:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#bottom">✅ 6. bottom:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#elevation">✅ 7. elevation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#shadowcolor">✅ 8. shadowColor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#surfacetintcolor">✅ 9. surfaceTintColor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#shape">✅ 10. shape:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#backgroundcolor">✅ 11. backgroundColor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#foregroundcolor">✅ 12. foregroundColor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#icontheme">✅ 13. iconTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#actionsicontheme">✅ 14. actionsIconTheme:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#toolbarheight">✅ 15. toolbarHeight:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#leadingwidth">✅ 16. leadingWidth:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#toolbaropacity">✅ 17. toolbarOpacity:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#bottomopacity">✅ 18. bottomOpacity:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#toolbartextstyle">✅ 19. toolbarTextStyle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#titletextstyle">✅ 20. titleTextStyle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#systemoverlaystyle">✅ 21. systemOverlayStyle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#centertitle">✅ 22. centerTitle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html#scrolledunderelevation">✅ 23. scrolledUnderElevation:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_center.html">Center</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_center.html#key">✅1.key:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_center.html#widthfactor">✅2.widthFactor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_center.html#heightfactor">✅3.heightFactor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_center.html#child">✅4.child:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_1_routerconfig.html">RouterConfig</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#all-routerconfig-parameters">✅ All RouterConfig Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#routerdelegate">✅1.routerDelegate:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#routeinformationparser">✅2.routeInformationParser:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#routeinformationprovider">✅3.routeInformationProvider:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#backbuttondispatcher">✅4.backButtonDispatcher:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#routeinformationreporter">✅5.routeInformationReporter:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#restorationscopeid">✅6.restorationScopeId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#widgetbuilder">✅7.widgetBuilder:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html#routerneglect">✅8.routerNeglect:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_container.html">Container</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#alignment">✅1.alignment:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#padding">✅2.padding:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#color">✅3.color:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#decoration">✅4.decoration:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#foregrounddecoration">✅5.foregroundDecoration:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#width">✅6.width:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#height">✅7.height:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#constraints">✅8.constraints:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#margin">✅9.margin:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#transform">✅10.transform:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#transformalignment">✅11.transformAlignment:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#clipbehavior">✅12.clipBehavior:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_container.html#child">✅13.child:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_column.html">Column</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#key">✅1.key:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#mainaxisalignment">✅2.mainAxisAlignment:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#mainaxissize">✅3.mainAxisSize:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#crossaxisalignment">✅4.crossAxisAlignment:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#textdirection">✅5.textDirection:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#verticaldirection">✅6.verticalDirection:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#textbaseline">✅7.textBaseline:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html#children">✅8.children:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="7_row.html">Row</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#named-parameters"><strong>Named Parameters:</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#examples"><strong>Examples:</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#key">✅1️⃣ key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#mainaxisalignment">✅2️⃣ mainAxisAlignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#mainaxissize">✅3️⃣ mainAxisSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#crossaxisalignment">✅4️⃣ crossAxisAlignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#textdirection">✅5️⃣ textDirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#verticaldirection">✅6️⃣ verticalDirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#textbaseline">✅7️⃣ textBaseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html#children">✅8️⃣ children</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="8_page.html">Page</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html#key">✅1.key:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html#name">✅2.name:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html#arguments">✅3.arguments:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html#restorationid">✅4.restorationId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html#child">✅5.child:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html#maintainstate">✅6.maintainState:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="9_materialpage.html">MaterialPage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html#key">✅1.key:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html#name">✅2.name:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html#arguments">✅3.arguments:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html#restorationid">✅4.restorationId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html#child">✅5.child:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html#maintainstate">✅6.maintainState:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html#fullscreendialog">✅7.fullscreenDialog:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="10_customtransitionpage.html">CustomTransitionPage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#all-parameters">✅ All Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#key">✅1.key:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#name">✅2.name:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#arguments">✅3.arguments:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#restorationid">✅4.restorationId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#child">✅5.child:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#maintainstate">✅6.maintainState:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#fullscreendialog">✅7.fullscreenDialog:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#opaque">✅8.opaque:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#barriercolor">✅9.barrierColor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#barrierdismissible">✅10.barrierDismissible:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html#transitionsbuilder">✅11.transitionsBuilder:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks_handlers.html">Callback and Handlers</a></li>
+</ul>
+</div>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="0_widget.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Widget</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../guides/configuration.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Configuration</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/custom.js"></script>
+    </body>
+</html>

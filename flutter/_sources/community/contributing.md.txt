@@ -1,0 +1,6 @@
+# Contributing
+
+1. Fork & branch
+2. Create a virtual environment
+3. Run tests / lints
+4. Write docs with Sphinx (this repo!)

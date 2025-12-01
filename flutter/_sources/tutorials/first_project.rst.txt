@@ -1,0 +1,126 @@
+First Project
+================
+
+comming soon...
+
+🔥 Example for your “First Project” page
+
+.. image:: images/iphonescr.png
+   :width: 300px
+   :alt: Flutter logo
+   :align: center
+
+
+✅ Method 4 — Add caption below the image
+
+.. figure:: images/iphonescr.png
+   :width: 400px
+   :alt: Screenshot
+
+   This is a caption explaining the image.
+
+
+✅ Method 1 — Simple YouTube Link (auto-embed in browser)
+
+https://www.youtube.com/watch?v=lHhRhPV--G0
+
+
+✅ Method 2 — Embed YouTube video using raw HTML (BEST for Furo)
+
+.. raw:: html
+
+   <div style="text-align: center;">
+     <iframe width="560" height="315"
+       src="https://www.youtube.com/embed/I9TxUsibexQ"
+       frameborder="0"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+       allowfullscreen>
+     </iframe>
+   </div>
+
+
+🔥 Optional: Responsive YouTube Player
+
+.. raw:: html
+
+   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+     <iframe src="https://youtu.be/embed/8CQv8nLhbp5hJBCB"
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+             frameborder="0"
+             allowfullscreen>
+     </iframe>
+   </div>
+
+
+✅ Method 3 — Using sphinxcontrib.youtube extension
+
+If you want very clean syntax, install this extension:
+
+pip install sphinxcontrib-youtube
+
+Add to conf.py:
+
+extensions = []
+
+Then embed:
+
+.. youtube:: dQw4w9WgXcQ
+   :width: 560
+   :height: 315
+
+
+
+YouTube demo
+------------
+
+.. raw:: html
+
+   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+     <iframe
+       src="https://youtu.be/YGwpnSwzq1M?si=8CQv8nLhbp5hJBCB"
+       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+       frameborder="0"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+       allowfullscreen>
+     </iframe>
+   </div>
+
+
+   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+     <iframe
+       src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+       frameborder="0"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+       allowfullscreen>
+     </iframe>
+   </div>
+
+
+
+
+
+.. raw:: html
+
+   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+     <iframe
+       src="https://www.youtube.com/embed/I9TxUsibexQ"
+     
+      >
+     </iframe>
+   </div> 
+   
+.. raw:: html
+
+   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+     <iframe
+       src="https://www.youtube.com/embed/YGwpnSwzq1M"
+       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+     </iframe>
+   </div>
+
+
+.. image:: images/iphonescr.png
+   :alt: Flutter logo
+   :class: responsive-img
+   :align: center

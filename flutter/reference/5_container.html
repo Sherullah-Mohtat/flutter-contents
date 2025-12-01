@@ -1,0 +1,1976 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Column" href="6_column.html"><link rel="prev" title="RouterConfig" href="4_1_routerconfig.html">
+        <link rel="prefetch" href="../_static/logo.jpeg" as="image">
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
+        <title>Container - Flutter</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=79de87b2" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Flutter</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/logo.jpeg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Flutter</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">🚀 Get Started</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><input aria-label="Toggle navigation of Tutorials" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/first_project.html">First Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/index.html">Guides</a><input aria-label="Toggle navigation of Guides" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/configuration.html">Configuration</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">⚙️ Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Reference</a><input aria-label="Toggle navigation of Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0_widget.html">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_materialapp.html">MaterialApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_2_materialapp_router.html">MaterialApp.router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_3_gorouter.html">GoRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_4_goroute.html">GoRoute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_scaffold.html">Scaffold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_appbar.html">AppBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_center.html">Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_1_routerconfig.html">RouterConfig</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_column.html">Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_row.html">Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8_page.html">Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_materialpage.html">MaterialPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_customtransitionpage.html">CustomTransitionPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="callbacks_handlers.html">Callback and Handlers</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🧠 Explanations</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../explanation/index.html">Explanations</a><input aria-label="Toggle navigation of Explanations" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/design-decisions.html">Design Decisions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🌍 Community</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../community/index.html">Community</a><input aria-label="Toggle navigation of Community" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../community/contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="container">
+<h1>Container<a class="headerlink" href="#container" title="Link to this heading">¶</a></h1>
+<p><strong>Container</strong> is one of the most commonly used and versatile widgets. It acts as a <strong>box model</strong> that allows you to combine <strong>layout, styling, positioning, and decoration</strong> in a single widget.</p>
+<p><strong>Container(</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>alignment:</strong> Aligns the child within the container.</p></li>
+<li><p><strong>padding:</strong> Adds padding inside the container.</p></li>
+<li><p><strong>color:</strong> Sets a background color.</p></li>
+<li><p><strong>decoration:</strong> For more complex styling like borders or gradients.</p></li>
+<li><p><strong>foregroundDecoration:</strong> Similar to decoration, but on top of the child.</p></li>
+<li><p><strong>width:</strong> Sets the container’s width.</p></li>
+<li><p><strong>height:</strong> Sets the container’s height.</p></li>
+<li><p><strong>constraints:</strong> Allows you to specify additional constraints on the container’s size.</p></li>
+<li><p><strong>margin:</strong> Adds space around the outside of the container.</p></li>
+<li><p><strong>transform:</strong> Allows you to apply a transformation, like rotation.</p></li>
+<li><p><strong>transformAlignment:</strong> Sets the alignment origin for the transformation.</p></li>
+<li><p><strong>clipBehavior:</strong> Controls how the content is clipped if it overflows the container’s bounds.</p></li>
+<li><p><strong>child:</strong> – This is the single widget you want to display inside the Container. It can be any widget, like Text, Image, Icon, Row, Column, even another Container.</p></li>
+</ol>
+</div></blockquote>
+<p><strong>)</strong></p>
+<section id="alignment">
+<h2>✅1.alignment:<a class="headerlink" href="#alignment" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>clean, simple, working Flutter program</strong> that uses</p>
+<blockquote>
+<div><p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>alignment: parameter of Container</strong> (not Center)</p>
+</div></blockquote>
+<p>✅ Simple Flutter Program – alignment in Container (MaterialApp.router)</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container alignment example&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">width:</span><span class="w"> </span><span class="m">300</span><span class="p">,</span>
+<span class="w">                </span><span class="nl">height:</span><span class="w"> </span><span class="m">300</span><span class="p">,</span>
+<span class="w">                </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">grey</span><span class="p">.</span><span class="n">shade300</span><span class="p">,</span>
+
+<span class="w">                </span><span class="c1">// ✅ alignment parameter in Container</span>
+<span class="w">                </span><span class="nl">alignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">topRight</span><span class="p">,</span>
+
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">100</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">100</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                            </span><span class="s1">&#39;Box&#39;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>✅ What alignment: is doing here</strong></p>
+<p>This is the important line:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">alignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">topRight</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>It tells the <strong>outer Container</strong> where to place its <strong>child Container:</strong></p>
+<p>Alignment value
+Position
+Alignment.center
+Center
+Alignment.topLeft
+Top – Left
+Alignment.topRight ✅
+Top – Right
+Alignment.bottomLeft
+Bottom – Left
+Alignment.bottomRight
+Bottom – Right</p>
+<p>So your <strong>blue 100×100 box</strong> is placed at the <strong>top-right corner</strong> of the <strong>300×300 grey container.</strong></p>
+<p><strong>🧠 Very short explanation</strong></p>
+<p><strong>alignment: = where the child sits inside the Container</strong></p>
+<p>Try this (important for learning)</p>
+<p>Change:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">alignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">topRight</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>To:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">alignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">topRight</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">alignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">bottomCenter</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>and run again.</p>
+</section>
+<hr class="docutils" />
+<section id="padding">
+<h2>✅2.padding:<a class="headerlink" href="#padding" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>clean, simple, working Flutter program</strong> that uses</p>
+<p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>padding: parameter of Container</strong></p>
+<p><strong>✅ Simple Flutter Program – padding in Container (MaterialApp.router)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container padding example&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="c1">// ✅ padding parameter in Container</span>
+<span class="w">                    </span><span class="nl">padding:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                        </span><span class="s1">&#39;Hello Flutter&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">20</span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>✅ What padding: is doing</strong></p>
+<p>This line is the key:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">padding:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>It means:</p>
+<blockquote>
+<div><p>Add <strong>20 pixels of space inside the container</strong>, between the <strong>border</strong> and the <strong>child (Text).</strong></p>
+</div></blockquote>
+<p>So the text <strong>does not touch the border.</strong></p>
+<p>Instead, there is a nice space around it.</p>
+<p><strong>🔎 Try these for learning</strong></p>
+<p>Change padding to:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">padding:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="p">.</span><span class="n">symmetric</span><span class="p">(</span><span class="nl">horizontal:</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="nl">vertical:</span><span class="w"> </span><span class="m">10</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">padding:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="p">.</span><span class="n">fromLTRB</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>See how the space changes.</p>
+<p><strong>🧠 Very short explanation</strong></p>
+<p><strong>padding = space INSIDE the Container between the edge and the child</strong></p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>padding</p></th>
+<th class="head"><p>where the space is</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>inside</p></td>
+<td><p>✅ between container and child</p></td>
+</tr>
+<tr class="row-odd"><td><p>outside</p></td>
+<td><p>❌ that is margin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="color">
+<h2>✅3.color:<a class="headerlink" href="#color" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>clean, simple, working Flutter program</strong> that uses</p>
+<p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>color: parameter of Container</strong></p>
+<p><strong>✅ Simple Flutter Program – color in Container (MaterialApp.router)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container color example&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">200</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">100</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="c1">// ✅ color parameter in Container</span>
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                            </span><span class="s1">&#39;Colored Box&#39;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">18</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>✅ What color: is doing</strong></p>
+<p>This line is the key:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>It sets the <strong>background color</strong> of the Container.</p>
+<dl class="simple">
+<dt>So here:</dt><dd><ul class="simple">
+<li><p>Container size = <strong>200 × 100</strong></p></li>
+<li><p>Background color = <strong>Orange</strong></p></li>
+<li><p>Text is centered inside</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>🔎 Try changing the color</strong></p>
+<p>Try:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">green</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>or even:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">purple</span><span class="p">.</span><span class="n">shade700</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>You will immediately see the box change color.</p>
+</section>
+<hr class="docutils" />
+<section id="decoration">
+<h2>✅4.decoration:<a class="headerlink" href="#decoration" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>clean, simple, working Flutter program</strong> that uses</p>
+<p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>decoration: parameter of Container</strong></p>
+<p><strong>✅ Simple Flutter Program – decoration in Container (MaterialApp.router)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container decoration example&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">220</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">120</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="c1">// ✅ decoration parameter in Container</span>
+<span class="w">                    </span><span class="nl">decoration:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">purple</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">borderRadius:</span><span class="w"> </span><span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">15</span><span class="p">),</span>
+<span class="w">                        </span><span class="nl">border:</span><span class="w"> </span><span class="n">Border</span><span class="p">.</span><span class="n">all</span><span class="p">(</span>
+<span class="w">                            </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">black</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">width:</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                        </span><span class="nl">boxShadow:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="n">BoxShadow</span><span class="p">(</span>
+<span class="w">                                </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">grey</span><span class="p">,</span>
+<span class="w">                                </span><span class="nl">blurRadius:</span><span class="w"> </span><span class="m">10</span><span class="p">,</span>
+<span class="w">                                </span><span class="nl">offset:</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span>
+<span class="w">                            </span><span class="p">),</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                    </span><span class="p">),</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                            </span><span class="s1">&#39;Decorated Box&#39;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">18</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>✅ What decoration: is doing</strong></p>
+<p>This part is the key:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">decoration:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span>
+</pre></div>
+</div>
+<p>With it, you created:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>✅ Background color → Colors.purple</p></li>
+<li><p>✅ Rounded corners → borderRadius: 15</p></li>
+<li><p>✅ Border → black, thickness 2</p></li>
+<li><p>✅ Shadow → blurred shadow</p></li>
+</ul>
+</div></blockquote>
+<p>All of this is <strong>not possible</strong> with just color: — it is only possible with <strong>decoration:.</strong></p>
+<p>⚠️ Important rule</p>
+<p>When you use <strong>decoration:</strong>, you <strong>must NOT</strong> use color: directly in Container.</p>
+<p>❌ This is <strong>WRONG:</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+<span class="nl">decoration:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(...),</span>
+</pre></div>
+</div>
+<p>✅ This is CORRECT (color inside decoration):</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">decoration:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p><strong>🧠 Very short explanation</strong></p>
+<blockquote>
+<div><p><strong>decoration: = advanced styling (color + border + shadow + radius + gradient)</strong></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="foregrounddecoration">
+<h2>✅5.foregroundDecoration:<a class="headerlink" href="#foregrounddecoration" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>clean, simple, working Flutter program</strong> that uses</p>
+<p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>foregroundDecoration: parameter of Container</strong></p>
+<p><strong>✅ Simple Flutter Program – foregroundDecoration in Container (MaterialApp.router)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container foregroundDecoration&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">220</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">120</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span><span class="w"> </span><span class="c1">// ✅ normal background color</span>
+
+<span class="w">                    </span><span class="c1">// ✅ foregroundDecoration on TOP of the child</span>
+<span class="w">                    </span><span class="nl">foregroundDecoration:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">black</span><span class="p">.</span><span class="n">withOpacity</span><span class="p">(</span><span class="m">0.4</span><span class="p">),</span><span class="w"> </span><span class="c1">// overlay effect</span>
+<span class="w">                        </span><span class="nl">border:</span><span class="w"> </span><span class="n">Border</span><span class="p">.</span><span class="n">all</span><span class="p">(</span>
+<span class="w">                            </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">width:</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                            </span><span class="s1">&#39;Overlay Box&#39;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">18</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>✅ What foregroundDecoration: is doing</strong></p>
+<p>This line:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">foregroundDecoration:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">black</span><span class="p">.</span><span class="n">withOpacity</span><span class="p">(</span><span class="m">0.4</span><span class="p">),</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>Means:</p>
+<blockquote>
+<div><p>Draw this decoration <strong>on top of the child,</strong> not behind it.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>So you get:</dt><dd><ul class="simple">
+<li><p>✅ Blue background (color:)</p></li>
+<li><p>✅ Text in the center</p></li>
+<li><p>✅ Dark transparent overlay ON TOP of everything</p></li>
+<li><p>✅ White border on top</p></li>
+</ul>
+</dd>
+</dl>
+<p>It is like putting a <strong>transparent glass</strong> on top of the container.</p>
+<p><strong>⚖️ Difference: decoration vs foregroundDecoration</strong></p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>decoration</p></th>
+<th class="head"><p>foregroundDecoration</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Draws behind the child</p></td>
+<td><p>Draws in front of child</p></td>
+</tr>
+<tr class="row-odd"><td><p>Background effect</p></td>
+<td><p>Overlay effect</p></td>
+</tr>
+<tr class="row-even"><td><p>Under text/image</p></td>
+<td><p>Over text/image</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>🧠 Very short explanation</strong></p>
+<p><strong>foregroundDecoration: = style drawn OVER the child</strong></p>
+<p><strong>Try this for fun</strong></p>
+<p>Change:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">black</span><span class="p">.</span><span class="n">withOpacity</span><span class="p">(</span><span class="m">0.4</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>To:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">gradient:</span><span class="w"> </span><span class="n">LinearGradient</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">colors:</span><span class="w"> </span><span class="p">[</span><span class="n">Colors</span><span class="p">.</span><span class="n">transparent</span><span class="p">,</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">black</span><span class="p">],</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>Creates a cool overlay.</p>
+</section>
+<hr class="docutils" />
+<section id="width">
+<h2>✅6.width:<a class="headerlink" href="#width" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>clean, simple, working Flutter program</strong> that uses</p>
+<p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>width: parameter of Container</strong></p>
+<p><strong>✅ Simple Flutter Program – width in Container (MaterialApp.router)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container width example&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="c1">// ✅ width parameter in Container</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">250</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">100</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">teal</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                        </span><span class="s1">&#39;Width = 250&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">18</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>✅ What width: is doing</strong></p>
+<p>This is the important line:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">width:</span><span class="w"> </span><span class="m">250</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>t sets the <strong>horizontal size</strong> of the container to <strong>250 pixels.</strong></p>
+<p>So the container becomes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Width:</strong> 250 px ✅</p></li>
+<li><p><strong>Height:</strong> 100 px</p></li>
+<li><p><strong>Color:</strong> Teal</p></li>
+<li><p><strong>Position:</strong> Center of the screen (because you wrapped it with Center)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>🔎 Try this for learning</strong></p>
+<p>Change:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">width:</span><span class="w"> </span><span class="m">250</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>TO:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">width:</span><span class="w"> </span><span class="m">100</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Then to:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">width:</span><span class="w"> </span><span class="m">350</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>And run again to see the difference.</p>
+<p><strong>🧠 Very short explanation</strong></p>
+<p><strong>width: = how wide the Container is on the screen (in pixels)</strong></p>
+<p>If you remove width, the Container will try to be as wide as possible.</p>
+</section>
+<hr class="docutils" />
+<section id="height">
+<h2>✅7.height:<a class="headerlink" href="#height" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>clean, simple, working Flutter program</strong> that uses</p>
+<p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>height: parameter of Container</strong></p>
+<p><strong>✅ Simple Flutter Program – height in Container (MaterialApp.router)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container height example&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">200</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="c1">// ✅ height parameter in Container</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">indigo</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                            </span><span class="s1">&#39;Height = 150&#39;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">18</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>✅ What height: is doing</strong></p>
+<p>This line is the <strong>key:</strong>
+.. code-block:: dart</p>
+<blockquote>
+<div><p>height: 150,</p>
+</div></blockquote>
+<p>It sets the <strong>vertical size</strong> of the container to <strong>150 pixels.</strong></p>
+<p>So your container is now:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Width:</strong> 200 px</p></li>
+<li><p><strong>Height:</strong> 150 px ✅</p></li>
+<li><p><strong>Color:</strong> Indigo</p></li>
+<li><p><strong>Position:</strong> Center of the screen</p></li>
+</ul>
+</div></blockquote>
+<p><strong>🔎 Try this for learning</strong></p>
+<p>Change:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">height:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>To:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">height:</span><span class="w"> </span><span class="m">60</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">height:</span><span class="w"> </span><span class="m">250</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Run again and see how the box becomes shorter or taller.</p>
+<p><strong>🧠 Very short explanation</strong></p>
+<p><strong>height: = how tall the Container is on the screen (in pixels)</strong></p>
+<p>If you remove height, the container will try to fit its child or expand as much as possible.</p>
+</section>
+<hr class="docutils" />
+<section id="constraints">
+<h2>✅8.constraints:<a class="headerlink" href="#constraints" title="Link to this heading">¶</a></h2>
+<p>Here’s a <strong>clean, simple, working Flutter example</strong> that uses</p>
+<p>✅ MaterialApp.router()</p>
+<p>✅ Container</p>
+<p>✅ the <strong>constraints: parameter of Container</strong></p>
+<p><strong>✅ Simple Flutter Program – constraints in Container (MaterialApp.router)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ App ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">        </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">_router</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Router Config ------------------</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="c1">// ------------------ Router Delegate ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ------------------ Home Page ------------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Container constraints example&#39;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="c1">// ✅ constraints parameter in Container</span>
+<span class="w">                    </span><span class="nl">constraints:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BoxConstraints</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">minWidth:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">maxWidth:</span><span class="w"> </span><span class="m">300</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">minHeight:</span><span class="w"> </span><span class="m">50</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">maxHeight:</span><span class="w"> </span><span class="m">120</span><span class="p">,</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                            </span><span class="s1">&#39;Min 150×50, Max 300×120&#39;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">textAlign:</span><span class="w"> </span><span class="n">TextAlign</span><span class="p">.</span><span class="n">center</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>🧠 What constraints: is doing here</strong></p>
+<p>This line is the key:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">constraints:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BoxConstraints</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">minWidth:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+<span class="w">    </span><span class="nl">maxWidth:</span><span class="w"> </span><span class="m">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nl">minHeight:</span><span class="w"> </span><span class="m">50</span><span class="p">,</span>
+<span class="w">    </span><span class="nl">maxHeight:</span><span class="w"> </span><span class="m">120</span><span class="p">,</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>It tells Flutter:</dt><dd><ul class="simple">
+<li><p>The Container <strong>must be at least</strong> 150 × 50</p></li>
+<li><p>It <strong>cannot be bigger than</strong> 300 × 120</p></li>
+<li><p>Flutter chooses the actual size inside that range (here it will usually pick something near the max because it has space).</p></li>
+</ul>
+</dd>
+<dt>So:</dt><dd><ul class="simple">
+<li><p>constraints = a <strong>rule set</strong> for width/height</p></li>
+<li><p>More powerful than just width: and height:</p></li>
+</ul>
+</dd>
+</dl>
+<p>You can also use helpers like:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">constraints:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BoxConstraints</span><span class="p">.</span><span class="n">tightFor</span><span class="p">(</span><span class="nl">width:</span><span class="w"> </span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="nl">height:</span><span class="w"> </span><span class="m">80</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>(works similar to setting width and height directly).</p>
+<p><strong>Super short summary</strong></p>
+<p><strong>constraints: = control the minimum/maximum size of the Container using BoxConstraints.</strong></p>
+</section>
+<section id="margin">
+<h2>✅9.margin:<a class="headerlink" href="#margin" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>very simple Flutter example</strong> that shows how to use the <strong>margin</strong> parameter in a Container <strong>using MaterialApp.router().</strong></p>
+<p>This example puts margin (space) <strong>outside</strong> the container so you can see the gap clearly from the screen edges.</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Simple RouterConfig</span>
+<span class="kd">final</span><span class="w"> </span><span class="n">GoRouterConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RouterConfig</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="w">    </span><span class="nl">routeInformationParser:</span><span class="w"> </span><span class="n">_SimpleRouteParser</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerConfig:</span><span class="w"> </span><span class="n">GoRouterConfig</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ---------------- Router Delegate ----------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">        </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">        </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nl">onPopPage:</span><span class="w"> </span><span class="p">(</span><span class="n">route</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">route</span><span class="p">.</span><span class="n">didPop</span><span class="p">(</span><span class="n">result</span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// ---------------- Route Parser ----------------</span>
+
+<span class="w">    </span><span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouteParser</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouteInformationParser</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseRouteInformation</span><span class="p">(</span><span class="n">RouteInformation</span><span class="w"> </span><span class="n">routeInformation</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kt">Object</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ---------------- Home Page ----------------</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Container Margin Example&quot;</span><span class="p">)),</span>
+
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">margin:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">40</span><span class="p">),</span><span class="w"> </span><span class="c1">// ✅ Margin here</span>
+<span class="w">                </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">,</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                        </span><span class="s2">&quot;This Container has MARGIN&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">18</span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>What the margin is doing here:</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">margin:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">40</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>✅ Adds <strong>40 pixels of space outside</strong> the container</p>
+<p>✅ Pushes the container away from the screen edges</p>
+<p>✅ Margin = outside space</p>
+<p>✅ Padding = inside space</p>
+<p>If you remove this line, the orange box will touch the edges of the screen.</p>
+</section>
+<hr class="docutils" />
+<section id="transform">
+<h2>✅10.transform:<a class="headerlink" href="#transform" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>very simple Flutter example</strong> that uses the <strong>transform **parameter in Container **with MaterialApp.router().</strong></p>
+<p>This example <strong>rotates the container</strong> using a transform so you can clearly see the effect.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import &#39;package:flutter/material.dart&#39;;
+
+void main() {
+    runApp(const MyApp());
+}
+
+// ================= MyApp =================
+
+class MyApp extends StatelessWidget {
+    const MyApp({super.key});
+
+    @override
+    Widget build(BuildContext context) {
+        return MaterialApp.router(
+            // We use routerDelegate + routeInformationParser directly.
+            routerDelegate: _SimpleRouterDelegate(),
+            routeInformationParser: _SimpleRouteParser(),
+        );
+    }
+}
+
+// ============ Simple RouterDelegate ============
+
+class _SimpleRouterDelegate extends RouterDelegate&lt;Object&gt; with ChangeNotifier, PopNavigatorRouterDelegateMixin&lt;Object&gt; {
+
+    @override
+    final GlobalKey&lt;NavigatorState&gt; navigatorKey = GlobalKey&lt;NavigatorState&gt;();
+
+    @override
+    Widget build(BuildContext context) {
+        return Navigator(
+            key: navigatorKey,
+            // Simple route setup with only one page (HomePage)
+            onGenerateRoute: (settings) {
+                return MaterialPageRoute(
+                builder: (context) =&gt; const HomePage(),
+                );
+            },
+        );
+    }
+
+    @override
+    Future&lt;void&gt; setNewRoutePath(Object configuration) async {
+        // For this simple example, we don&#39;t need to do anything here.
+    }
+}
+
+// ============ Simple RouteInformationParser ============
+
+class _SimpleRouteParser extends RouteInformationParser&lt;Object&gt; {
+    @override
+    Future&lt;Object&gt; parseRouteInformation(
+        RouteInformation routeInformation) async {
+        // For this simple example, just return a dummy object.
+        return Object();
+    }
+}
+
+// ============ Home Page ============
+
+class HomePage extends StatelessWidget {
+    const HomePage({super.key});
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(
+                title: const Text(&quot;Container transform example&quot;),
+            ),
+            body: Center(
+                child: Container(
+                    width: 150,
+                    height: 150,
+                    color: Colors.blue,
+
+                    // ✅ Here is the transform parameter
+                    transform: Matrix4.rotationZ(0.4),  // rotate about 0.4 radians
+
+                    alignment: Alignment.center,
+                    child: const Text(
+                        &quot;Rotated Box&quot;,
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                ),
+            ),
+        );
+    }
+}
+</pre></div>
+</div>
+<p><strong>What the transform is doing here</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">transform:</span><span class="w"> </span><span class="n">Matrix4</span><span class="p">.</span><span class="n">rotationZ</span><span class="p">(</span><span class="m">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>✅ Rotates the container</p>
+<p>✅ Uses Matrix4 (a 4×4 transformation matrix)</p>
+<p>✅ 0.4 = rotation angle in radians</p>
+<p>✅ Changes the <strong>shape direction</strong> without changing layout space</p>
+<p><strong>You can also try other transforms:</strong></p>
+<p><strong>1. Move (Translate)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">transform:</span><span class="w"> </span><span class="n">Matrix4</span><span class="p">.</span><span class="n">translationValues</span><span class="p">(</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
+</pre></div>
+</div>
+<p><strong>2. Scale (Zoom)</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">transform:</span><span class="w"> </span><span class="n">Matrix4</span><span class="p">.</span><span class="n">diagonal3Values</span><span class="p">(</span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Skew</p></li>
+</ol>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">transform:</span><span class="w"> </span><span class="n">Matrix4</span><span class="p">.</span><span class="n">skewX</span><span class="p">(</span><span class="m">0.3</span><span class="p">),</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="transformalignment">
+<h2>✅11.transformAlignment:<a class="headerlink" href="#transformalignment" title="Link to this heading">¶</a></h2>
+<p>Here is a <strong>very simple and clean Flutter program</strong> that shows how to use the</p>
+<p>✅ <strong>transformAlignment</strong> parameter in a Container</p>
+<p>✅ <strong>with MaterialApp.router()</strong></p>
+<p>✅ and <strong>NO deprecated APIs</strong></p>
+<p>This example rotates the box from the <strong>top-left corner</strong> instead of the center — so you can clearly see what transformAlignment does.</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ================= MyApp =================</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="w">            </span><span class="nl">routeInformationParser:</span><span class="w"> </span><span class="n">_SimpleRouteParser</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ============ Simple Router Delegate ============</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+
+<span class="w">            </span><span class="c1">// ✅ New Flutter method (not deprecated)</span>
+<span class="w">            </span><span class="nl">onDidRemovePage:</span><span class="w"> </span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Do nothing</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ============ Simple RouteInformationParser ============</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouteParser</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouteInformationParser</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseRouteInformation</span><span class="p">(</span><span class="n">RouteInformation</span><span class="w"> </span><span class="n">routeInformation</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kt">Object</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ================= Home Page =================</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;transformAlignment Example&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="c1">// ✅ Rotate the container</span>
+<span class="w">                    </span><span class="nl">transform:</span><span class="w"> </span><span class="n">Matrix4</span><span class="p">.</span><span class="n">rotationZ</span><span class="p">(</span><span class="m">0.6</span><span class="p">),</span>
+
+<span class="w">                    </span><span class="c1">// ✅ Change the point of rotation (VERY IMPORTANT)</span>
+<span class="w">                    </span><span class="nl">transformAlignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">topLeft</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">alignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">center</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                        </span><span class="s2">&quot;Top-Left Rotation&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">),</span>
+<span class="w">                        </span><span class="nl">textAlign:</span><span class="w"> </span><span class="n">TextAlign</span><span class="p">.</span><span class="n">center</span><span class="p">,</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>🧠 What transformAlignment is doing here</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">transformAlignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">topLeft</span>
+</pre></div>
+</div>
+<p>Normally a container rotates <strong>from the center.</strong></p>
+<p>With transformAlignment, you change the <strong>pivot point:</strong></p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Alignment Value</p></th>
+<th class="head"><p>Rotation Point</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Alignment.center</p></td>
+<td><p>Rotates from the center (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alignment.topLeft</p></td>
+<td><p>Rotates from top-left corner</p></td>
+</tr>
+<tr class="row-even"><td><p>Alignment.bottomRight</p></td>
+<td><p>Rotates from bottom-right</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alignment.centerLeft</p></td>
+<td><p>Rotates from left side</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Try this too 👇</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">transformAlignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">bottomRight</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">transformAlignment:</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="n">centerLeft</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>and see how the rotation changes.</p>
+</section>
+<hr class="docutils" />
+<section id="clipbehavior">
+<h2>✅12.clipBehavior:<a class="headerlink" href="#clipbehavior" title="Link to this heading">¶</a></h2>
+<p>Here is a very <strong>simple, clean Flutter program</strong> that demonstrates the</p>
+<p>✅ <strong>clipBehavior parameter in Container</strong></p>
+<p>✅ using <strong>MaterialApp.router()</strong></p>
+<p>✅ using <strong>NO deprecated APIs</strong></p>
+<p>✅ and makes the <strong>clipping effect clearly visible</strong></p>
+<p>This example puts a <strong>large child inside a small container.</strong></p>
+<p>clipBehavior decides whether the child is <strong>cut (clipped) or allowed to overflow.</strong></p>
+<p><strong>✅ Full Working Example — clipBehavior in Container</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ================= MyApp =================</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="w">            </span><span class="nl">routeInformationParser:</span><span class="w"> </span><span class="n">_SimpleRouteParser</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ============ Router Delegate ============</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ============ Route Information Parser ============</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouteParser</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouteInformationParser</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseRouteInformation</span><span class="p">(</span>
+<span class="w">        </span><span class="n">RouteInformation</span><span class="w"> </span><span class="n">routeInformation</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kt">Object</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ================= Home Page =================</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;clipBehavior in Container&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">150</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="c1">// ✅ MUST use decoration when using clipBehavior</span>
+<span class="w">                    </span><span class="nl">decoration:</span><span class="w"> </span><span class="n">BoxDecoration</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">borderRadius:</span><span class="w"> </span><span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+
+<span class="w">                    </span><span class="c1">// ✅ clipBehavior is valid now</span>
+<span class="w">                    </span><span class="nl">clipBehavior:</span><span class="w"> </span><span class="n">Clip</span><span class="p">.</span><span class="n">hardEdge</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                        </span><span class="s2">&quot;This text is clipped inside the rounded container&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">16</span><span class="p">),</span>
+<span class="w">                        </span><span class="nl">textAlign:</span><span class="w"> </span><span class="n">TextAlign</span><span class="p">.</span><span class="n">center</span><span class="p">,</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>🧠 What clipBehavior is doing</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">clipBehavior:</span><span class="w"> </span><span class="n">Clip</span><span class="p">.</span><span class="n">hardEdge</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Because the text is <strong>bigger than the container</strong>, clipping happens.</p>
+<p><strong>Try these values and see the difference:</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">clipBehavior:</span><span class="w"> </span><span class="n">Clip</span><span class="p">.</span><span class="n">none</span><span class="p">,</span><span class="w">       </span><span class="c1">// ❌ No clipping — text goes outside</span>
+<span class="nl">clipBehavior:</span><span class="w"> </span><span class="n">Clip</span><span class="p">.</span><span class="n">hardEdge</span><span class="p">,</span><span class="w">   </span><span class="c1">// ✅ cuts extra content (fast)</span>
+<span class="nl">clipBehavior:</span><span class="w"> </span><span class="n">Clip</span><span class="p">.</span><span class="n">antiAlias</span><span class="p">,</span><span class="w">  </span><span class="c1">// ✅ smooth clipping</span>
+<span class="nl">clipBehavior:</span><span class="w"> </span><span class="n">Clip</span><span class="p">.</span><span class="n">antiAliasWithSaveLayer</span><span class="p">,</span><span class="w"> </span><span class="c1">// ✅ best quality (slower)</span>
+</pre></div>
+</div>
+<p><strong>✅ Remember</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>clipBehavior only works when <strong>child content goes out of bounds</strong></p></li>
+<li><p>Container must have a <strong>fixed width &amp; height</strong></p></li>
+<li><p>It’s most useful with images, text or animated widgets</p></li>
+</ul>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="child">
+<h2>✅13.child:<a class="headerlink" href="#child" title="Link to this heading">¶</a></h2>
+<p>Here is a very <strong>simple Flutter example</strong> that demonstrates the</p>
+<p>✅ <strong>child: parameter in Container</strong></p>
+<p>✅ using <strong>MaterialApp.router()</strong></p>
+<p>✅ with <strong>correct router types (no errors, no deprecated code)</strong></p>
+<p>This example puts a Text widget as the child of a Container so you can clearly see what the child parameter does.</p>
+<p><strong>✅ Simple Working Program — child in Container</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ================= MyApp =================</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MaterialApp</span><span class="p">.</span><span class="n">router</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">routerDelegate:</span><span class="w"> </span><span class="n">_SimpleRouterDelegate</span><span class="p">(),</span>
+<span class="w">            </span><span class="nl">routeInformationParser:</span><span class="w"> </span><span class="n">_SimpleRouteParser</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ============ Router Delegate ============</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouterDelegate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouterDelegate</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="n">ChangeNotifier</span><span class="p">,</span><span class="w"> </span><span class="n">PopNavigatorRouterDelegateMixin</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="w"> </span><span class="n">navigatorKey</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">NavigatorState</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Navigator</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">key:</span><span class="w"> </span><span class="n">navigatorKey</span><span class="p">,</span>
+<span class="w">            </span><span class="nl">pages:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">MaterialPage</span><span class="p">(</span><span class="nl">child:</span><span class="w"> </span><span class="n">HomePage</span><span class="p">()),</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">setNewRoutePath</span><span class="p">(</span><span class="kt">Object</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ============ Route Information Parser ============</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">_SimpleRouteParser</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RouteInformationParser</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Future</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseRouteInformation</span><span class="p">(</span>
+<span class="w">        </span><span class="n">RouteInformation</span><span class="w"> </span><span class="n">routeInformation</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kt">Object</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ================= Home Page =================</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">HomePage</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StatelessWidget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">HomePage</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="n">Widget</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Scaffold</span><span class="p">(</span>
+<span class="w">            </span><span class="nl">appBar:</span><span class="w"> </span><span class="n">AppBar</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">title:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Container child example&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="nl">body:</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                </span><span class="nl">child:</span><span class="w"> </span><span class="n">Container</span><span class="p">(</span>
+<span class="w">                    </span><span class="nl">width:</span><span class="w"> </span><span class="m">200</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">height:</span><span class="w"> </span><span class="m">200</span><span class="p">,</span>
+<span class="w">                    </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">green</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="c1">// ✅ child parameter</span>
+<span class="w">                    </span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">                        </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                            </span><span class="s2">&quot;I am the CHILD&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nl">style:</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">(</span>
+<span class="w">                                </span><span class="nl">color:</span><span class="w"> </span><span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span>
+<span class="w">                                </span><span class="nl">fontSize:</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">                                </span><span class="nl">fontWeight:</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="n">bold</span><span class="p">,</span>
+<span class="w">                            </span><span class="p">),</span>
+<span class="w">                        </span><span class="p">),</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>🧠 What the child parameter does</strong></p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">child:</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="p">(</span>
+<span class="w">    </span><span class="nl">child:</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;I am the CHILD&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>child = <strong>the widget inside the Container</strong></p></li>
+<li><p>Container = parent</p></li>
+<li><p>Text / Image / Button / Column etc. = <strong>child</strong></p></li>
+<li><p>Without child → the container is just an empty box</p></li>
+</ul>
+<p>You can also put other widgets as child. Example:</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">child:</span><span class="w"> </span><span class="n">Image</span><span class="p">.</span><span class="n">network</span><span class="p">(</span><span class="s2">&quot;https://via.placeholder.com/150&quot;</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>Or</p>
+<div class="highlight-dart notranslate"><div class="highlight"><pre><span></span><span class="nl">child:</span><span class="w"> </span><span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">star</span><span class="p">,</span><span class="w"> </span><span class="nl">size:</span><span class="w"> </span><span class="m">50</span><span class="p">),</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="6_column.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Column</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="4_1_routerconfig.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">RouterConfig</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Container</a><ul>
+<li><a class="reference internal" href="#alignment">✅1.alignment:</a></li>
+<li><a class="reference internal" href="#padding">✅2.padding:</a></li>
+<li><a class="reference internal" href="#color">✅3.color:</a></li>
+<li><a class="reference internal" href="#decoration">✅4.decoration:</a></li>
+<li><a class="reference internal" href="#foregrounddecoration">✅5.foregroundDecoration:</a></li>
+<li><a class="reference internal" href="#width">✅6.width:</a></li>
+<li><a class="reference internal" href="#height">✅7.height:</a></li>
+<li><a class="reference internal" href="#constraints">✅8.constraints:</a></li>
+<li><a class="reference internal" href="#margin">✅9.margin:</a></li>
+<li><a class="reference internal" href="#transform">✅10.transform:</a></li>
+<li><a class="reference internal" href="#transformalignment">✅11.transformAlignment:</a></li>
+<li><a class="reference internal" href="#clipbehavior">✅12.clipBehavior:</a></li>
+<li><a class="reference internal" href="#child">✅13.child:</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/custom.js"></script>
+    </body>
+</html>

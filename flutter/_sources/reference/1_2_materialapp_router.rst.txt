@@ -1,0 +1,5323 @@
+MaterialApp.router 
+====================
+
+📌 What is MaterialApp.router()?
+----------------------------------
+
+MaterialApp.router() is a **special version of MaterialApp** that uses Flutter’s **new navigation system (Navigator 2.0 / Router API)** instead of the old one.
+
+In simple words:
+
+   **MaterialApp.router connects your app to a Router that decides which screen to show based on the URL and app state.**
+
+It is mainly used for:
+	•	Web apps
+
+	•	Deep linking (/product/10)
+
+	•	Complex navigation
+
+	•	Enterprise-level apps
+
+	•	Professional routing (GoRouter, Beamer, etc.)
+
+**🧠 Big idea in ONE LINE**
+
++-----------------------------+-------------------------------------------------+
+| Old way                     | New way                                         |
++=============================+=================================================+
+| MaterialApp()               | MaterialApp.router()                            |
++-----------------------------+-------------------------------------------------+
+| “Push & pop pages manually” | “Router decides the page for you”               |
++-----------------------------+-------------------------------------------------+
+| Navigator 1.0               | Navigator 2.0                                   |
++-----------------------------+-------------------------------------------------+
+
+**✅ Basic Structure of MaterialApp.router()**
+
+.. code-block:: dart 
+
+    MaterialApp.router(
+        routerConfig: myRouter,
+    )
+
+Instead of this (old way):
+
+.. code-block:: dart 
+
+    MaterialApp(
+        home: HomePage(),
+        routes: {...},
+    )
+
+You now write:
+
+.. code-block:: dart 
+
+    MaterialApp.router(
+        routerConfig: myGoRouter,
+    )
+
+The **router** controls everything.
+
+===========================================================================================================================
+
+All named parameters
+---------------------
+
+**MaterialApp.router(**
+
+    1.	**routerConfig:**
+
+    2.	**routerDelegate:**
+
+    3.	**routeInformationParser:**
+
+    4.	**routeInformationProvider:**
+
+    5.	**backButtonDispatcher:**
+
+    6.	**builder:**
+
+    7.	**title:**
+
+    8.	**onGenerateTitle:**
+
+    9.	**color:**
+
+    10.	**theme:**
+
+    11.	**darkTheme:**
+
+    12.	**highContrastTheme:**
+
+    13.	**highContrastDarkTheme:**
+
+    14.	**themeMode:**
+
+    15.	**themeAnimationDuration:**
+
+    16.	**themeAnimationCurve:**
+
+    17.	**themeAnimationStyle:**
+
+    18.	**locale:**
+
+    19.	**supportedLocales:**
+
+    20.	**localizationsDelegates:**
+
+    21.	**localeResolutionCallback:**
+
+    22.	**localeListResolutionCallback:**
+
+    23.	**debugShowCheckedModeBanner:**
+
+    24.	**debugShowMaterialGrid:**
+
+    25.	**showPerformanceOverlay:**
+
+    26.	**showSemanticsDebugger:**
+
+    27.	**shortcuts:**
+
+    28.	**actions:**
+
+    29.	**restorationScopeId:**
+
+    30.	**scrollBehavior:**
+
+    31.	**onNavigationNotification:**
+
+**)**
+
+✅1.routerConfig:
+---------------------
+
+This example uses **GoRouter** (a popular routing package) to show two pages: **Home** and **About.**
+
+**✅ Step 1: Add dependency in pubspec.yaml**
+
+.. code-block:: yaml
+
+    dependencies:
+    flutter:
+        sdk: flutter
+    go_router: ^10.0.0
+
+Run:
+
+.. code-block:: bash 
+
+    flutter pub get
+
+**✅ Step 2: main.dart (Simple program using routerConfig)**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:go_router/go_router.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Step 3: Define your router here
+    final GoRouter _router = GoRouter(
+        routes: [
+            GoRoute(
+                path: '/',
+                builder: (context, state) => const HomePage(),
+            ),
+            GoRoute(
+                path: '/about',
+                builder: (context, state) => const AboutPage(),
+            ),
+        ],
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                routerConfig: _router,   // 👈 THIS IS THE MAIN PART
+            );
+        }
+    }
+
+    /* ------------------ HOME PAGE ------------------ */
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(title: const Text('Home')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            context.go('/about');    // Navigate using router
+                        },
+                        child: const Text('Go to About Page'),
+                    ),
+                ),
+            );
+        }
+    }
+
+    /* ------------------ ABOUT PAGE ------------------ */
+    class AboutPage extends StatelessWidget {
+        const AboutPage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(title: const Text('About')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            context.go('/');  // Go back to Home
+                        },
+                        child: const Text('Back to Home'),
+                    ),
+                ),
+            );
+        }
+    }
+
+**🔍 What exactly is routerConfig doing?**
+
+routerConfig is the **brain of the navigation system.**
+
+It tells Flutter:
+
+    ✅ What pages exist
+
+    ✅ What their paths are (/ and /about)
+
+    ✅ How to move between them
+
+**This line connects everything:**
+
+.. code-block:: dart 
+
+    routerConfig: _router,
+
+Without this, the app doesn’t know how to handle the routes.
+
+---------------------------------------------------------------------------------------------------------------------
+
+🧠 Short explanation (easy words)
+
+Think of routerConfig like a **map:**
+	•	/ → HomePage
+
+	•	/about → AboutPage
+
+When you say:
+
+.. code-block:: dart 
+
+    context.go('/about');
+
+Flutter looks at routerConfig and says:
+
+    “Okay, /about = AboutPage” → then opens that screen.
+
+===========================================================================================================================
+
+✅2.routerDelegate:
+-----------------------
+
+Here is a **very simple and clean Flutter example** that demonstrates the **routerDelegate: parameter in MaterialApp.router** using a **custom RouterDelegate.**
+
+This is the **pure Flutter way** (no go_router, no packages) so you can clearly understand how routerDelegate works.
+
+**✅ What this example does**
+
+Two pages:
+	•	Home page
+
+	•	About page
+
+A custom MyRouterDelegate decides which page is shown.
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================== MY APP ================== */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        // Create delegate + parser once
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 Focus of this example
+                routerDelegate: _routerDelegate,               // RouterDelegate<Object>
+                routeInformationParser: _routeInformationParser, // RouteInformationParser<Object>
+            );
+        }
+    }
+
+    /* =========== ROUTER DELEGATE =========== */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        MyRouterDelegate();
+
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        bool _showAboutPage = false;
+
+        // Helper methods to control navigation
+        void goToAbout() {
+            _showAboutPage = true;
+            notifyListeners(); // tell Router to rebuild Navigator
+        }
+
+        void goToHome() {
+            _showAboutPage = false;
+            notifyListeners();
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: [
+                    MaterialPage(
+                        key: const ValueKey('HomePage'),
+                        child: const HomePage(),
+                    ),
+                    if (_showAboutPage)
+                    MaterialPage(
+                        key: const ValueKey('AboutPage'),
+                        child: const AboutPage(),
+                    ),
+                ],
+
+                // ✅ New API – used instead of deprecated onPopPage
+                onDidRemovePage: (Page<Object?> page) {
+                    // If the About page was removed (e.g. back button),
+                    // update our internal state to match.
+                    if (page.key == const ValueKey('AboutPage')) {
+                        _showAboutPage = false;
+                        notifyListeners();
+                    }
+                },
+            );
+        }
+
+        // Required by RouterDelegate<Object>
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            // configuration is whatever parseRouteInformation returns.
+            // For our simple example we only care about '/' and '/about'.
+            if (configuration == '/about') {
+                _showAboutPage = true;
+            } else {
+                _showAboutPage = false;
+            }
+            // no need to notifyListeners() here usually; Router may rebuild.
+        }
+    }
+
+    /* ======== ROUTE INFORMATION PARSER ======== */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            // Very simple: check the path
+            final location = routeInformation.location ?? '/';
+            final uri = Uri.parse(location);
+
+            if (uri.pathSegments.isNotEmpty && uri.pathSegments.first.toLowerCase() == 'about') {
+                return '/about';
+            }
+
+            return '/'; // default
+        }
+    }
+
+    /* ================== HOME PAGE ================== */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            // Get our custom delegate
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('Home Page')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            // 👇 Using routerDelegate to navigate
+                            delegate.goToAbout();
+                        },
+                        child: const Text('Go to About Page'),
+                    ),
+                ),
+            );
+        }
+    }
+
+    /* ================== ABOUT PAGE ================== */
+
+    class AboutPage extends StatelessWidget {
+        const AboutPage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('About Page')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            // Navigate back using routerDelegate
+                            delegate.goToHome();
+                        },
+                        child: const Text('Back to Home'),
+                    ),
+                ),
+            );
+        }
+    }
+
+**1. Where is routerDelegate in your program?**
+
+This line in **MyApp** is the important part:
+
+.. code-block:: dart 
+
+    return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerDelegate: _routerDelegate,
+        routeInformationParser: _routeInformationParser,
+    );
+
+Here:
+
+.. code-block:: dart 
+
+    final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+
+That means:
+
+    You are telling Flutter:
+    **“Don’t handle navigation yourself — let MyRouterDelegate control it.”**
+
+So **routerDelegate is like the BRAIN of navigation** in your app.
+
+**2. What is routerDelegate actually doing?**
+
+The routerDelegate:
+	•	Creates the **Navigator**
+
+	•	Adds **pages to the Navigator stack**
+
+	•	Removes **pages from the Navigator stack**
+
+	•	Controls **which page is currently shown**
+
+This is the part inside your MyRouterDelegate that does the real job:
+
+.. code-block:: dart 
+
+    @override
+    Widget build(BuildContext context) {
+        return Navigator(
+            key: navigatorKey,
+
+            pages: [
+                MaterialPage(
+                    key: const ValueKey('HomePage'),
+                    child: const HomePage(),
+                ),
+
+                if (_showAboutPage)
+                    MaterialPage(
+                        key: const ValueKey('AboutPage'),
+                        child: const AboutPage(),
+                    ),
+            ],
+
+            onDidRemovePage: (Page<Object?> page) {
+                if (page.key == const ValueKey('AboutPage')) {
+                    _showAboutPage = false;
+                    notifyListeners();
+                }
+            },
+        );
+    }
+
+This means:
+	•	Home page is **always shown**
+
+	•	About page is shown **only when:**
+
+.. code-block:: dart 
+
+    _showAboutPage == true
+
+So your routerDelegate says:
+
+    If _showAboutPage is true → show About page
+
+    If false → don’t show About page
+
+That’s total control.
+
+**3. How does navigation happen?**
+
+In your HomePage you wrote:
+
+.. code-block:: dart 
+
+    final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+    onPressed: () {
+        delegate.goToAbout();
+    }
+
+This method is inside MyRouterDelegate:
+
+.. code-block:: dart 
+
+    void goToAbout() {
+        _showAboutPage = true;
+        notifyListeners();
+    }
+
+So the flow is:
+	1.	Button pressed → delegate.goToAbout()
+
+	2.	_showAboutPage = true
+
+	3.	notifyListeners() tells Flutter: **“Rebuild pages”**
+
+	4.	build() runs again
+
+	5.	Now About page is added to pages
+
+	6.	You see the **About Screen**
+
+**That is routerDelegate in action.**
+
+It is NOT using Navigator.push()
+
+It is using **state-based navigation** controlled by the **delegate.**
+
+**4. Back button & onDidRemovePage**
+
+When you press the back button on Android or the back gesture on iOS:
+
+Flutter removes the page.
+
+This code handles that:
+
+.. code-block:: dart 
+
+    onDidRemovePage: (Page<Object?> page) {
+        if (page.key == const ValueKey('AboutPage')) {
+            _showAboutPage = false;
+            notifyListeners();
+        }
+    },
+
+This means:
+
+If About page is removed → switch _showAboutPage back to false → show Home again
+
+Again, that logic is in **routerDelegate.**
+
+So routerDelegate is not just about going forward — it also controls **back navigation.**
+
+**5. Simple understanding (real-life example)**
+
+Think of routerDelegate as a **security guard at a door:**
+
+    You: “Let the user in”
+    Delegate: ✅ shows page
+
+    You: “Send the user back”
+    Delegate: ✅ removes page
+
+    You: “Only allow About page if true”
+    Delegate: ✅ uses condition (_showAboutPage)
+
+So:
+
++------------------------+------------------------------------+
+| Thing                  | Who controls it?                   |
++========================+====================================+
+| Showing Home           | routerDelegate                     |
++------------------------+------------------------------------+
+| Showing About          | routerDelegate                     |
++------------------------+------------------------------------+
+| Going back             | routerDelegate                     |
++------------------------+------------------------------------+
+| Page stack             | routerDelegate                     |
++------------------------+------------------------------------+
+
+
+**6. Short definition (you can remember this)**
+
+    **routerDelegate: is a controller that decides which pages are in your app’s navigation stack and when they appear or disappear.**
+
+In very simple words:
+
+    **routerDelegate = Navigation Brain**
+
+===========================================================================================================================
+
+✅3.routeInformationParser:
+-------------------------------
+
+**✅ What this program shows**
+
+	•	How routeInformationParser reads a **URL/path** (like / or /about)
+
+	•	How it converts that into **app state**
+
+	•	How routerDelegate uses that state to show the correct page
+
+You can run this on **mobile or web.**
+
+**✅ Complete Working Example (main.dart)**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 This is our focus
+                routeInformationParser: _routeInformationParser,
+
+                // RouterDelegate uses the parsed information
+                routerDelegate: _routerDelegate,
+            );
+        }
+    }
+
+    /* ============= ROUTER DELEGATE ============= */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        bool _isAboutPage = false;
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+
+                pages: [
+                    const MaterialPage(
+                        key: ValueKey('HomePage'),
+                        child: HomePage(),
+                    ),
+
+                    if (_isAboutPage)
+                    const MaterialPage(
+                        key: ValueKey('AboutPage'),
+                        child: AboutPage(),
+                    ),
+                ],
+
+                onDidRemovePage: (Page<Object?> page) {
+                    if (page.key == const ValueKey('AboutPage')) {
+                        _isAboutPage = false;
+                        notifyListeners();
+                    }
+                },
+            );
+        }
+
+        // This gets the result FROM the RouteInformationParser
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            if (configuration == '/about') {
+                _isAboutPage = true;
+            } else {
+                _isAboutPage = false;
+            }
+        }
+
+        // Manual navigation (button)
+        void goToAbout() {
+            _isAboutPage = true;
+            notifyListeners();
+        }
+
+        void goHome() {
+            _isAboutPage = false;
+            notifyListeners();
+        }
+    }
+
+    /* ===== ROUTE INFORMATION PARSER (MAIN FOCUS) ===== */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            // This is the URL/path in the browser or deep link
+            final location = routeInformation.location ?? '/';
+
+            debugPrint('URL received: $location');
+
+            // Convert URL into something the RouterDelegate understands
+            if (location.toLowerCase() == '/about') {
+                return '/about';   // send to RouterDelegate
+            }
+
+            return '/'; // default
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('Home')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            delegate.goToAbout();
+                        },
+                        child: const Text('Go to About'),
+                    ),
+                ),
+            );
+        }
+    }
+
+    /* ================= ABOUT ================= */
+
+    class AboutPage extends StatelessWidget {
+        const AboutPage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('About')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            delegate.goHome();
+                        },
+                        child: const Text('Back to Home'),
+                    ),
+                ),
+            );
+        }
+    }
+
+**🧠 What is routeInformationParser in simple words?**
+
+**Very simple definition:**
+
+routeInformationParser = the **translator between URL and your app**
+
+Example:
+
++---------------------------+-------------------------------------+--------------------------+
+| Browser URL               | Parsed by routeInformationParser    | Result                   |
++===========================+=====================================+==========================+
+| /                         | '/'                                 | Home Page                |
++---------------------------+-------------------------------------+--------------------------+
+| /about                    | '/about'                            | About Page               |
++---------------------------+-------------------------------------+--------------------------+
+
+This part is the key:
+
+.. code-block:: dart 
+
+    final location = routeInformation.location ?? '/';
+
+    if (location == '/about') {
+        return '/about';
+    }
+
+    return '/';
+
+You are saying:
+
+    “When the URL is /about, I want to show the About page.”
+
+That value is passed into this in RouterDelegate:
+
+.. code-block:: dart 
+
+    Future<void> setNewRoutePath(Object configuration)
+
+So:
+	1.	User types /about
+
+	2.	routeInformationParser reads /about
+
+	3.	Sends /about to RouterDelegate
+
+	4.	RouterDelegate shows About page
+
+✅ That is exactly **how deep linking & web routing work**
+
+**Super-short memory tip**
+
+**routeInformationParser = URL Reader + Translator**
+
+	•	Reads browser URL
+
+	•	Converts it to app state
+
+	•	Sends to routerDelegate
+
+**routerDelegate = Page Controller**
+
+===========================================================================================================================
+
+✅4.routeInformationProvider:
+---------------------------------
+
+**🧠 First – What is routeInformationProvider?**
+
+In simple words:
+
+    **routeInformationProvider is the source of the route (URL/path) for your app.**
+
+It **provides** the current route (like / or /about) to:
+	•	routeInformationParser
+
+	•	routerDelegate
+
+Without it, Flutter uses a default one (from the platform).
+When you provide your own — **you are the source of the route.**
+
+Think of it like:
+
+    **“Where does the app get the current path from?”**
+
+**✅ Simple Working Example: routeInformationProvider**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        // 👇 THIS IS OUR CUSTOM PROVIDER
+        final MyRouteInformationProvider _routeInformationProvider = MyRouteInformationProvider();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 🔹 MAIN FOCUS OF THIS EXAMPLE
+                routeInformationProvider: _routeInformationProvider,
+
+                routeInformationParser: _routeInformationParser,
+                routerDelegate: _routerDelegate,
+            );
+        }
+    }
+
+    /* ============ CUSTOM ROUTE INFORMATION PROVIDER ============ */
+
+    class MyRouteInformationProvider extends RouteInformationProvider with ChangeNotifier {
+        RouteInformation _value = const RouteInformation(location: '/'); // default route
+
+        @override
+        RouteInformation get value => _value;
+
+        // Custom method to update route
+        void updateRoute(String newLocation) {
+            _value = RouteInformation(location: newLocation);
+            notifyListeners();
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        bool _isAboutPage = false;
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: [
+                    const MaterialPage(
+                        key: ValueKey('home'),
+                        child: HomePage(),
+                    ),
+                    if (_isAboutPage)
+                    const MaterialPage(
+                        key: ValueKey('about'),
+                        child: AboutPage(),
+                    ),
+                ],
+
+                onDidRemovePage: (Page<Object?> page) {
+                    if (page.key == const ValueKey('about')) {
+                        _isAboutPage = false;
+                        notifyListeners();
+                    }
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            if (configuration == '/about') {
+                _isAboutPage = true;
+            } else {
+                _isAboutPage = false;
+            }
+        }
+    }
+
+    /* ============ PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            final location = routeInformation.location ?? '/';
+
+            if (location == '/about') return '/about';
+
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            final provider = Router.of(context).routeInformationProvider
+                as MyRouteInformationProvider;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('Home')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            // Change route using Provider
+                            provider.updateRoute('/about'); // 👈 THIS LINE
+                            delegate.notifyListeners();      // refresh router
+                        },
+                        child: const Text('Go to About'),
+                    ),
+                ),
+            );
+        }
+    }
+
+    /* ================= ABOUT ================= */
+
+    class AboutPage extends StatelessWidget {
+        const AboutPage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            final provider = Router.of(context).routeInformationProvider
+                as MyRouteInformationProvider;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('About')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            provider.updateRoute('/'); // go back
+                            delegate.notifyListeners();
+                        },
+                        child: const Text('Back to Home'),
+                    ),
+                ),
+            );
+        }
+    }
+
+**🔍 Focus on routeInformationProvider**
+
+This is the **key line in MyApp:**
+
+.. code-block:: dart 
+
+    routeInformationProvider: _routeInformationProvider,
+
+And this is the **core logic:**
+
+.. code-block:: dart 
+
+    class MyRouteInformationProvider extends RouteInformationProvider with ChangeNotifier {
+
+        RouteInformation _value = const RouteInformation(location: '/');
+
+        @override
+        RouteInformation get value => _value;
+
+        void updateRoute(String newLocation) {
+            _value = RouteInformation(location: newLocation);
+            notifyListeners();
+        }
+    }
+
+**What this means:**
+
+	•	_value stores the **current route**
+
+	•	value gives the route to Flutter
+
+	•	notifyListeners() tells Flutter:
+
+“Hey! The route has changed!”
+
+In your buttons:
+
+.. code-block:: dart 
+
+    provider.updateRoute('/about');
+
+That is how you **change the URL/route** using the **provider.**
+
+**🧠 Simple understanding (remember this)**
+
++----------------------------+------------------------------------+
+| Part                       | Job                                |
++============================+====================================+
+| routeInformationProvider   | Gives current route (URL)          |
++----------------------------+------------------------------------+
+| routeInformationParser     | Reads & translates the route       |
++----------------------------+------------------------------------+
+| routerDelegate             | Shows correct pages                |
++----------------------------+------------------------------------+
+
+Think like this:
+
+    Provider = “Here is the path”
+
+    Parser = “I understand the path”
+
+    Delegate = “I show the page”
+
+===========================================================================================================================
+
+✅5.backButtonDispatcher:
+-----------------------------
+
+**🧠 What is backButtonDispatcher (in simple words)?**
+
+**backButtonDispatcher controls who handles the BACK button first.**
+
+It decides:
+	•	Should the Router handle back?
+
+	•	Or should the Navigator handle back?
+
+	•	Or should I override it?
+
+Normally Flutter does it automatically…
+
+But with backButtonDispatcher, you can **take control.**
+
+**✅ Simple working example showing backButtonDispatcher**
+
+This app has:
+	•	Home page
+
+	•	About page
+
+Using back button:
+	•	Goes back to home
+
+	•	Then exits app
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        // 👇 CUSTOM BACK BUTTON DISPATCHER
+        final RootBackButtonDispatcher _backButtonDispatcher =
+            RootBackButtonDispatcher();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                // ✅ THIS IS THE POINT OF THIS EXAMPLE
+                backButtonDispatcher: _backButtonDispatcher,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        bool _showAbout = false;
+
+        void goToAbout() {
+            _showAbout = true;
+            notifyListeners();
+        }
+
+        void goHome() {
+            _showAbout = false;
+            notifyListeners();
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+
+                pages: [
+                    const MaterialPage(
+                        key: ValueKey('home'),
+                        child: HomePage(),
+                    ),
+
+                    if (_showAbout)
+                    const MaterialPage(
+                        key: ValueKey('about'),
+                        child: AboutPage(),
+                    ),
+                ],
+
+                onDidRemovePage: (Page<Object?> page) {
+                    if (page.key == const ValueKey('about')) {
+                        _showAbout = false;
+                        notifyListeners();
+                    }
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            if (configuration == '/about') {
+                _showAbout = true;
+            } else {
+                _showAbout = false;
+            }
+        }
+    }
+
+    /* ============ PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            final location = routeInformation.location ?? '/';
+            return location;
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('Home Page')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            delegate.goToAbout();
+                        },
+                        child: const Text('Go to About Page'),
+                    ),
+                ),
+            );
+        }
+    }
+
+    /* ================= ABOUT ================= */
+
+    class AboutPage extends StatelessWidget {
+        const AboutPage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('About Page')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            delegate.goHome();
+                        },
+                        child: const Text('Back to Home'),
+                    ),
+                ),
+            );
+        }
+    }
+
+**🔍 What part is backButtonDispatcher?**
+
+This is the key line:
+
+.. code-block:: dart 
+
+    final RootBackButtonDispatcher _backButtonDispatcher = RootBackButtonDispatcher();
+
+And it is connected here:
+
+.. code-block:: dart 
+
+    MaterialApp.router(
+        backButtonDispatcher: _backButtonDispatcher,
+    )
+
+This says:
+
+    “Let the Router system manage the back button in a smart way.”
+
+When you press:
+	•	Back on **About page** → it goes to **Home**
+
+	•	Back on **Home** → app closes (or browser back works)
+
+The RootBackButtonDispatcher automatically gives **priority to the router.**
+
+**🧠 Ultra-simple summary (remember this)**
+
++------------------------------------+----------------------------------------------------+
+| Parameter                          | Job                                                |
++====================================+====================================================+
+| backButtonDispatcher               | Controls back button behavior                      |
++------------------------------------+----------------------------------------------------+
+| routerDelegate                     | Controls pages                                     |
++------------------------------------+----------------------------------------------------+
+| routeInformationParser             | Reads URL                                          |
++------------------------------------+----------------------------------------------------+
+
+**Real life analogy:**
+
+    backButtonDispatcher = traffic police for the back button
+
+===========================================================================================================================
+
+✅6.builder:
+----------------
+
+**🧠 What is builder: in MaterialApp.router?**
+
+**In very simple words:**
+
+builder is a **wrapper** around the whole app.
+
+Whatever you put in builder will be applied to **every page** in your app — like a global layer.
+
+You can use it for:
+	•	Themes
+
+	•	MediaQuery changes
+
+	•	Overlays
+
+	•	Global widgets (like banners, watermarks, padding, etc.)
+
+Think like this:
+
+    builder = “Wrap my entire app inside this widget”
+
+**✅ Simple example: builder: in action**
+
+This example wraps **every page** inside a **blue border and padding**, so you can visually see the effect of builder.
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                // builder example still here
+                builder: (context, child) {
+                    return Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 4),
+                        ),
+                        child: child ?? const SizedBox.shrink(),
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        bool _showAbout = false;
+
+        void goToAbout() {
+            _showAbout = true;
+            notifyListeners();
+        }
+
+        void goHome() {
+            _showAbout = false;
+            notifyListeners();
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: [
+                    const MaterialPage(
+                        key: ValueKey('home'),
+                        child: HomePage(),
+                    ),
+                    if (_showAbout)
+                    const MaterialPage(
+                        key: ValueKey('about'),
+                        child: AboutPage(),
+                    ),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            _showAbout = configuration == '/about';
+        }
+    }
+
+    /* ============ FIXED PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+
+            // ✅ NEW WAY (no deprecation)
+            final Uri uri = routeInformation.uri;
+
+            if (uri.path == '/about') {
+                return '/about';
+            }
+
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('Home Page')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            delegate.goToAbout();
+                        },
+                        child: const Text('Go to About Page'),
+                    ),
+                ),
+            );
+        }
+    }
+
+    /* ================= ABOUT ================= */
+
+    class AboutPage extends StatelessWidget {
+        const AboutPage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final delegate = Router.of(context).routerDelegate as MyRouterDelegate;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('About Page')),
+                body: Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                            delegate.goHome();
+                        },
+                        child: const Text('Back to Home'),
+                    ),
+                ),
+            );
+        }
+    }
+
+**🔍 Focus: THIS is the builder parameter**
+
+.. code-block:: dart 
+
+    builder: (context, child) {
+        return Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+            border: Border.all(color: Colors.blue, width: 4),
+            ),
+            child: child,
+        );
+    },
+
+**What this means**
+	•	child = the page that router is building (Home / About)
+
+	•	We wrap that page in a Container
+
+	•	That container has:
+
+	•	Padding
+
+	•	Blue border
+
+So **every page in your app** will appear inside that blue bordered container.
+
+This is why it is called **global wrapper.**
+
+**🧠 Simple memory tip**
+
++-------------------------+------------------------------------+
+| Parameter               | What it does                       |
++=========================+====================================+
+| builder:                | Wraps the whole app                |
++-------------------------+------------------------------------+
+| routerDelegate:         | Controls pages                     |
++-------------------------+------------------------------------+
+| routeInformationParser: | Reads URL                          |
++-------------------------+------------------------------------+
+
+    builder = **Global decorator / wrapper**
+
+✅7.title:
+--------------
+
+**✅ Simple program to describe title: in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 THIS is the focus of this example
+                title: 'My Router App',
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(
+                        child: HomePage(),
+                    ),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            // Not needed for this simple example
+        }
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+    @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(title: const Text('Home Page')),
+                body: const Center(
+                    child: Text(
+                        'Look at the browser tab or task switcher title!',
+                        textAlign: TextAlign.center,
+                    ),
+                ),
+            );
+        }
+    }
+
+**🧠 What does title: actually do?**
+
+This line:
+
+.. code-block:: dart 
+
+    title: 'My Router App',
+
+Controls:
+
+**✅ On Flutter Web**
+	
+•	The **browser tab name** becomes:
+
+    **My Router App**
+
+**✅ On Android / iOS**
+	•	Shows in the **app switcher**
+
+	•	Helps OS identify your app
+
+**❌ It does NOT affect**
+	•	AppBar title
+
+	•	Page title inside the screen
+
+For that, you still use:
+
+.. code-block:: dart 
+
+    AppBar(title: Text('Home Page'))
+
+**🧩 Simple comparison**
+
++----------------------------+------------------------------------+
+| Code                       | Result                             |
++============================+====================================+
+| title: 'My Router App'     | Changes browser/app name           |
++----------------------------+------------------------------------+
+| AppBar(title: Text('Home'))| Changes top bar text               |
++----------------------------+------------------------------------+
+
+**✅ Very short definition**
+
+    **title: in MaterialApp.router is the name of the app for the operating system and browser, not the page content.**
+
+✅8.onGenerateTitle:
+-------------------------
+
+**✅ Simple program to describe onGenerateTitle**
+
+.. code-block:: dart
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 FOCUS: Dynamic title instead of fixed `title:`
+                onGenerateTitle: (context) {
+                    return 'Dynamic Router Title';
+                },
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(
+                        child: HomePage(),
+                    ),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            // Not needed for this simple example
+        }
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(title: const Text('Home Page')),
+            body: const Center(
+                child: Text(
+                    'Look at browser tab / app switcher title',
+                    textAlign: TextAlign.center,
+                ),
+            ),
+            );
+        }
+    }
+
+**🧠 What does onGenerateTitle really do?**
+
+This line is the main point:
+
+.. code-block:: dart 
+
+    onGenerateTitle: (context) {
+        return 'Dynamic Router Title';
+    },
+
+Instead of a fixed title:
+
+.. code-block:: dart 
+
+        title: 'My App',
+    
+you now **generate the title at runtime** using a function.
+
+That function:
+	•	Gets a BuildContext
+
+	•	Must return a String
+
+So this is possible too:
+
+.. code-block:: dart 
+
+    onGenerateTitle: (context) {
+        final hour = DateTime.now().hour;
+        return hour < 12 ? 'Good Morning App' : 'Good Evening App';
+    },
+
+Now the app title changes based on time ✅
+
+**✅ Important rule**
+
+You should use:
+	•	Either **title:**
+
+	•	Or **onGenerateTitle:**
+
+Not both.
+If both are present → onGenerateTitle wins.
+
+**Very simple meaning**
+
+    title: = static name
+
+    onGenerateTitle: = dynamic name (calculated by a function)
+
+===========================================================================================================================
+
+✅9.color:
+---------------
+
+**✅ Simple program to describe color: in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 THIS is the focus of this example
+                color: Colors.blue,   // Background color for the app window
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        @override
+        final GlobalKey<NavigatorState> navigatorKey =
+            GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(
+                        child: HomePage(),
+                    ),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            // Not needed for this example
+        }
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(
+            RouteInformation routeInformation,
+        ) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                backgroundColor: Colors.white, // Contrast with app color
+                appBar: AppBar(title: const Text('Color Demo')),
+                body: const Center(
+                    child: Text(
+                        'The BLUE you see behind this page\ncomes from MaterialApp.color',
+                        textAlign: TextAlign.center,
+                    ),
+                ),
+            );
+        }
+    }
+
+**🧠 What does color: actually do?**
+
+This line:
+
+.. code-block:: dart 
+
+    color: Colors.blue,
+
+Controls the **background color behind your app’s pages.**
+
+Important facts:
+
++-------------------------------------------+----------------------------------------+
+| Thing                                     | Is it affected by color:?              |
++===========================================+========================================+
+| Scaffold background                       | ❌ No                                  |
++-------------------------------------------+----------------------------------------+
+| Container color                           | ❌ No                                  |
++-------------------------------------------+----------------------------------------+
+| AppBar color                              | ❌ No                                  |
++-------------------------------------------+----------------------------------------+
+| Behind the entire app (window/background) | ✅ YES                                 |
++-------------------------------------------+----------------------------------------+
+
+If your Scaffold has transparent sections, you will see the MaterialApp.color behind it.
+
+**✅ Where you notice it most**
+
+You’ll notice the color more clearly when:
+	•	Using web
+	•	Using transparent widgets
+	•	During transitions/loading
+	•	On splash / root level
+
+It’s basically the **base / root color of the app window.**
+
+**Super short definition**
+
+    **color: in MaterialApp.router is the base background color behind your entire app.**
+
+✅10.theme:
+--------------
+
+**✅ Simple program to describe theme: in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 THIS is the focus of this example
+                theme: ThemeData(
+                    primaryColor: Colors.deepPurple,
+                    appBarTheme: const AppBarTheme(
+                        backgroundColor: Colors.deepPurple,
+                    ),
+                    elevatedButtonTheme: ElevatedButtonThemeData(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.deepPurple,
+                            foregroundColor: Colors.white,
+                        ),
+                    ),
+                    textTheme: const TextTheme(
+                        bodyMedium: TextStyle(fontSize: 18),
+                    ),
+                ),
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(child: HomePage()),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {
+            // Not needed for this simple example
+        }
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(
+                    title: const Text('Theme Demo'),
+                ),
+
+                body: Center(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                            Text('This color comes from the Theme'),
+                            SizedBox(height: 20),
+                            ThemedButton(),
+                        ],
+                    ),
+                ),
+            );
+        }
+    }
+
+    /* ================= BUTTON ================= */
+
+    class ThemedButton extends StatelessWidget {
+        const ThemedButton({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return ElevatedButton(
+                onPressed: () {},
+                child: const Text('Themed Button'),
+            );
+        }
+    }
+
+**🧠 What does theme: do?**
+
+This part is the key:
+
+.. code-block:: dart 
+
+    theme: ThemeData(
+        primaryColor: Colors.deepPurple,
+        appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.deepPurple,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
+            ),
+        ),
+    ),
+
+It controls the **global design** of your app:
+
++-------------------------------+--------------------------------------+
+| Widget                        | What changed                         |
++===============================+======================================+
+| AppBar                        | Purple                               |
++-------------------------------+--------------------------------------+
+| ElevatedButton                | Purple with white text               |
++-------------------------------+--------------------------------------+
+| Text                          | Bigger (18px)                        |
++-------------------------------+--------------------------------------+
+| Entire app look               | Styled by theme                      |
++-------------------------------+--------------------------------------+
+
+You did **not** set any colors in:
+	•	AppBar()
+
+	•	ElevatedButton()
+
+	•	Text()
+
+The **theme applied it automatically ✅**
+
+That is the purpose of theme:.
+
+**✅ Simple meaning (remember this)**
+
+**theme: = global style controller for the entire app**
+
+Instead of setting colors on every widget, you define them once in MaterialApp.router using ThemeData.
+
+===========================================================================================================================
+
+✅11.darkTheme:
+------------------
+
+**✅ Simple program to describe darkTheme: in MaterialApp.router**
+
+.. code-block:: dart
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 LIGHT THEME
+                theme: ThemeData.light(),
+
+                // 👇 DARK THEME (MAIN FOCUS)
+                darkTheme: ThemeData.dark(),
+
+                // 👇 Uses device/system setting (Light or Dark)
+                themeMode: ThemeMode.system,
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+    @override
+    final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+    @override
+    Widget build(BuildContext context) {
+        return Navigator(
+            key: navigatorKey,
+            pages: const [
+                MaterialPage(child: HomePage()),
+            ],
+        );
+    }
+
+    @override
+    Future<void> setNewRoutePath(Object configuration) async {
+        // Not required for this example
+    }
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final brightness = Theme.of(context).brightness;
+
+            return Scaffold(
+                appBar: AppBar(
+                    title: const Text('darkTheme Demo'),
+                ),
+                body: Center(
+                    child: Text(
+                        brightness == Brightness.dark
+                            ? 'Dark Theme is ACTIVE'
+                            : 'Light Theme is ACTIVE',
+                        style: const TextStyle(fontSize: 20),
+                    ),
+                ),
+            );
+        }
+    }
+
+**🧠 What is darkTheme: doing here?**
+
+This line is the key:
+
+.. code-block:: dart 
+
+    darkTheme: ThemeData.dark(),
+
+Together with:
+
+.. code-block:: dart
+
+    themeMode: ThemeMode.system,
+
+It means:
+
++-------------------+--------------------------+
+| System setting    | App uses                 |
++===================+==========================+
+| Light mode        | theme:                   |
++-------------------+--------------------------+
+| Dark mode         | darkTheme:               |
++-------------------+--------------------------+
+
+So:
+
+	•	Turn your **phone/computer to Dark Mode**
+
+	•	Reload app → UI becomes dark
+
+	•	Switch back to Light Mode → UI becomes light
+
+That’s all controlled from **MaterialApp.router.**
+
+**✅ Important: Relationship of 3 things**
+
+.. code-block:: dart 
+
+    theme: ThemeData.light(),
+    darkTheme: ThemeData.dark(),
+    themeMode: ThemeMode.system,
+
++------------------------+-------------------------------------+
+| Setting                | Meaning                             |
++========================+=====================================+
+| theme                  | Light theme design                  |
++------------------------+-------------------------------------+
+| darkTheme              | Dark theme design                   |
++------------------------+-------------------------------------+
+| themeMode              | Which one to use                    |
++------------------------+-------------------------------------+
+
+You can also force it:
+
+.. code-block:: dart 
+
+    themeMode: ThemeMode.dark   // Always dark
+    themeMode: ThemeMode.light  // Always light
+
+**🧩 Super simple meaning**
+
+    **darkTheme: is the design your app uses when system is in Dark Mode.**
+
+===========================================================================================================================
+
+✅12.highContrastTheme:
+---------------------------
+
+**✅ Simple program for highContrastTheme in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // Normal light theme
+                theme: ThemeData.light(),
+
+                // Dark theme
+                darkTheme: ThemeData.dark(),
+
+                // ✅ HIGH CONTRAST THEME (MAIN FOCUS)
+                highContrastTheme: ThemeData(
+                    brightness: Brightness.light,
+                    primaryColor: Colors.black,
+                    scaffoldBackgroundColor: Colors.yellow,
+                    appBarTheme: const AppBarTheme(
+                        backgroundColor: Colors.black,
+                        foregroundColor: Colors.white,
+                    ),
+                    textTheme: const TextTheme(
+                        bodyMedium: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                        ),
+                    ),
+                ),
+
+                // Use system setting (Light / Dark / High Contrast)
+                themeMode: ThemeMode.system,
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(child: HomePage()),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(
+            RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final isHighContrast = MediaQuery.of(context).highContrast;
+            final brightness = Theme.of(context).brightness;
+
+            return Scaffold(
+                appBar: AppBar(
+                    title: const Text('High Contrast Demo'),
+                ),
+                body: Center(
+                    child: Text(
+                        isHighContrast
+                            ? 'HIGH CONTRAST MODE ACTIVE'
+                            : brightness == Brightness.dark
+                                ? 'DARK MODE ACTIVE'
+                                : 'LIGHT MODE ACTIVE',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 22),
+                    ),
+                ),
+            );
+        }
+    }
+
+**🧠 What does highContrastTheme: do?**
+
+This part is the key:
+
+.. code-block:: dart 
+
+    highContrastTheme: ThemeData(
+        scaffoldBackgroundColor: Colors.yellow,
+        appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
+        ),
+    ),
+
+This tells Flutter:
+
+    “When the user turns on **High Contrast Mode** for accessibility, use THIS theme.”
+
+So you see:
+	•	Bright background (yellow)
+
+	•	Strong contrast text (black / white)
+
+	•	Bigger & bolder text
+
+This is for **people with visual difficulties 👓**
+
+**✅ When is this theme used?**
+
+When the **device accessibility setting** is:
+
+✅ High Contrast ON
+❌ Not normal light/dark switch
+
+You can detect it with:
+
+.. code-block:: dart 
+
+    MediaQuery.of(context).highContrast
+
+That’s how the app knows what to display.
+
+**Simple memory tip**
+
++------------------------+-------------------------------+
+| Setting                | Used when                     |
++========================+===============================+
+| theme                  | Normal + Light Mode           |
++------------------------+-------------------------------+
+| darkTheme              | Dark Mode                     |
++------------------------+-------------------------------+
+|✅ highContrastTheme    |Accessibility: High Contrast ON|
++------------------------+-------------------------------+
+
+**highContrastTheme = special theme for accessibility users**
+
+===========================================================================================================================
+
+✅13.highContrastDarkTheme:
+------------------------------
+
+**✅ Simple program for highContrastDarkTheme**
+
+.. code-block:: dart
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatelessWidget {
+        MyApp({super.key});
+
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 🌞 Normal Light Theme
+                theme: ThemeData.light(),
+
+                // 🌙 Normal Dark Theme
+                darkTheme: ThemeData.dark(),
+
+                // ✅ High Contrast (Light)
+                highContrastTheme: ThemeData(
+                    brightness: Brightness.light,
+                    scaffoldBackgroundColor: Colors.yellow,
+                    appBarTheme: const AppBarTheme(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    ),
+                ),
+
+                // ✅ High Contrast (Dark) — MAIN FOCUS
+                highContrastDarkTheme: ThemeData(
+                    brightness: Brightness.dark,
+                    scaffoldBackgroundColor: Colors.black,
+                    appBarTheme: const AppBarTheme(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                    ),
+                    textTheme: const TextTheme(
+                        bodyMedium: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                        ),
+                    ),
+                    elevatedButtonTheme: ElevatedButtonThemeData(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.black,
+                        ),
+                    ),
+                ),
+
+                // Use system settings
+                themeMode: ThemeMode.system,
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+    @override
+    final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+    @override
+    Widget build(BuildContext context) {
+        return Navigator(
+            key: navigatorKey,
+            pages: const [
+                MaterialPage(child: HomePage()),
+            ],
+        );
+    }
+
+    @override
+    Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(
+            RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        const HomePage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            final isHighContrast = MediaQuery.of(context).highContrast;
+            final brightness = Theme.of(context).brightness;
+
+            String mode;
+
+            if (isHighContrast && brightness == Brightness.dark) {
+                mode = 'HIGH CONTRAST DARK MODE ACTIVE';
+                } else if (isHighContrast && brightness == Brightness.light) {
+                    mode = 'HIGH CONTRAST LIGHT MODE ACTIVE';
+                } else if (brightness == Brightness.dark) {
+                    mode = 'NORMAL DARK MODE ACTIVE';
+                } else {
+                    mode = 'NORMAL LIGHT MODE ACTIVE';
+            }
+
+            return Scaffold(
+                appBar: AppBar(
+                    title: const Text('High Contrast Dark Demo'),
+                ),
+                body: Center(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                            Text(
+                                mode,
+                                textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 20),
+                            ElevatedButton(
+                                onPressed: () {},
+                                child: const Text('Sample Button'),
+                            ),
+                        ],
+                    ),
+                ),
+            );
+        }
+    }
+
+**🧠 What is highContrastDarkTheme in simple words?**
+
+**highContrastDarkTheme is used when the user turns ON:**
+    ✅ Dark Mode
+
+    ✅ High Contrast (in Accessibility)
+
+This theme is created especially for:
+
+	•	People with low vision
+
+	•	Better readability
+
+	•	Strong color contrast
+
+That’s why we used:
+
+	•	Black + White only
+
+	•	Large bold fonts
+
+	•	Strong contrast
+
+**✅ When will this theme activate?**
+
++--------------------+----------------------+-------------------------+
+| System Mode        | High Contrast        | Theme Used              |
++====================+======================+=========================+
+| Light              | OFF                  | theme                   |
++--------------------+----------------------+-------------------------+
+| Dark               | OFF                  | darkTheme               |
++--------------------+----------------------+-------------------------+
+| Light              | ON                   | highContrastTheme       |
++--------------------+----------------------+-------------------------+
+| ✅ Dark            | ✅ ON                | highContrastDarkTheme   |
++--------------------+----------------------+-------------------------+
+
+**Ultra-short memory tip**
+
+    **highContrastDarkTheme = Dark Mode + Extra Visibility**
+
+========================================================================================================================
+
+✅14.themeMode:
+------------------
+
+This example lets you **switch between Light, Dark, and System mode** by pressing buttons — so you can visually understand exactly what themeMode does.
+
+**✅ Simple program to describe themeMode: in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatefulWidget {
+        const MyApp({super.key});
+
+        @override
+        State<MyApp> createState() => _MyAppState();
+    }
+
+    class _MyAppState extends State<MyApp> {
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        // 👇 Change this to control theme
+        ThemeMode _themeMode = ThemeMode.system;
+
+        void setLightMode() {
+            setState(() {
+                _themeMode = ThemeMode.light;
+            });
+        }
+
+        void setDarkMode() {
+            setState(() {
+                _themeMode = ThemeMode.dark;
+            });
+        }
+
+        void setSystemMode() {
+            setState(() {
+                _themeMode = ThemeMode.system;
+            });
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // ✅ Light Theme
+                theme: ThemeData(
+                    brightness: Brightness.light,
+                    primarySwatch: Colors.blue,
+                ),
+
+                // ✅ Dark Theme
+                darkTheme: ThemeData(
+                    brightness: Brightness.dark,
+                    primarySwatch: Colors.blue,
+                ),
+
+                // 👇 MAIN FOCUS OF THIS EXAMPLE
+                themeMode: _themeMode,
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                // Pass buttons to HomePage
+                builder: (context, child) {
+                    return HomePage(
+                        setLight: setLightMode,
+                        setDark: setDarkMode,
+                        setSystem: setSystemMode,
+                        child: child!,
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        @override
+        final GlobalKey<NavigatorState> navigatorKey =
+            GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(child: SizedBox()),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+    /* ================= HOME ================= */
+
+    class HomePage extends StatelessWidget {
+        final VoidCallback setLight;
+        final VoidCallback setDark;
+        final VoidCallback setSystem;
+        final Widget child;
+
+        const HomePage({
+            super.key,
+            required this.setLight,
+            required this.setDark,
+            required this.setSystem,
+            required this.child,
+        });
+
+        @override
+        Widget build(BuildContext context) {
+            final brightness = Theme.of(context).brightness;
+
+            return Scaffold(
+                appBar: AppBar(title: const Text('themeMode Demo')),
+                body: Center(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                            Text(
+                                brightness == Brightness.dark
+                                    ? 'CURRENT MODE: DARK'
+                                    : 'CURRENT MODE: LIGHT',
+                                style: const TextStyle(fontSize: 20),
+                            ),
+                            const SizedBox(height: 40),
+
+                            ElevatedButton(
+                                onPressed: setLight,
+                                child: const Text('Light Mode'),
+                            ),
+
+                            const SizedBox(height: 10),
+
+                            ElevatedButton(
+                                onPressed: setDark,
+                                child: const Text('Dark Mode'),
+                            ),
+
+                            const SizedBox(height: 10),
+
+                            ElevatedButton(
+                                onPressed: setSystem,
+                                child: const Text('System Mode'),
+                            ),
+                        ],
+                    ),
+                ),
+            );
+        }
+    }
+
+**🧠 What does themeMode: do (simple words)?**
+
+This line is the key:
+
+.. code-block:: dart 
+
+    themeMode: _themeMode,
+
+And _themeMode can be only **3 values:**
+
+.. code-block:: dart 
+
+    ThemeMode.light   // Always light
+    ThemeMode.dark    // Always dark
+    ThemeMode.system  // Follow device setting
+
+So:
+
++-----------------------+-------------------------------------+
+| Button                | What happens                        |
++=======================+=====================================+
+| Light Mode            | App becomes light                   |
++-----------------------+-------------------------------------+
+| Dark Mode             | App becomes dark                    |
++-----------------------+-------------------------------------+
+| System Mode           | App follows device setting          |
++-----------------------+-------------------------------------+
+
+This is EXACTLY what themeMode controls:
+    **👉 Which theme Flutter should use right now**
+
+**✅ Super short definition**
+
+    **themeMode: decides which theme (Light, Dark, or System) is ACTIVE.**
+
+•	theme = light design
+
+•	darkTheme = dark design
+
+•	themeMode = which one Flutter should use
+
+=========================================================================================================================
+
+✅15.themeAnimationDuration:
+-------------------------------
+
+This example lets you switch between **light and dark themes**, and the change happens **slowly,** so you can see the animation duration effect.
+
+**✅ Simple program to demonstrate themeAnimationDuration**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatefulWidget {
+        const MyApp({super.key});
+
+        @override
+        State<MyApp> createState() => _MyAppState();
+    }
+
+    class _MyAppState extends State<MyApp> {
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        ThemeMode _themeMode = ThemeMode.light;
+
+        void toggleTheme() {
+            setState(() {
+            _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+            });
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // ✅ Light Theme
+                theme: ThemeData.light(),
+
+                // ✅ Dark Theme
+                darkTheme: ThemeData.dark(),
+
+                // 👇 MAIN FOCUS
+                themeMode: _themeMode,
+
+                // 👇 THIS is the parameter we're demonstrating
+                themeAnimationDuration: const Duration(seconds: 2),
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                // Use builder to display UI
+                builder: (context, child) {
+                    return Scaffold(
+                        appBar: AppBar(title: const Text('themeAnimationDuration Demo')),
+                        body: Center(
+                            child: ElevatedButton(
+                                onPressed: toggleTheme,
+                                child: const Text('Toggle Theme'),
+                            ),
+                        ),
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return const Navigator(
+                pages: [
+                    MaterialPage(
+                        child: SizedBox(), // Actual UI is built in MaterialApp.router builder
+                    ),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+**🧠 What does themeAnimationDuration do?**
+
+This is the key line:
+
+.. code-block:: dart 
+
+    themeAnimationDuration: const Duration(seconds: 2),
+
+It means:
+
+    **When the theme changes, the transition should take 2 seconds instead of happening instantly.**
+
+So when you press **“Toggle Theme”:**
+	•	Without this → instant change 
+
+	•	With this → smooth animated change in **2 seconds**
+
+You can try other values too:
+
+.. code-block:: dart
+
+    Duration(milliseconds: 300)   // fast
+    Duration(seconds: 1)         // normal
+    Duration(seconds: 4)         // very slow
+
+**✅ Super simple definition**
+
+**themeAnimationDuration: controls how long the theme-change animation lasts.**
+
+Think of it like:
+
+    “How fast should my app fade from light ↔ dark?”
+
+=========================================================================================================================
+
+✅16.themeAnimationCurve:
+----------------------------
+
+This example lets you toggle between **light and dark themes**, and the change uses a **specific animation curve** (not just duration).
+So now you can see the animation **style/shape** of the transition.
+
+**✅ Simple program to demonstrate themeAnimationCurve**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatefulWidget {
+        const MyApp({super.key});
+
+        @override
+        State<MyApp> createState() => _MyAppState();
+    }
+
+    class _MyAppState extends State<MyApp> {
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        ThemeMode _themeMode = ThemeMode.light;
+
+        // Toggle theme on button press
+        void toggleTheme() {
+            setState(() {
+                _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+            });
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // Light + Dark themes
+                theme: ThemeData.light(),
+                darkTheme: ThemeData.dark(),
+
+                themeMode: _themeMode,
+
+                // ✅ Duration of animation
+                themeAnimationDuration: const Duration(seconds: 2),
+
+                // 👇 MAIN FOCUS: CURVE OF THE ANIMATION
+                themeAnimationCurve: Curves.easeInOut,
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                // UI is built here
+                builder: (context, child) {
+                    return Scaffold(
+                        appBar: AppBar(
+                            title: const Text('themeAnimationCurve Demo'),
+                        ),
+                        body: Center(
+                            child: ElevatedButton(
+                                onPressed: toggleTheme,
+                                child: const Text('Toggle Theme'),
+                            ),
+                        ),
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return const Navigator(
+                pages: [
+                    MaterialPage(
+                        child: SizedBox(), // UI is built by MaterialApp.builder
+                    ),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation) async {
+            return '/';
+        }
+    }
+
+**🧠 What does themeAnimationCurve do?**
+
+This is the key line in the program:
+
+.. code-block:: dart 
+
+    themeAnimationCurve: Curves.easeInOut,
+
+It controls **HOW the theme animation moves over time**, not how long it takes.
+
+The duration is defined here:
+
+,. code-block:: dart 
+
+    themeAnimationDuration: const Duration(seconds: 2),
+
+And the shape of that animation is defined here:
+
+.. code-block:: dart 
+
+    themeAnimationCurve: Curves.easeInOut,
+
+**What Curves.easeInOut does:**
+	•	Starts **slowly**
+
+	•	Speeds up in the middle
+
+	•	Ends **slowly**
+
+So when you press **Toggle Theme:**
+	•	The app does NOT change instantly
+
+	•	It fades with a **smooth curve**
+
+You can try others too:
+
+.. code-block:: dart 
+
+    Curves.linear      // straight, constant speed
+    Curves.easeIn      // slow -> fast
+    Curves.easeOut     // fast -> slow
+    Curves.bounceIn    // bounce at start
+    Curves.elasticOut  // rubber-band style
+
+Example change:
+
+.. code-block:: dart 
+
+    themeAnimationCurve: Curves.bounceInOut,
+
+Now your theme change will **bounce 😄**
+
+**✅ Super simple definition (remember this)**
+
+    **themeAnimationCurve controls the STYLE of the theme-change animation.**
+
+While:
+
+    themeAnimationDuration = how long
+
+    themeAnimationCurve = how it moves
+
+=========================================================================================================================
+
+✅17.themeAnimationStyle:
+-----------------------------
+
+**✅ Simple program to describe themeAnimationStyle**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatefulWidget {
+        const MyApp({super.key});
+
+        @override
+        State<MyApp> createState() => _MyAppState();
+    }
+
+    class _MyAppState extends State<MyApp> {
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        ThemeMode _themeMode = ThemeMode.light;
+
+        void _toggleTheme() {
+            setState(() {
+                _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+            });
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // Normal light & dark themes
+                theme: ThemeData.light(),
+                darkTheme: ThemeData.dark(),
+                themeMode: _themeMode,
+
+                // 👇 MAIN FOCUS: themeAnimationStyle
+                // This overrides duration + curve of the theme change.
+                themeAnimationStyle: const AnimationStyle(
+                    duration: Duration(seconds: 2),      // slow, so you can see it
+                    curve: Curves.easeInOutCubic,        // smooth curve
+                ),
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                // Simple UI: one page with a toggle button
+                builder: (context, child) {
+                    return Scaffold(
+                        appBar: AppBar(
+                            title: const Text('themeAnimationStyle Demo'),
+                        ),
+                        body: Center(
+                            child: ElevatedButton(
+                                onPressed: _toggleTheme,
+                                child: Text(
+                                    _themeMode == ThemeMode.light
+                                        ? 'Switch to DARK theme'
+                                        : 'Switch to LIGHT theme',
+                                ),
+                            ),
+                        ),
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            // We don’t really use pages here; UI is built in MaterialApp.builder.
+            return const Navigator(
+                pages: [
+                    MaterialPage(child: SizedBox()),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation,) async {
+            // Use uri instead of deprecated location
+            return routeInformation.uri.path;
+        }
+    }
+
+**🧠 What is themeAnimationStyle actually doing?**
+
+This line is the key:
+
+.. code-block:: dart 
+
+    themeAnimationStyle: const AnimationStyle(
+    duration: Duration(seconds: 2),
+    curve: Curves.easeInOutCubic,
+    ),
+
+•	AnimationStyle.duration → how long the **theme change animation** takes
+
+•	AnimationStyle.curve → how the animation **moves over time**
+
+It overrides themeAnimationDuration and themeAnimationCurve if you set them.
+
+So when you press the **Toggle** button:
+
+	1.	_themeMode switches between ThemeMode.light and ThemeMode.dark
+
+	2.	Flutter animates the change using:
+
+	    •	2-second duration
+
+	    •	easeInOutCubic curve
+
+	3.	You see the whole screen smoothly fade/animate between light and dark.
+
+If you want **no animation at all**, you can do:
+
+.. code-block:: dart 
+
+    themeAnimationStyle: AnimationStyle.noAnimation,
+
+===========================================================================================================================
+
+✅18.locale:
+-----------------
+
+Below is a **working example** using locale with **Pashto** (Locale('ps')).
+It still uses MaterialApp.router and flutter_localizations.
+
+Make sure flutter_localizations is in your pubspec.yaml (as before):
+
+.. code-block:: yaml 
+
+    dependencies:
+    flutter:
+        sdk: flutter
+    flutter_localizations:
+        sdk: flutter
+
+**✅ Simple program to describe locale: in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_localizations/flutter_localizations.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatefulWidget {
+        const MyApp({super.key});
+
+        @override
+        State<MyApp> createState() => _MyAppState();
+    }
+
+    class _MyAppState extends State<MyApp> {
+    final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+    final MyRouteInformationParser _routeInformationParser =
+        MyRouteInformationParser();
+
+    // 👇 Start in English
+    Locale _locale = const Locale('en');
+
+    void _setEnglish() {
+        setState(() {
+        _locale = const Locale('en');
+        });
+    }
+
+    void _setPashto() {
+        setState(() {
+        _locale = const Locale('ps'); // Pashto
+        });
+    }
+
+    @override
+    Widget build(BuildContext context) {
+        return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+
+            // Current app locale
+            locale: _locale,
+
+            // We support English + Pashto
+            supportedLocales: const [
+                Locale('en'),
+                Locale('ps'),
+            ],
+
+            // Provide Material / Widgets / Cupertino localizations
+            localizationsDelegates: GlobalMaterialLocalizations.delegates,
+
+            routerDelegate: _routerDelegate,
+            routeInformationParser: _routeInformationParser,
+
+                // Simple UI to show locale effect
+                builder: (context, child) {
+                    final lang = _locale.languageCode;
+
+                    return Scaffold(
+                        appBar: AppBar(
+                            title: Text(
+                            lang == 'en' ? 'Locale Demo (English / Pashto)'
+                                            : 'د ژبې بېلګه (انګلیسي / پښتو)',
+                            ),
+                        ),
+                        body: Center(
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                    Text(
+                                        lang == 'en'
+                                            ? 'Hello (English)'
+                                            : 'سلام (پښتو)',
+                                        style: const TextStyle(fontSize: 28),
+                                        textAlign: TextAlign.center,
+                                    ),
+                                    const SizedBox(height: 30),
+                                    ElevatedButton(
+                                        onPressed: _setEnglish,
+                                        child: const Text('Switch to English'),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    ElevatedButton(
+                                        onPressed: _setPashto,
+                                        child: const Text('پښتو ته واړوئ'),
+                                    ),
+                                ],
+                            ),
+                        ),
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey =
+            GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            // UI is built in MaterialApp.router.builder
+            return const Navigator(
+                pages: [
+                    MaterialPage(child: SizedBox()),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(
+            RouteInformation routeInformation,
+        ) async {
+            // Use uri (new API, not deprecated)
+            return routeInformation.uri.path;
+        }
+    }
+
+**What you’ll see**
+
+	•	Start: **English** – “Hello (English)”
+
+	•	Tap **“پښتو ته واړوئ”** → locale becomes ps
+
+	•	AppBar title and main text show **Pashto.**
+
+	•	Direction switches to **right-to-left** automatically for Pashto (if your Flutter version/localizations support it).
+
+You can now reuse this pattern later for **English + Pashto + any other language** just by adding more Locale(...) entries and updating the text.
+
+============================================================================================================================
+
+✅19.supportedLocales:
+-------------------------
+
+**✅ Simple program to describe supportedLocales in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_localizations/flutter_localizations.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatefulWidget {
+        const MyApp({super.key});
+
+        @override
+        State<MyApp> createState() => _MyAppState();
+    }
+
+    class _MyAppState extends State<MyApp> {
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser = MyRouteInformationParser();
+
+        // CURRENT LOCALE
+        Locale _locale = const Locale('en');
+
+        void _setEnglish() {
+            setState(() => _locale = const Locale('en'));
+        }
+
+        void _setPashto() {
+            setState(() => _locale = const Locale('ps'));
+        }
+
+        void _setSpanish() {
+            setState(() => _locale = const Locale('es'));
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // 👇 CURRENT SELECTED LANGUAGE
+                locale: _locale,
+
+                // ✅ MAIN FOCUS: supportedLocales
+                supportedLocales: const [
+                    Locale('en'), // English
+                    Locale('ps'), // Pashto
+                    Locale('es'), // Spanish
+                ],
+
+                // Required for Material localized texts
+                localizationsDelegates: GlobalMaterialLocalizations.delegates,
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                builder: (context, child) {
+                    final lang = _locale.languageCode;
+
+                    return Scaffold(
+                        appBar: AppBar(
+                            title: const Text('supportedLocales Demo'),
+                        ),
+                        body: Center(
+                            child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                    Text(
+                                        lang == 'en'
+                                            ? 'Hello (English)'
+                                            : lang == 'ps'
+                                                ? 'سلام (پښتو)'
+                                                : 'Hola (Spanish)',
+                                        style: const TextStyle(fontSize: 28),
+                                    ),
+                                    const SizedBox(height: 40),
+
+                                    ElevatedButton(
+                                        onPressed: _setEnglish,
+                                        child: const Text('English'),
+                                    ),
+                                    const SizedBox(height: 8),
+
+                                    ElevatedButton(
+                                        onPressed: _setPashto,
+                                        child: const Text('پښتو'),
+                                    ),
+                                    const SizedBox(height: 8),
+
+                                    ElevatedButton(
+                                        onPressed: _setSpanish,
+                                        child: const Text('Español'),
+                                    ),
+                                ],
+                            ),
+                        ),
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        @override
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return const Navigator(
+                pages: [
+                    MaterialPage(child: SizedBox()),
+                ],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(
+            RouteInformation routeInformation) async {
+            return routeInformation.uri.path;
+        }
+    }
+
+**🧠 What does supportedLocales: actually do?**
+
+This is the key part:
+
+.. code-block:: dart 
+
+    supportedLocales: const [
+        Locale('en'),
+        Locale('ps'),
+        Locale('es'),
+    ],
+
+It tells Flutter:
+
+“My app is able to support **only these languages.**”
+
+If the user’s phone is set to:
+
+	•	French → ❌ Not in list → Flutter won’t use it
+
+	•	Pashto → ✅ In list → Flutter will use Pashto
+
+	•	Spanish → ✅ In list → Flutter will use Spanish
+
+Think of it like a whitelist of languages your app allows.
+
+**✅ Very short definition (remember this)**
+
+    **supportedLocales: = the list of languages your app officially supports**
+
+And:
+
+    **locale: = the one currently in use**
+
++----------------------+------------------------------+
+| Parameter            | Meaning                      |
++======================+==============================+
+| supportedLocales     | All allowed languages        |
++----------------------+------------------------------+
+| locale               | The selected language        |
++----------------------+------------------------------+
+
+===========================================================================================================================
+
+✅20.localizationsDelegates:
+--------------------------------
+
+This example proves one thing:
+
+    **localizationsDelegates is what provides localized strings (like “Back”, dates, numbers, text direction, etc.) for the selected locale.**
+
+Without this, you will get the red error you saw before:
+**“No MaterialLocalizations found”**
+
+This example uses:
+
+    ✅ English
+
+    ✅ Pashto (پښتو)
+
+    ✅ Spanish
+
+**✅ Simple program to describe localizationsDelegates in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_localizations/flutter_localizations.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    /* ================= APP ================= */
+
+    class MyApp extends StatefulWidget {
+        const MyApp({super.key});
+
+        @override
+        State<MyApp> createState() => _MyAppState();
+    }
+
+    class _MyAppState extends State<MyApp> {
+        final MyRouterDelegate _routerDelegate = MyRouterDelegate();
+        final MyRouteInformationParser _routeInformationParser =
+            MyRouteInformationParser();
+
+        Locale _locale = const Locale('en');
+
+        void _setEnglish() => setState(() => _locale = const Locale('en'));
+        void _setPashto()  => setState(() => _locale = const Locale('ps'));
+        void _setSpanish() => setState(() => _locale = const Locale('es'));
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+
+                // Current app language
+                locale: _locale,
+
+                // Languages app supports
+                supportedLocales: const [
+                    Locale('en'),
+                    Locale('ps'),
+                    Locale('es'),
+                ],
+
+                // ✅ MAIN FOCUS: THIS PROVIDES TRANSLATIONS
+                localizationsDelegates: const [
+                    GlobalMaterialLocalizations.delegate, // Material widgets
+                    GlobalWidgetsLocalizations.delegate,  // Text direction (LTR/RTL)
+                    GlobalCupertinoLocalizations.delegate, // iOS style widgets
+                ],
+
+                routerDelegate: _routerDelegate,
+                routeInformationParser: _routeInformationParser,
+
+                builder: (context, child) {
+                    final code = _locale.languageCode;
+
+                    return Scaffold(
+                        appBar: AppBar(
+                            title: const Text('localizationsDelegates Demo'),
+                        ),
+                        body: Center(
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                    Text(
+                                        code == 'en'
+                                            ? 'Hello (English)'
+                                            : code == 'ps'
+                                                ? 'سلام (پښتو)'
+                                                : 'Hola (Spanish)',
+                                        style: const TextStyle(fontSize: 26),
+                                    ),
+                                    const SizedBox(height: 40),
+
+                                    ElevatedButton(
+                                        onPressed: _setEnglish,
+                                        child: const Text('English'),
+                                    ),
+                                    const SizedBox(height: 8),
+
+                                    ElevatedButton(
+                                        onPressed: _setPashto,
+                                        child: const Text('پښتو'),
+                                    ),
+                                    const SizedBox(height: 8),
+
+                                    ElevatedButton(
+                                        onPressed: _setSpanish,
+                                        child: const Text('Español'),
+                                    ),
+                                ],
+                            ),
+                        ),
+                    );
+                },
+            );
+        }
+    }
+
+    /* ============ ROUTER DELEGATE ============ */
+
+    class MyRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+        @override
+        final GlobalKey<NavigatorState> navigatorKey =
+            GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return const Navigator(
+                pages: [MaterialPage(child: SizedBox())],
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    /* ============ ROUTE PARSER ============ */
+
+    class MyRouteInformationParser extends RouteInformationParser<Object> {
+        @override
+        Future<Object> parseRouteInformation(RouteInformation routeInformation,) async {
+            return routeInformation.uri.path;
+        }
+    }
+
+**🧠 What does localizationsDelegates REALLY do?**
+
+This is the **most important part:**
+
+.. code-block:: dart 
+
+    localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+    ],
+
+This tells Flutter:
+
+    “Here are the objects that provide translations and regional settings
+
+    for Material, Widgets, and iOS (Cupertino) components.”
+
+Without this:
+
+    ❌ You get crash
+
+    ❌ No RTL support for Pashto/Arabic
+
+    ❌ No translated system labels (Back, Cancel, etc.)
+
+With this:
+
+    ✅ Proper RTL for Pashto
+
+    ✅ Normal English / Spanish
+
+    ✅ No red error
+
+**✅ Super simple meaning (remember forever)**
+
+    **localizationsDelegates = the translation engine of your app**
+
++-------------------------------+--------------------------------------+
+| Part                          | What it gives you                    |
++===============================+======================================+
+| GlobalMaterialLocalizations   | Buttons like Back, Close, etc        |
++-------------------------------+--------------------------------------+
+| GlobalWidgetsLocalizations    | RTL / LTR text direction             |
++-------------------------------+--------------------------------------+
+| GlobalCupertinoLocalizations  | iOS-style text                       |
++-------------------------------+--------------------------------------+
+
+**⚠️ Important rule**
+
+You almost ALWAYS use:
+
+.. code-block:: dart 
+
+    localizationsDelegates: GlobalMaterialLocalizations.delegates,
+
+or the full version I gave you.
+
+Without it → your app WILL crash when you change locale.
+
+=========================================================================================================================
+
+✅21.localeResolutionCallback:
+----------------------------------
+
+Here is a **very simple Flutter example** that shows how to use the **localeResolutionCallback** parameter in MaterialApp.router.
+
+This callback decides **which language (locale) your app should actually use,** based on the device locale and the supported locales in your app.
+
+**✅ What this example does**
+
+	•	The phone language might be: **Spanish, Pashto, Arabic, etc.**
+
+	•	We tell Flutter:
+
+	•	If the device language is Spanish (es), use Spanish
+
+	•	Otherwise, use **English (en)**
+
+	•	It prints the decision in the console so you can see what happens
+
+**✅ Simple program: localeResolutionCallback in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // A very small RouterConfig just for demo
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // List of supported languages in this app
+                supportedLocales: const [
+                    Locale('en', 'US'),
+                    Locale('es', 'ES'),
+                ],
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT
+                localeResolutionCallback: (Locale? deviceLocale, Iterable<Locale> supportedLocales) {
+                    print('Device locale is: $deviceLocale');
+
+                    // If device language is Spanish, use Spanish
+                    if (deviceLocale != null && deviceLocale.languageCode == 'es') {
+                        print('Using Spanish');
+                        return const Locale('es', 'ES');
+                    }
+
+                    // Otherwise, use English as default
+                    print('Using English');
+                    return const Locale('en', 'US');
+                },
+            );
+        }
+    }
+
+    // ---------------- SIMPLE ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(
+                        child: Scaffold(
+                            body: Center(
+                                child: Text(
+                                    "Hello from MaterialApp.router()",
+                                    style: TextStyle(fontSize: 22),
+                                ),
+                            ),
+                        ),
+                    ),
+                ],
+                onPopPage: (route, result) => route.didPop(result),
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+**✅ In simple words**
+
+localeResolutionCallback means:
+
+    “Flutter, when the app starts, check the phone’s language. Then I will decide which language my app should use.”
+
+Example:
+
++-----------------------+----------------------------------+
+| Phone Language        | App Language Used                |
++=======================+==================================+
+| Spanish               | Spanish ✅                       |
++-----------------------+----------------------------------+
+| Pashto                | English (fallback) ✅            |
++-----------------------+----------------------------------+
+| Arabic                | English (fallback) ✅            |
++-----------------------+----------------------------------+
+
+===========================================================================================================================
+
+✅22.localeListResolutionCallback:
+--------------------------------------
+
+This callback is used when the device sends **a list of preferred languages** (not just one). You decide which one your app will use.
+
+**✅ What this example does**
+
+	•	Your phone may send a list like: [es_ES, ps_AF, en_US]
+
+	•	The app:
+
+        •	✔️ Uses **Pashto** if found
+
+        •	✔️ Else uses **Spanish** if found
+
+        •	✔️ Else uses **English by default**
+
+	•	It prints the decision in the console
+
+**✅ Simple program: localeListResolutionCallback in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router for demo
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // Languages supported by this app
+                supportedLocales: const [
+                    Locale('en', 'US'),
+                    Locale('es', 'ES'),
+                    Locale('ps', 'AF'), // Pashto
+                ],
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT
+                localeListResolutionCallback:
+                    (List<Locale>? deviceLocales, Iterable<Locale> supportedLocales) {
+                    print("Device locales list: $deviceLocales");
+
+                    if (deviceLocales != null) {
+                        for (Locale locale in deviceLocales) {
+                            // If Pashto is found, use it
+                            if (locale.languageCode == 'ps') {
+                                print("Using Pashto");
+                                return const Locale('ps', 'AF');
+                            }
+
+                            // If Spanish is found, use it
+                            if (locale.languageCode == 'es') {
+                                print("Using Spanish");
+                                return const Locale('es', 'ES');
+                            }
+                        }
+                    }
+
+                    // Default to English
+                    print("Using English");
+                    return const Locale('en', 'US');
+                },
+            );
+        }
+    }
+
+    // ---------------- SIMPLE ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: const [
+                    MaterialPage(
+                        child: Scaffold(
+                            body: Center(
+                                child: Text(
+                                    "MaterialApp.router\nlocaleListResolutionCallback",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 20),
+                                ),
+                            ),
+                        ),
+                    ),
+                ],
+                onPopPage: (route, result) => route.didPop(result),
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+**✅ Very simple explanation**
+
++-------------------------------+--------------------------------------+
+| Callback                      | What it receives                     |
++===============================+======================================+
+| When to use                   | localeResolutionCallback             |
++-------------------------------+--------------------------------------+
+| one Locale                    | When device gives one language       |
++-------------------------------+--------------------------------------+
+| localeListResolutionCallback  | list of Locales                      |
++-------------------------------+--------------------------------------+
+
+When device gives multiple languages
+
+localeListResolutionCallback =
+
+    “Flutter, here is a list of languages my user prefers. You choose the best one.”
+
+Example device language list:
+
+.. code-block:: dart 
+
+    [ps_AF, en_US, es_ES]
+
+Your app chooses: **✅ Pashto**
+
+==========================================================================================================================
+
+✅23.debugShowCheckedModeBanner:
+------------------------------------
+
+**🔹 What is debugShowCheckedModeBanner?**
+
+When you run a Flutter app in **debug mode**, a red label appears in the top-right corner that says:
+
+.. code-block:: bash 
+
+    DEBUG
+
+That red label is called the **debug banner.**
+
+The **debugShowCheckedModeBanner** parameter controls **whether that banner is shown or hidden.**
+
+**✅ Example**
+
+.. code-block:: dart 
+
+    MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            body: Center(child: Text('Hello')),
+        ),
+    );
+    
+If you write:
+
+.. code-block:: dart 
+
+    debugShowCheckedModeBanner: false,
+
+✅ The red **DEBUG** banner will **disappear.**
+
+If you write:
+
+.. code-block:: dart 
+
+    debugShowCheckedModeBanner: true,
+
+✅ The red **DEBUG** banner will **appear.**
+
+**🧠 In very simple words**
+
+debugShowCheckedModeBanner means:
+
+    “Flutter, should I show the red DEBUG label or not?”
+
+**Why do developers turn it OFF?**
+
+Because before publishing an app, they want the screen to look clean and professional:
+
+	•	❌ No big DEBUG label
+
+	•	✅ Clean UI for users
+
+So usually developers write:
+
+.. code-block:: dart 
+
+    debugShowCheckedModeBanner: false,
+
+**Important**
+
+This banner:
+	•	Only appears in **debug mode**
+
+	•	Does **NOT** appear in release mode
+
+	•	Does **NOT** affect performance
+
+==============================================================================================================================
+
+✅24.debugShowMaterialGrid:
+-------------------------------
+
+Here is a **very simple Flutter example** that demonstrates the
+
+**debugShowMaterialGrid** parameter in **MaterialApp.router.**
+
+This parameter is used **only in debug mode** to show a layout grid on the screen, which helps you align widgets correctly (like a designer’s grid).
+
+**✅ What this example shows**
+
+	•	**A grid overlay** appears on the screen
+
+	•	Helps you see spacing, margins & alignment
+
+	•	Only works in **debug mode** (when using flutter run)
+
+**✅ Simple Program: debugShowMaterialGrid in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router for the demo
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                routerConfig: _router,
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT
+                debugShowMaterialGrid: true,
+            );
+        }
+    }
+
+    // ---------------- SIMPLE ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: [
+                    MaterialPage(
+                        child: Scaffold(
+                            appBar: AppBar(title: Text("Material Grid Example")),
+                            body: Center(
+                                child: Text(
+                                    "debugShowMaterialGrid = true",
+                                    style: TextStyle(fontSize: 20),
+                                ),
+                            ),
+                        ),
+                    ),
+                ],
+                onPopPage: (route, result) => route.didPop(result),
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+**✅ What you will see**
+
+When you run the app in **debug mode**, a **grid like this** will appear:
+
+.. code-block:: bash 
+
+    ▢ ▢ ▢ ▢ ▢
+    ▢ ▢ ▢ ▢ ▢
+    ▢ ▢ ▢ ▢ ▢
+
+It helps in:
+
+✅ Checking widget alignment
+
+✅ Checking padding / margins
+
+✅ UI design fixing
+
+Turn it OFF by changing:
+
+.. code-block:: dart 
+
+    debugShowMaterialGrid: false,
+
+**✅ In simple words**
+
++---------------------------+-------------------------------+
+| Value                     | Result                        |
++===========================+===============================+
+| true                      | Shows layout grid on screen ✅|
++---------------------------+-------------------------------+
+| false                     | No grid (normal UI) ✅        |
++---------------------------+-------------------------------+
+
+debugShowMaterialGrid =
+
+    “Flutter, show me your layout lines so I can design better.”
+
+===========================================================================================================================
+
+✅25.showPerformanceOverlay:
+--------------------------------
+
+Here’s a **very simple Flutter app** that demonstrates
+
+**showPerformanceOverlay **in **MaterialApp.router.**
+
+This overlay shows **performance graphs** (GPU & UI usage) on the screen, so you can see how smooth (or slow) your app is while running.
+
+**✅ What this example does**
+
+	•	Shows **two small graphs at the top:**
+
+	•	**UI Thread (top)**
+
+	•	**GPU Thread (bottom)**
+
+	•	Helps you check:
+
+	•	Frame drops
+
+	•	Jank / lag
+
+	•	Animation performance
+
+	•	Works in **debug mode**
+
+**✅ Simple program: showPerformanceOverlay in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router for the demo
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // Shows the performance overlay
+                showPerformanceOverlay: true,
+            );
+        }
+    }
+
+    // ---------------- SIMPLE ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: [
+                    MaterialPage(
+                        child: Scaffold(
+                            appBar: AppBar(title: Text("Performance Overlay")),
+                            body: Center(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        Text(
+                                            "showPerformanceOverlay = true",
+                                            style: TextStyle(fontSize: 20),
+                                        ),
+                                        SizedBox(height: 20),
+                                        CircularProgressIndicator(),
+                                    ],
+                                ),
+                            ),
+                        ),
+                    ),
+                ],
+
+                // ✅ NEW and CORRECT method (replaces onPopPage)
+                onDidRemovePage: (Page<Object?> page) {
+                    debugPrint('Page removed: ${page.key}');
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+**✅ What you will see on top**
+
+Two small bars like this:
+
+.. code-block:: bash 
+
+    UI:  ▇▅▇▂▇▅
+    GPU: ▅▇▂▇▅▂
+
++-------------------+--------------------------+
+| Bar               | Meaning                  |
++===================+==========================+
+| Top bar           | UI rendering time        |
++-------------------+--------------------------+
+| Bottom bar        | GPU rendering time       |
++-------------------+--------------------------+
+
+If bars go **above the line** → ⚠️ your app is becoming slow.
+
+**✅ In very simple words**
+
+showPerformanceOverlay =
+
+    “Flutter, show me how fast or slow my app is running.”
+
++-----------------+---------------------------------+
+| Value           | Result                          |
++=================+=================================+
+| true            | Shows performance graph ✅      |
++-----------------+---------------------------------+
+| false           | Normal mode ✅                  |
++-----------------+---------------------------------+
+
+========================================================================================================================
+
+✅26.showSemanticsDebugger:
+--------------------------------
+
+Here is a **very simple & updated Flutter program** that demonstrates
+
+the **showSemanticsDebugger** parameter in **MaterialApp.router** — using the **new API (onDidRemovePage)** instead of the deprecated onPopPage.
+
+showSemanticsDebugger is mainly used for **accessibility debugging** (screen readers, talkback, etc.).
+
+**✅ Simple program: showSemanticsDebugger in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router for demo
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT
+                showSemanticsDebugger: true,
+            );
+        }
+    }
+
+    // ---------------- SIMPLE ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+
+                pages: [
+                    MaterialPage(
+                        child: Scaffold(
+                            appBar: AppBar(title: Text("Semantics Debugger")),
+                            body: Center(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        Text(
+                                            "showSemanticsDebugger = true",
+                                            style: TextStyle(fontSize: 20),
+                                        ),
+                                        SizedBox(height: 20),
+                                        ElevatedButton(
+                                            onPressed: null,
+                                            child: Text("Example Button"),
+                                        ),
+                                    ],
+                                ),
+                            ),
+                        ),
+                    ),
+                ],
+
+                // ✅ New API instead of onPopPage
+                onDidRemovePage: (Page<Object?> page) {
+                    debugPrint('Page removed: ${page.key}');
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+**✅ What you will see on the screen**
+
+When this runs in **debug mode**, you’ll see:
+
+	•	Yellow / green outlines on widgets
+
+	•	Text showing things like:
+
+	•	Button
+
+	•	Label
+
+	•	Text
+
+	•	Boxes around UI elements
+
+This is Flutter showing **accessibility information.**
+
+This is useful for:
+
+    ✅ Screen readers
+
+    ✅ Blind/low-vision users
+
+    ✅ Accessibility testing
+
+    ✅ Improving UX
+
+**✅ In very simple words**
+
+showSemanticsDebugger = true means:
+
+    “Flutter, show me how screen readers see my app.”
+
++------------------------+--------------------------------------------+
+| Value                  | Result                                     |
++========================+============================================+
+| true                   | Shows accessibility info on UI ✅          |
++------------------------+--------------------------------------------+
+| false                  | Normal screen ✅                           |
++------------------------+--------------------------------------------+
+
+========================================================================================================================
+
+✅27.shortcuts:
+-------------------
+
+Here is a **very simple Flutter example** that demonstrates the
+**shortcuts** parameter in **MaterialApp.router.**
+
+The shortcuts parameter lets you define **keyboard shortcut keys** (for hardware keyboard: laptop, desktop, tablet with keyboard).
+
+In this example:
+
+	•	Press **Ctrl + B** (or Cmd + B on Mac)
+
+	•	The text on the screen changes
+
+**✅ Simple program: shortcuts in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter/services.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router for demo
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT
+                shortcuts: <LogicalKeySet, Intent>{
+                    // When user presses Ctrl + B
+                    LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyB):
+                        const ChangeTextIntent(),
+                },
+            );
+        }
+    }
+
+    // ----------- INTENT (WHAT TO DO) ----------------
+
+    class ChangeTextIntent extends Intent {
+        const ChangeTextIntent();
+    }
+
+    // ----------- SIMPLE ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+        bool _changed = false;
+
+        @override
+        Widget build(BuildContext context) {
+            return Actions(
+            actions: <Type, Action<Intent>>{
+                ChangeTextIntent: CallbackAction<ChangeTextIntent>(
+                    onInvoke: (intent) {
+                        _changed = !_changed;
+                        notifyListeners();
+                        return null;
+                    },
+                ),
+            },
+            child: Navigator(
+                    key: navigatorKey,
+                    pages: [
+                        MaterialPage(
+                            child: Scaffold(
+                                appBar: AppBar(title: const Text("Shortcuts Example")),
+                                body: Center(
+                                    child: Text(
+                                        _changed
+                                            ? "You pressed Ctrl + B ✅"
+                                            : "Press Ctrl + B to change this text",
+                                        style: const TextStyle(fontSize: 20),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ],
+
+                    // ✅ New API instead of onPopPage
+                    onDidRemovePage: (Page<Object?> page) {
+                        debugPrint('Page removed: ${page.key}');
+                    },
+                ),
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+**✅ How to test it**
+
+Run your app and press:
+
+	•	**Windows / Linux:** Ctrl + B
+	•	**Mac: ⌘** (Command) + B
+
+You will see the text change on the screen.
+
+**✅ In very simple words**
+
+shortcuts means:
+
+“Flutter, when the user presses these keys, do this action.”
+
++--------------------+------------------------------+
+| Part               | Meaning                      |
++====================+==============================+
+| LogicalKeySet(...) | Which keys                   |
++--------------------+------------------------------+
+| Intent             | What it means                |
++--------------------+------------------------------+
+| Action             | What to do                   |
++--------------------+------------------------------+
+
+=========================================================================================================================
+
+✅28.actions:
+-----------------
+
+Here is a **very simple Flutter program** that demonstrates the
+**actions parameter in MaterialApp.router.**
+
+The actions parameter tells Flutter **what to do when an Intent happens** (for example from a keyboard shortcut, button, or gesture).
+
+In this example:
+
+    ✅ Press **Ctrl + C **(or **Cmd + C** on Mac)
+
+    ✅ The text on the screen changes
+
+**✅ Simple program: actions in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter/services.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+    const MyApp({super.key});
+
+    @override
+    Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // 👇 SHORTCUT (Ctrl + C)
+                shortcuts: <LogicalKeySet, Intent>{
+                    LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyC):
+                    ChangeColorIntent(),
+                },
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT: actions
+                actions: <Type, Action<Intent>>{
+                    ChangeColorIntent: ChangeColorAction(),
+                },
+            );
+        }
+    }
+
+    // ------------ INTENT ------------
+
+    class ChangeColorIntent extends Intent {
+        const ChangeColorIntent();
+    }
+
+    // ------------ ACTION ------------
+
+    class ChangeColorAction extends Action<ChangeColorIntent> {
+        @override
+        Object? invoke(ChangeColorIntent intent) {
+            _SimpleRouterDelegate.changeColor();
+            return null;
+        }
+    }
+
+    // ------------ ROUTER ------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        static bool _isRed = false;
+
+        static void changeColor() {
+            _isRed = !_isRed;
+            _instance?.notifyListeners();
+        }
+
+        static _SimpleRouterDelegate? _instance;
+
+        _SimpleRouterDelegate() {
+            _instance = this;
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                pages: [
+                    MaterialPage(
+                        child: Scaffold(
+                            appBar: AppBar(title: const Text("Actions Example")),
+                            body: Center(
+                                child: Text(
+                                    "Press Ctrl + C",
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        color: _isRed ? Colors.red : Colors.black,
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ],
+
+                // ✅ New API instead of onPopPage
+                onDidRemovePage: (Page<Object?> page) {
+                    debugPrint('Page removed: ${page.key}');
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+**✅ What is happening (very simple)**
+
++--------------------+---------------------------------+
+| Part               | Meaning                         |
++====================+=================================+
+| Intent             | What the user wants             |
++--------------------+---------------------------------+
+| Action             | What the app does               |
++--------------------+---------------------------------+
+| actions:           | Connects intent ➜ action        |
++--------------------+---------------------------------+
+
+actions = “When this thing happens, do this job”
+
+**✅ Press the keys**
+
+	•	**Windows / Linux:** Ctrl + C
+
+	•	**Mac:** ⌘ + C
+
+Text color will change:
+	•	Black ➜ Red ➜ Black ➜ Red …
+
+========================================================================================================================
+
+✅29.restorationScopeId:
+----------------------------
+
+Here is a very **simple Flutter program** that demonstrates the
+**restorationScopeId **parameter in **MaterialApp.router.**
+
+This feature lets Flutter **restore the app’s state automatically** (like text, scroll position, counters) after the app is closed and reopened or killed by the OS.
+
+In this example:
+
+    ✅ A counter value is **saved automatically**
+
+    ✅ Close the app
+
+    ✅ Open it again → the counter is **restored**
+
+**✅ Simple program: restorationScopeId in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // ✅ ONLY ONE restorationScopeId
+                restorationScopeId: 'root',
+            );
+        }
+    }
+
+    // ---------------- ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+                restorationScopeId: 'navigator', // child scope
+
+                pages: const [
+                    MaterialPage(
+                        restorationId: 'home_page',
+                        child: CounterPage(),
+                    ),
+                ],
+
+                // New API instead of onPopPage
+                onDidRemovePage: (Page<Object?> page) {
+                    debugPrint('Page removed: ${page.key}');
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    // ---------------- COUNTER PAGE ----------------
+
+    class CounterPage extends StatefulWidget {
+        const CounterPage({super.key});
+
+        @override
+        State<CounterPage> createState() => _CounterPageState();
+    }
+
+    class _CounterPageState extends State<CounterPage> with RestorationMixin {
+
+        final RestorableInt _counter = RestorableInt(0);
+
+        @override
+        String? get restorationId => 'counter_page';
+
+        @override
+        void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
+            registerForRestoration(_counter, 'counter_value');
+        }
+
+        void _increment() {
+            setState(() {
+            _counter.value++;
+            });
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(title: const Text('Restoration Example')),
+                body: Center(
+                    child: Text(
+                        'Counter: ${_counter.value}',
+                        style: const TextStyle(fontSize: 30),
+                    ),
+                ),
+                floatingActionButton: FloatingActionButton(
+                    onPressed: _increment,
+                    child: const Icon(Icons.add),
+                ),
+            );
+        }
+    }
+
+**✅ Why this now works**
+
++-----------------------------+--------------------------------------+
+| Location                    | What it does                         |
++=============================+======================================+
+| MaterialApp.router          | Defines root restoration ID          |
++-----------------------------+--------------------------------------+
+| Navigator                   | Defines child restoration area       |
++-----------------------------+--------------------------------------+
+| MaterialPage                | Has page restoration ID              |
++-----------------------------+--------------------------------------+
+| RestorableInt               | Saves counter value                  |
++-----------------------------+--------------------------------------+
+
+Now your app can:
+
+    ✅ Close
+
+    ✅ Reopen
+
+    ✅ Restore previous counter
+
+🧠 In simple words (again)
+
+restorationScopeId is like giving a memory name to your app.
+
+Flutter: “Remember everything under this name.”
+
+Only **one name per widget** is allowed.
+
+========================================================================================================================
+
+✅30.scrollBehavior:
+------------------------
+
+Here is a **very simple Flutter example** that demonstrates the
+**scrollBehavior** parameter in **MaterialApp.router.**
+
+scrollBehavior changes **how scrolling works** (with mouse, touch, stylus, trackpad, etc.).
+In this example, we customize it so **mouse dragging also scrolls the page** on desktop.
+
+**✅ Simple program: scrollBehavior in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter/gestures.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple router
+        final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT
+                scrollBehavior: const MyCustomScrollBehavior(),
+            );
+        }
+    }
+
+    // -------- CUSTOM SCROLL BEHAVIOR --------
+
+    class MyCustomScrollBehavior extends MaterialScrollBehavior {
+        const MyCustomScrollBehavior();
+
+        @override
+        Set<PointerDeviceKind> get dragDevices => const {
+                PointerDeviceKind.touch,   // Mobile touch
+                PointerDeviceKind.mouse,   // Desktop mouse drag
+                PointerDeviceKind.trackpad,
+                PointerDeviceKind.stylus,
+            };
+        }
+
+        // -------- SIMPLE ROUTER --------
+
+        class _SimpleRouterDelegate extends RouterDelegate<Object>
+            with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+
+                pages: const [
+                    MaterialPage(
+                    child: ScrollPage(),
+                    ),
+                ],
+
+                onDidRemovePage: (Page<Object?> page) {
+                    debugPrint('Page removed: ${page.key}');
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    // -------- PAGE WITH SCROLL --------
+
+    class ScrollPage extends StatelessWidget {
+        const ScrollPage({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(title: const Text("Scroll Behavior Example")),
+                body: ListView.builder(
+                    itemCount: 50,
+                    itemBuilder: (context, index) {
+                        return ListTile(
+                            title: Text("Item ${index + 1}"),
+                        );
+                    },
+                ),
+            );
+        }
+    }
+
+**✅ What you will notice**
+
+Run the app and try to scroll:
+
++---------------------+-----------------------------------------------+
+| Behavior            | Works?                                        |
++=====================+===============================================+
+| Touch screen        | ✅                                            |
++---------------------+-----------------------------------------------+
+| Mouse wheel         | ✅                                            |
++---------------------+-----------------------------------------------+
+| Mouse drag          | ✅ (because of custom scrollBehavior)         |
++---------------------+-----------------------------------------------+
+| Trackpad            | ✅                                            |
++---------------------+-----------------------------------------------+
+
+Without scrollBehavior, mouse drag scrolling usually **does NOT work.**
+
+**✅ In very simple words**
+
+scrollBehavior =
+
+    “Flutter, I want to customize how scrolling works in my app.”
+
++-----------------------------+---------------------------------------+
+| Example change              | Result                                |
++=============================+=======================================+
+| Add PointerDeviceKind.mouse | Drag with mouse ✅                    |
++-----------------------------+---------------------------------------+
+| Remove it                   | Only wheel works ❌                   |
++-----------------------------+---------------------------------------+
+| Add stylus                  | Stylus dragging ✅                    |
++-----------------------------+---------------------------------------+
+
+==========================================================================================================================
+
+✅31.onNavigationNotification:
+-----------------------------------
+
+Here is a very **simple and clean Flutter example** that demonstrates the
+**onNavigationNotification** parameter in **MaterialApp.router.**
+
+This parameter lets your app **listen to navigation events** (like page change, back button press, push/pop) and react to them.
+
+In this example:
+
+    ✅ When navigation happens, a message is printed in the console
+
+    ✅ And a small text on screen changes
+
+**✅ Simple program: onNavigationNotification in MaterialApp.router**
+
+.. code-block:: dart 
+
+    import 'package:flutter/material.dart';
+
+    void main() {
+        runApp(const MyApp());
+    }
+
+    // Simple Router
+    final RouterConfig<Object> _router = RouterConfig(
+        routerDelegate: _SimpleRouterDelegate(),
+    );
+
+    class MyApp extends StatelessWidget {
+        const MyApp({super.key});
+
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp.router(
+                routerConfig: _router,
+
+                // 👇 THIS IS WHAT YOU ASKED ABOUT
+                onNavigationNotification: (NavigationNotification notification) {
+                    debugPrint('Navigation happened: ${notification.runtimeType}');
+                    return true; // means "I handled it"
+                },
+            );
+        }
+    }
+
+    // ---------------- ROUTER ----------------
+
+    class _SimpleRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
+
+        final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+        bool _secondPage = false;
+
+        void goToNext() {
+            _secondPage = true;
+            notifyListeners();
+        }
+
+        void goBack() {
+            _secondPage = false;
+            notifyListeners();
+        }
+
+        @override
+        Widget build(BuildContext context) {
+            return Navigator(
+                key: navigatorKey,
+
+                pages: [
+                    MaterialPage(
+                        child: HomePage(onNext: goToNext),
+                    ),
+                    if (_secondPage)
+                    MaterialPage(
+                        child: SecondPage(onBack: goBack),
+                    ),
+                ],
+
+                // ✅ New API
+                onDidRemovePage: (Page<Object?> page) {
+                    debugPrint("Page removed: ${page.key}");
+                },
+            );
+        }
+
+        @override
+        Future<void> setNewRoutePath(Object configuration) async {}
+    }
+
+    // ---------------- HOME PAGE ----------------
+
+    class HomePage extends StatelessWidget {
+        final VoidCallback onNext;
+
+        const HomePage({super.key, required this.onNext});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(title: const Text("Home Page")),
+                body: Center(
+                    child: ElevatedButton(
+                    onPressed: onNext,
+                    child: const Text("Go to Next Page"),
+                    ),
+                ),
+            );
+        }
+    }
+
+    // ---------------- SECOND PAGE ----------------
+
+    class SecondPage extends StatelessWidget {
+        final VoidCallback onBack;
+
+        const SecondPage({super.key, required this.onBack});
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(title: const Text("Second Page")),
+                body: Center(
+                    child: ElevatedButton(
+                    onPressed: onBack,
+                    child: const Text("Go Back"),
+                    ),
+                ),
+            );
+        }
+    }
+
+**✅ What you will see in the console**
+
+When you click the button to navigate:
+
+.. code-block:: dart
+
+    Navigation happened: NavigationNotification
+
+And when a page is removed:
+
+.. code-block:: dart 
+
+    Page removed: null
+
+**✅ In very simple words**
+
+onNavigationNotification means:
+
+    💬 “Flutter, tell me whenever navigation happens in my app.”
+
+You can use it for:
+
+    ✅ Debugging navigation
+
+    ✅ Analytics (track page change)
+
+    ✅ Custom logging
+
+    ✅ Security checks
+
+**✅ Quick comparison**
+
++---------------------------+--------------------------------------+
+| Parameter                 | Purpose                              |
++===========================+======================================+
+| onNavigationNotification  | Listen to navigation events          |
++---------------------------+--------------------------------------+
+| onDidRemovePage           | Know when a page is removed          |
++---------------------------+--------------------------------------+
+| routerConfig              | Controls which page is shown         |
++---------------------------+--------------------------------------+
+

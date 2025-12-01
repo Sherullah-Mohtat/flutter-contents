@@ -1,0 +1,10 @@
+Guides
+======
+
+Task-oriented how-tos.
+
+.. toctree::
+   :maxdepth: 2
+
+   2_installation.rst
+   configuration.rst 

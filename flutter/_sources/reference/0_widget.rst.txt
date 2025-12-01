@@ -1,0 +1,61 @@
+Widget 
+======
+
+**Widget** is the **basic building block** of the user interface (UI).
+Everything you see on the screen — from a simple **text label** to a **button**, a **layout structure**, or even an entire **screen** — is a **widget.** 
+A **widget** describes **how an element should look and behave**. It tells Flutter **what to draw** and **how to respond to user interactions.**
+
+**🧱 Two Main Types of Widgets**
+
+**1.	StatelessWidget**
+
+    •	Does not change once built.
+
+    •	Used for static parts of the UI.
+
+    •	Example: a Text, Icon, or Container that doesn’t update dynamically.
+
+.. code-block:: dart 
+
+    class MyText extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Text('Hello Flutter!');
+      }
+    }
+
+**2.	StatefulWidget**
+
+    •	Can change its appearance in response to user interaction or data updates.
+
+    •	Maintains a mutable state using a separate State object.
+
+.. code-block:: dart 
+
+    class CounterWidget extends StatefulWidget {
+      @override
+      State<CounterWidget> createState() => _CounterWidgetState();
+    }
+
+    class _CounterWidgetState extends State<CounterWidget> {
+      int count = 0;
+
+        @override
+        Widget build(BuildContext context) {
+            return Column(
+                children: [
+                Text('Count: $count'),
+                ElevatedButton(
+                    onPressed: () {
+                        setState(() {
+                           count++;
+                        });
+                    },
+                    child: Text('Increment'),
+                ),
+                ],
+            );
+        }
+    }
+
+

@@ -1,0 +1,30 @@
+Welcome to FlutterFrameWork's documentation!
+============================================
+
+A short elevator pitch goes here.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 🚀 Get Started
+
+   tutorials/index
+   guides/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: ⚙️ Reference
+
+   reference/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 🧠 Explanations
+
+   explanation/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: 🌍 Community
+
+   community/index
+   changelog
