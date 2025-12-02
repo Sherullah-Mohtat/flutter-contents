@@ -1,3 +1,7 @@
+.. meta::
+   :description: Complete guide to Flutter MaterialApp.router including all named parameters, explanations, examples, deep linking, Navigator 2.0 navigation, and full working programs.
+   :keywords: Flutter, MaterialApp.router with sherullah, Navigator 2.0, RouterConfig, GoRouter, Deep Linking, Routing, Navigation, Flutter Web, Flutter Navigation Tutorial, Route Management
+
 MaterialApp.router 
 ====================
 

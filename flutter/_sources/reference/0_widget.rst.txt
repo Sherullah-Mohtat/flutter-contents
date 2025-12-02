@@ -1,3 +1,8 @@
+
+.. meta::
+   :description: Complete guide to Flutter Widgets (StatelessWidget, StatefulWidget, examples).
+   :keywords: Flutter, Widgets, StatelessWidget, StatefulWidget, Dart, Tutorial, sherullah, site, override, build, sherullah.com
+
 Widget 
 ======
 
