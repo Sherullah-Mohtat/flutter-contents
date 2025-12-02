@@ -5,25 +5,6 @@ comming soon...
 
 🔥 Example for your “First Project” page
 
-.. image:: images/iphonescr.png
-   :width: 300px
-   :alt: Flutter logo
-   :align: center
-
-
-✅ Method 4 — Add caption below the image
-
-.. figure:: images/iphonescr.png
-   :width: 400px
-   :alt: Screenshot
-
-   This is a caption explaining the image.
-
-
-✅ Method 1 — Simple YouTube Link (auto-embed in browser)
-
-https://www.youtube.com/watch?v=lHhRhPV--G0
-
 
 ✅ Method 2 — Embed YouTube video using raw HTML (BEST for Furo)
 
@@ -124,3 +105,5 @@ YouTube demo
    :alt: Flutter logo
    :class: responsive-img
    :align: center
+
+   This is a caption explaining the image.
