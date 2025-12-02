@@ -6,11 +6,13 @@ comming soon...
 🔥 Example for your “First Project” page
 
 
-.. youtube:: dQw4w9WgXcQ
-   :width: 560
-   :height: 315
+.. container:: video-responsive
 
-   
+   .. youtube:: dQw4w9WgXcQ
+      :width: 560
+      :height: 315
+
+  
 .. raw:: html
 
    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -26,4 +28,3 @@ comming soon...
    :class: responsive-img
    :align: center
 
-   
