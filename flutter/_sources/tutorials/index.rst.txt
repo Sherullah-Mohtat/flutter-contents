@@ -1,6 +1,8 @@
 Tutorials
 =========
 
+.. include:: _ads/bottom_ad.rst
+   
 Start here if you’re new.
 
 .. toctree::

@@ -1,15 +1,27 @@
+:orphan:
+
 .. raw:: html
 
-   <div class="ad-bottom">
-     <!-- 🔥 Your Ad Code Here -->
-     <p style="text-align:center; font-size:14px; margin-top:20px; opacity:0.8;">
-       📢 Advertisement  
-       <br>
-       <a href="https://www.amazon.com/dp/1801072647?_encoding=UTF8&pd_rd_w=7T9Wf&content-id=amzn1.sym.476b1b7d-c787-4147-8a3c-fdef209103a1&pf_rd_p=476b1b7d-c787-4147-8a3c-fdef209103a1&pf_rd_r=98EAVTNVV2CD6YHZFAP3&pd_rd_wg=8lGud&pd_rd_r=5c02368b-db9a-4133-9acb-32f8e4203183&linkCode=ll1&tag=sherullahblog-20&linkId=5f7699ca7b000d576d6e634761c22519&language=en_US&ref_=as_li_ss_tl" target="_blank"
-          style="color:#007bff; text-decoration:none;">
-         Click here for our recommended resources
-       </a>
-     </p>
-   </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388221364719013"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4388221364719013"
+        data-ad-slot="8538049698"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
-   
+
+.. 
+    ⭐ Summary
+
+    :orphan: = “Ignore this file as a standalone document.”
+
+    You should use it for:
+        •	_ads/*.rst
+        •	_includes/*.rst
+        •	_snippets/*.rst
+        •	any file used only via .. include::
