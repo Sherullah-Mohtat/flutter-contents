@@ -240,19 +240,12 @@ If you are learning Flutter, you are investing in a skill that can help you buil
 
 .. toctree::
    :maxdepth: 2
-   :caption: ⚙️ Reference
-
-   reference/index
-
-.. toctree::
-   :maxdepth: 2
    :caption: 🧠 Explanations
 
    explanation/index
 
 .. toctree::
-   :maxdepth: 1
-   :caption: 🌍 Community
+   :maxdepth: 2
+   :caption: ⚙️ Reference
 
-   community/index
-   changelog
+   reference/index
