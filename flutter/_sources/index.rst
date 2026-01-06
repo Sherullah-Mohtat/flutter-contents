@@ -8,23 +8,6 @@ Flutter
 
 Flutter is one of the world’s most popular frameworks for building beautiful, fast, and modern applications. If you want to create apps for **Android, iOS, Web, Windows, macOS,** and **Linux** — all from a **single codebase** — Flutter is the perfect choice.
 
-
-===================================================================================================================================
-
-.. raw:: html
-
-   <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-4388221364719013"
-        data-ad-slot="8538049698"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-   <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
-
-==================================================================================================================================
-
 What Is Flutter?
 ------------------
 
@@ -57,11 +40,8 @@ Why Flutter Is Popular
 
    Strong community, regular updates, and long-term support.
 
-============================================================================================================================================
-
-.. include:: _ads/bottom_ad.rst
-
-============================================================================================================================================
+.. ads commented
+	.. include:: _ads/bottom_ad.rst
 
 What You Can Build With Flutter
 ---------------------------------
@@ -221,20 +201,23 @@ If you are learning Flutter, you are investing in a skill that can help you buil
 ===================================================================================================================================
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
-   :caption: 🚀 Get Started
+   :caption: Explanations
+
+   kaftarya_app/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: Get Started
 
    tutorials/index
    guides/index
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
-   :caption: 🧠 Explanations
-
-   explanation/index
-
-.. toctree::
-   :maxdepth: 2
-   :caption: ⚙️ Reference
+   :caption: Reference
 
    reference/index

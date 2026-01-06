@@ -3,7 +3,7 @@ First Project
 
 comming soon...
 
-🔥 Let's First import packages:
+Let's First import packages:
 
 .. code-block:: dart 
 

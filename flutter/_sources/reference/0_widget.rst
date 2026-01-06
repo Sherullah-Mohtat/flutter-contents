@@ -10,7 +10,7 @@ Widget
 Everything you see on the screen — from a simple **text label** to a **button**, a **layout structure**, or even an entire **screen** — is a **widget.** 
 A **widget** describes **how an element should look and behave**. It tells Flutter **what to draw** and **how to respond to user interactions.**
 
-**🧱 Two Main Types of Widgets**
+**Two Main Types of Widgets**
 
 **1.	StatelessWidget**
 

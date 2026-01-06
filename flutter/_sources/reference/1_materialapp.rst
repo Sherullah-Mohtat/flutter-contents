@@ -310,7 +310,7 @@ You use it for:
 
      initialRoute: userLoggedIn ? '/dashboard' : '/login';
 
-📌 Important Notes
+Important Notes
 	1.	The route used in initialRoute must exist inside routes:.
 
 	2.	If you use home: and initialRoute: together:
@@ -494,7 +494,7 @@ No context needed — just the global key.
 
 In those cases, navigatorKey gives you a global navigation controller.
 
-**🎯 Why use navigatorKey?**
+**Why use navigatorKey?**
 
     ✓ Navigate from anywhere
 
@@ -596,7 +596,7 @@ This example has **two pages:**
 
 	•	**SecondPage** (receives a message)
 
-**📝 What is onGenerateRoute:?**
+**What is onGenerateRoute:?**
 
 onGenerateRoute is a function that gets called every time navigation happens.
 
@@ -611,7 +611,7 @@ Using this, you return:
 
     MaterialPageRoute(builder: ...)
 
-**🎯 Why use onGenerateRoute:?**
+**Why use onGenerateRoute:?**
 
 ✔ When you want dynamic routing
 
@@ -727,7 +727,7 @@ Using this, you return:
 ✅ 11. onUnknownRoute:
 -----------------------
 
-**📝 What is onUnknownRoute:?**
+**What is onUnknownRoute:?**
 
 It is a fallback route handler used when:
 	•	The user navigates to a route that is not registered
@@ -744,7 +744,7 @@ Without this parameter, Flutter would crash with:
 
 With onUnknownRoute, Flutter shows your custom 404 page instead.
 
-**🎯 Why use onUnknownRoute:?**
+**Why use onUnknownRoute:?**
 
     ✔ Prevents app crashes
 
@@ -756,7 +756,7 @@ With onUnknownRoute, Flutter shows your custom 404 page instead.
 
     ✔ Helps with debugging wrong route names
 
-🗂️ Priority Order in Flutter Routing
+Priority Order in Flutter Routing
 
 Flutter decides routes in this order:
 	1.	**routes:** → if exists, use it
@@ -767,7 +767,7 @@ Flutter decides routes in this order:
 
 	4.	Otherwise crash (if no fallback exists)
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -851,7 +851,7 @@ Flutter will show a custom 404 page instead of crashing.
 ✅ 12. navigatorObservers:
 ---------------------------
 
-**📝 What is navigatorObservers:?**
+**What is navigatorObservers:?**
 
 navigatorObservers: allows you to watch navigation events.
 
@@ -865,7 +865,7 @@ You can detect when:
 
 	•	route is removed (remove)
 
-**🎯 What does our example observer do?**
+**What does our example observer do?**
 
 Our custom class:
 
@@ -879,13 +879,13 @@ Prints:
 
 .. code-block:: bash 
 
-    📌 didPush → Moved to: /second
+    didPush → Moved to: /second
 
 **When user goes back:**
 
 .. code-block:: bash 
 
-    📌 didPop → Returned from: /second
+    didPop → Returned from: /second
 
 This is extremely helpful for:
 
@@ -901,7 +901,7 @@ This is extremely helpful for:
 
     ✓ App state management
 
-🌟 Minimal Version
+Minimal Version
 
 .. code-block:: dart 
 
@@ -1076,7 +1076,7 @@ This example wraps every page inside a SafeArea using builder:.
         }
     }
 
-**📝 What does builder: do?**
+**What does builder: do?**
 
 builder: gives you a function:
 
@@ -1092,7 +1092,7 @@ This means:
 ✔ You can **modify UI globally**
 ✔ You can **apply effects once** instead of repeating in every page
 
-**🎯 Why use builder:?**
+**Why use builder:?**
 
     **✔ Add SafeArea globally**
 
@@ -1112,7 +1112,7 @@ This means:
 
     → Useful when controlling font size across the app.
 
-**🌟 Example 2: Add a red border around the whole app**
+**Example 2: Add a red border around the whole app**
 
 .. code-block:: dart 
 
@@ -1123,7 +1123,7 @@ This means:
         );
     },
 
-**🌟 Example 3: Force RTL (Right-to-left)**
+**Example 3: Force RTL (Right-to-left)**
 
 .. code-block:: dart 
 
@@ -1134,7 +1134,7 @@ This means:
         );
     },
 
-**🌟 Example 4: Add a global loading overlay**
+**Example 4: Add a global loading overlay**
 
 .. code-block:: dart 
 
@@ -1243,7 +1243,7 @@ This example shows:
         }
     }
 
-**📝 What is themeMode:?**
+**What is themeMode:?**
 
     themeMode: tells Flutter which theme to use:
 
@@ -1259,7 +1259,7 @@ This example shows:
 
     → Follow the device setting (user’s Android/iOS dark mode)
 
-**🎯 Minimal Example**
+**Minimal Example**
 
 If you don’t need a toggle button:
 
@@ -1271,19 +1271,19 @@ If you don’t need a toggle button:
         themeMode: ThemeMode.system,
     );
 
-**🌟 Example: Force Dark Mode**
+**Example: Force Dark Mode**
 
 .. code-block:: dart 
 
     themeMode: ThemeMode.dark,
 
-**🌟 Example: Force Light Mode**
+**Example: Force Light Mode**
 
 .. code-block:: dart 
 
     themeMode: ThemeMode.light,
 
-**🌟 Example: Follow System Setting**
+**Example: Follow System Setting**
 
 .. code-block:: dart 
 
@@ -1305,7 +1305,7 @@ Otherwise, Flutter cannot switch between them.
 
 ➡️ Defines the theme used when the system is in dark mode and themeMode is set to ThemeMode.system.
 
-**📝 What is darkTheme:?**
+**What is darkTheme:?**
 
 darkTheme: defines **how your app looks when dark mode is ON.**
 
@@ -1321,7 +1321,7 @@ or the device is in dark mode with:
 
     themeMode: ThemeMode.system
 
-**🎯 Why do we need darkTheme:?**
+**Why do we need darkTheme:?**
 
 Because:
     •	Dark mode needs different colors
@@ -1344,7 +1344,7 @@ Ignore system setting and always use dark theme:
         themeMode: ThemeMode.dark,
     );
 
-**🌞 Example: Force Light Mode**
+**Example: Force Light Mode**
 
 .. code-block:: dart 
 
@@ -1422,7 +1422,7 @@ This example provides light theme + dark theme, and uses system setting to decid
 
 ➡️ Used on Android for the app preview in the task switcher (background color).
 
-**📝 What does color: do in MaterialApp?**
+**What does color: do in MaterialApp?**
 
 The color: parameter sets the **primary color** used by:
 
@@ -1458,7 +1458,7 @@ It’s NOT the same as:
 
 It only affects **system UI / task manager.**
 
-**🌟 Quick Example: Change “Recent Apps” color**
+**Quick Example: Change “Recent Apps” color**
 
 .. code-block:: dart 
 
@@ -1517,7 +1517,7 @@ When you open the Android **Recent Apps,** your app tile becomes green.
 ✅ 17. highContrastTheme:
 --------------------------
 
-**📝 What is highContrastTheme:?**
+**What is highContrastTheme:?**
 
 It is a special theme that Flutter uses when the system requests **high-contrast UI** for accessibility.
 
@@ -1532,7 +1532,7 @@ Typical changes include:
 
 	•	**Better readability**
 
-**🎯 How to view the high contrast theme?**
+**How to view the high contrast theme?**
 
 To test it:
 
@@ -1546,7 +1546,7 @@ Settings → Accessibility → **Increase Contrast**
 
 Then reopen the app → Flutter will automatically switch to highContrastTheme.
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -1555,7 +1555,7 @@ Then reopen the app → Flutter will automatically switch to highContrastTheme.
         highContrastTheme: ThemeData.highContrastLight(),
     );
 
-**🎨 Example with High Contrast Dark Theme Too**
+**Example with High Contrast Dark Theme Too**
 
 .. code-block:: dart 
 
@@ -1625,7 +1625,7 @@ Flutter automatically switches to this theme when High Contrast is ON in device 
 ✅ 18. highContrastDarkTheme:
 ------------------------------
 
-**📝 What is highContrastDarkTheme:?**
+**What is highContrastDarkTheme:?**
 
 It is the **dark version** of the high-contrast theme.
 
@@ -1643,7 +1643,7 @@ Used when:
 | ❌ No             | ✔ Yes             | highContrastTheme                           |
 +-------------------+-------------------+---------------------------------------------+
 
-**🎯 Why do we need it?**
+**Why do we need it?**
 
 High-contrast dark theme improves accessibility:
 	•	Brighter text on darker backgrounds
@@ -1654,7 +1654,7 @@ High-contrast dark theme improves accessibility:
 
 	•	Better for people with low vision
 
-**🌙 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -1752,7 +1752,7 @@ AND
 
 ➡️ You can decide how to choose the right Locale based on device settings and supported locales.
 
-**📝 What does localeResolutionCallback: do?**
+**What does localeResolutionCallback: do?**
 
 Whenever your app starts, Flutter checks:
 	1.	**What is the device language?**
@@ -1763,7 +1763,7 @@ Whenever your app starts, Flutter checks:
 
 You decide the logic.
 
-**🎯 Example: Device = Farsi (fa_AF)**
+**Example: Device = Farsi (fa_AF)**
 	•	Your app supports: en_US, es_ES, ps_AF
 
 	•	Device is using: fa_AF (Farsi)
@@ -1772,7 +1772,7 @@ Since Farsi is not supported → the callback decides:
 
 Use the fallback locale (usually en_US)
 
-**🌍 Real use cases of localeResolutionCallback**
+**Real use cases of localeResolutionCallback**
 
 **✔ Fallback language selection**
 
@@ -1792,7 +1792,7 @@ Useful while developing multilingual apps.
 
 **✔ Multi-language apps with dynamic behavior**
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -1893,7 +1893,7 @@ This example prints which locale Flutter selected.
 
 ➡️ Lists all the locales your app can work with (for translation, formatting, etc.).
 
-**📝 What does supportedLocales: do?**
+**What does supportedLocales: do?**
 
 It defines the **list of languages your app can display.**
 
@@ -1915,13 +1915,13 @@ Example:
 
 If device language = Pashto → app uses Pashto automatically.
 
-**🎯 Why you need supportedLocales?**
+**Why you need supportedLocales?**
 
 Because Flutter cannot guess which languages your app supports.
 You must list them manually.
 
 
-**🌍 How does Flutter choose the locale?**
+**How does Flutter choose the locale?**
 
 Flutter checks:
 	1.	Device locale
@@ -1932,7 +1932,7 @@ Flutter checks:
 
 This matches “fallback locale” concept.
 
-**📌 Example: If phone is set to Spanish**
+**Example: If phone is set to Spanish**
 
 App picks:
 
@@ -1946,7 +1946,7 @@ If Spanish is not supported, app falls back to:
 
     Locale('en', 'US')   // first item in the list
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -2031,7 +2031,7 @@ Example supports:
 
 ➡️ Allows customizing how scrolling behaves globally (e.g., removing overscroll glow, customizing drag).
 
-**📝 What does scrollBehavior: do?**
+**What does scrollBehavior: do?**
 
 Defines how scrolling works in the entire app:
 
@@ -2047,7 +2047,7 @@ Defines how scrolling works in the entire app:
 
     ✔ Allows middle-click scrolling on desktop
 
-**🎯 Example 2: Enable mouse + touch scrolling everywhere**
+**Example 2: Enable mouse + touch scrolling everywhere**
 
 .. code-block:: dart 
 
@@ -2065,7 +2065,7 @@ This allows scrolling with:
 
 	•	Trackpad
 
-**🌟 Example 3: Always show scrollbars**
+**Example 3: Always show scrollbars**
 
 .. code-block:: dart 
 
@@ -2073,7 +2073,7 @@ This allows scrolling with:
     scrollbars: true,
     ),
 
-**🌟 Example 4: iOS Bounce Effect Everywhere**
+**Example 4: iOS Bounce Effect Everywhere**
 
 .. code-block:: dart 
 
@@ -2157,7 +2157,7 @@ This program **removes the blue glow effect** when scrolling on Android by using
 
 ➡️ Shows a checkerboard pattern over images being rasterized (for debug performance analysis).
 
-**📝 What does checkerboardRasterCacheImages do?**
+**What does checkerboardRasterCacheImages do?**
 
 When set to true:
 
@@ -2176,7 +2176,7 @@ This helps developers detect:
 
 	•	If an animation or image is causing jank
 
-**🎯 When should you use this?**
+**When should you use this?**
 
 **Only during debugging!**
 
@@ -2188,7 +2188,7 @@ This helps developers detect:
 
 **NEVER use in production — it adds ugly debug patterns.**
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -2327,7 +2327,7 @@ Offscreen layers happen when:
         }
     }
  
-**📝 What does checkerboardOffscreenLayers: do?**
+**What does checkerboardOffscreenLayers: do?**
 
 When set to **true:**
 
@@ -2348,7 +2348,7 @@ These are expensive operations and can cause:
 
 This helps developers visually identify UI elements that are too heavy.
 
-**🎯 When offscreen layers happen?**
+**When offscreen layers happen?**
 
 Common reasons:
 
@@ -2380,7 +2380,7 @@ Some transitions create offscreen layers temporarily.
 
 	•	Default value is: **false**
 
-🌟 Minimal Version
+Minimal Version
 
 .. code-block:: dart 
 
@@ -2454,7 +2454,7 @@ You mainly use it when your app is inside another Flutter app
         }
     }
 
-**📝 What does useInheritedMediaQuery: do?**
+**What does useInheritedMediaQuery: do?**
 
 **✔ When false (default)**
 
@@ -2482,7 +2482,7 @@ This is important when:
 
 	•	You want to pass custom safe area insets
 
-**🎯 Why would you use this?**
+**Why would you use this?**
 
 **1. Embedding Flutter inside parent UI**
 
@@ -2503,7 +2503,7 @@ Then all Flutter children can inherit it.
 
 Parent SafeArea can control child widgets.
 
-**🌟 Minimal Example**
+**Minimal Example**
 
 .. code-block:: dart 
 
@@ -2603,7 +2603,7 @@ This example restores the counter value even after the app is killed.
         }
     }
 
-**📝 What is restorationScopeId:?**
+**What is restorationScopeId:?**
 
 This ID enables **State Restoration** in your app.
 
@@ -2611,7 +2611,7 @@ It tells Flutter:
 
 “This MaterialApp is the root of all restore-able widgets.”
 
-**🎯 What does State Restoration mean?**
+**What does State Restoration mean?**
 
 When the app is:
 	•	closed
@@ -2635,7 +2635,7 @@ Flutter restores:
 
 If programmed using **RestorationMixin.**
 
-**🌟 How it works in this example?**
+**How it works in this example?**
 
 **When user taps + button**
 
@@ -2669,7 +2669,7 @@ And the page uses:
         restorationScopeId: 'root',
     )
 
-**🧠 When should you use state restoration?**
+**When should you use state restoration?**
 
     ✔ Apps with forms
 
@@ -2742,7 +2742,7 @@ This title appears in:
         }
     }
 
-**📝 What does onGenerateTitle: do?**
+**What does onGenerateTitle: do?**
 
 It is a **callback function** that returns a **string.**
 
@@ -2753,7 +2753,7 @@ Flutter uses this title to display:
 
 	•	App metadata in some OS environments
 
-**🎯 Why use onGenerateTitle: instead of title:?**
+**Why use onGenerateTitle: instead of title:?**
 
 **✔ Create title based on system language (Localization)**
 
@@ -2767,7 +2767,7 @@ Example: “Hello John”, “Kaftarya Admin”, etc.
 
 **✔ Use data or logic to compute the title**
 
-**🌍 Example: Localized Title**
+**Example: Localized Title**
 
 If you use localization (.arb):
 
@@ -2783,7 +2783,7 @@ If you use localization (.arb):
 
     onGenerateTitle: (_) => "My App",
 
-**🚀 Summary**
+**Summary**
 
 +-----------------------+-----------------------------------+-------------------------------------------------+
 | Parameter             | Type                              | Purpose                                         |
@@ -2880,7 +2880,7 @@ It is mainly used on:
         }
     }
 
-**📝 What does actions: do?**
+**What does actions: do?**
 
 It defines **what happens** when a shortcut is triggered.
 
@@ -2889,7 +2889,7 @@ In the example:
 
 	•	actions: → what to do when that intent fires
 
-**🎯 Real uses for actions::**
+**Real uses for actions::**
 
     ✔ Keyboard shortcuts (Ctrl+C, Ctrl+S, Enter)
 
@@ -2901,7 +2901,7 @@ In the example:
 
     ✔ Global hotkeys in Flutter apps
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -2987,7 +2987,7 @@ This example shows how the app chooses which screen to show first depending on l
         }
     }
 
-**📝 What does onGenerateInitialRoutes: do?**
+**What does onGenerateInitialRoutes: do?**
 
 	•	It decides **which routes to load first**
 
@@ -3140,7 +3140,7 @@ We will create:
         }
     }
 
-**📝 What is scaffoldMessengerKey:?**
+**What is scaffoldMessengerKey:?**
 
 It gives your app a **global ScaffoldMessenger controller** so you can show:
 
@@ -3152,7 +3152,7 @@ It gives your app a **global ScaffoldMessenger controller** so you can show:
 
 **from anywhere,** not only from widgets.
 
-**🎯 Why use scaffoldMessengerKey?**
+**Why use scaffoldMessengerKey?**
 
 Because this works:
 
@@ -3183,7 +3183,7 @@ Which requires a widget context.
 
 ---------------------------------------------------------------------------------------------------
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -3259,7 +3259,7 @@ It shows **FPS, GPU usage, UI thread performance**, and frame rendering stats.
         }
     }
 
-**📝 What does showPerformanceOverlay: do?**
+**What does showPerformanceOverlay: do?**
 
 When set to **true:**
 
@@ -3278,7 +3278,7 @@ Shows how fast Flutter is painting frames.
 
 If bars go above the line → **frame drops or jank.**
 
-🎯 What is it used for?
+What is it used for?
 
 **This is a debug tool, used to check:**
 
@@ -3308,7 +3308,7 @@ This is extremely helpful for game-like apps or complex animations.
 
 	•	Default is: false
 
-**🌟 Minimal Version**
+**Minimal Version**
 
 .. code-block:: dart 
 
@@ -3331,7 +3331,7 @@ It is useful when:
 
 	•	Testing
 
-**🧪 Simple Example Showing key: in MaterialApp**
+**Simple Example Showing key: in MaterialApp**
 
 .. code-block:: dart 
 
@@ -3371,7 +3371,7 @@ It is useful when:
         }
     }
 
-**🧠 What does key: actually do?**
+**What does key: actually do?**
 
 key: helps Flutter:
 
@@ -3486,7 +3486,7 @@ It’s like a “listener” for navigation.
         }
     }
 
-**📝 What is onNavigationNotification?**
+**What is onNavigationNotification?**
 
 It runs **every time navigation changes,** like:
 
@@ -3535,7 +3535,7 @@ This shows a **material design grid** on top of your app for UI alignment checki
         ));
     }
 
-**🧠 What happens?**
+**What happens?**
 	•	You will see a **grid overlay**
 
 	•	It helps with:
@@ -3554,7 +3554,7 @@ This shows a **material design grid** on top of your app for UI alignment checki
 ✅ 35. showSemanticsDebugger:
 ------------------------------
 
-**🔍 What is showSemanticsDebugger?**
+**What is showSemanticsDebugger?**
 
 showSemanticsDebugger is used for **accessibility debugging.**
 
@@ -3576,7 +3576,7 @@ This is mainly used to **debug apps for visually-impaired users** who use screen
 
 	•	VoiceOver (iOS)
 
-**👀 What you will SEE on screen**
+**What you will SEE on screen**
 
 When you run the app with:
 
@@ -3653,7 +3653,7 @@ Set it back to false (or remove it) for production:
 ✅ 36. localeListResolutionCallback:
 --------------------------------------
 
-**🔍 What is localeListResolutionCallback?**
+**What is localeListResolutionCallback?**
 
 This parameter is used to:
 
@@ -3673,7 +3673,7 @@ It runs **automatically** when the app starts and receives:
 
 “Flutter hands you the phone’s language list and your app’s language list — now YOU choose which one to use.”
 
-**🧠 Example Scenario**
+**Example Scenario**
 
 Assume:
 	•	Phone language = Spanish (es_ES)
@@ -3702,7 +3702,7 @@ You use localeListResolutionCallback when:
 
 	•	Want full control over language selection
 
-**📌 Key Difference**
+**Key Difference**
 
 +------------------------------------+--------------------------------------------------+
 | Feature                            | Purpose                                          |
@@ -3774,7 +3774,7 @@ You use localeListResolutionCallback when:
 ✅ 37. themeAnimationDuration:
 -------------------------------
 
-**🔍 What is themeAnimationDuration?**
+**What is themeAnimationDuration?**
 
 themeAnimationDuration controls:
 
@@ -3789,7 +3789,7 @@ This means:
 
 	•	The animation will take **2 seconds** to complete
 
-**🧠 Try changing the duration**
+**Try changing the duration**
 
 Try these:
 
@@ -3805,7 +3805,7 @@ Try these:
 
 👉 Very slow animation (clear smooth transition)
 
-**👀 What you will see**
+**What you will see**
 
 When you press **Change Theme:**
 
@@ -3893,7 +3893,7 @@ If the theme is fixed, this animation won’t apply.
 ✅ 38. themeAnimationCurve:
 ----------------------------
 
-**🔍 What is themeAnimationCurve?**
+**What is themeAnimationCurve?**
 
 themeAnimationCurve defines **how the animation behaves over time.**
 
@@ -3915,7 +3915,7 @@ This means:
 
 	•	Ends slow ✅
 
-**🎯 Try other curves**
+**Try other curves**
 
 You can change the curve to see different animations:
 
@@ -4010,7 +4010,7 @@ Use it when:
 ✅ 39. themeAnimationStyle:
 ----------------------------
 
-**🔍 What is themeAnimationStyle in simple words?**
+**What is themeAnimationStyle in simple words?**
 
 It controls **WHAT TYPE of animation** is used when the theme changes.
 
@@ -4024,7 +4024,7 @@ It controls **WHAT TYPE of animation** is used when the theme changes.
 | AnimationStyle.custom              | You define your own style               |
 +------------------------------------+-----------------------------------------+
 
-**🎯 Try this experiment**
+**Try this experiment**
 
 Change:
 

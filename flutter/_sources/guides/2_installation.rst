@@ -11,13 +11,13 @@ Installation
 macOS Terminal
 ----------------
 
-**⭐ Create Flutter Project Recommended way (for long-term, professional apps)**
+**Create Flutter Project Recommended way (for long-term, professional apps)**
 
 .. code-block:: bash 
 
     flutter create --org com.kaftarya --platforms=android,ios,web,macos,windows,linux kaftarya_app
 
-**📌 What this command will generate**
+**What this command will generate**
 
 +--------------+----------------+
 | Platform     | Status         |
@@ -35,7 +35,7 @@ macOS Terminal
 | Linux        | ✔ Enabled      |
 +--------------+----------------+
 
-**📌 After running the command**
+**After running the command**
 
 Go into your project:
 

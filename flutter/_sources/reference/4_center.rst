@@ -16,7 +16,7 @@ Center
 
 **)**
 
-**🧱 How to Call:**
+**How to Call:**
 
 .. code-block:: dart 
     

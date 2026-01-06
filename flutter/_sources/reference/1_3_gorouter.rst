@@ -49,10 +49,8 @@ Here is the **complete and numbered list of named parameters of GoRouter in Flut
 Here is a **very simple and clean Flutter example** that shows how to use the **routes: parameter in GoRouter** together with **MaterialApp.router().**
 
 This example has **two pages:**
-
-	•	Home page (/)
-
-	•	About page (/about)
+    - Home page (/)
+    - About page (/about)
 
 And a button to move between them.
 
@@ -356,7 +354,7 @@ In this example we:
 
 Without extraCodec, a **custom class will break state restoration or web URL reload.**
 
-**🔑 Simple Rule to Remember**
+**Simple Rule to Remember**
 
 Use:
 
@@ -578,7 +576,7 @@ The observers parameter lets you **listen to navigation events** (like pushing a
         }
     }
 
-**🧠 What’s happening here?**
+**What’s happening here?**
 
 +-------------------------------+------------------------------+
 | Part                          | Description                  |
@@ -950,7 +948,7 @@ In this example, we simulate a **login system:**
         }
     }
 
-**🔥 The key part (redirect parameter)**
+**The key part (redirect parameter)**
 
 .. code-block:: dart 
 
@@ -1408,7 +1406,7 @@ restorationScopeId is used for **state restoration**. It allows Flutter to resto
         }
     }
 
-**⭐ The two important lines**
+**The two important lines**
 
 **In GoRouter**
 
@@ -1448,7 +1446,7 @@ This is powerful for:
 
     ✅ Long usage sessions
 
-**🧠 Easy rule to remember**
+**Easy rule to remember**
 
 +--------------------------------+--------------------------------+
 | Where                          | Why                            |
@@ -1557,7 +1555,7 @@ On mobile it still works fine — you won’t see a difference — but on the **
         }
     }
 
-**🔍 The important line**
+**The important line**
 
 .. code-block:: dart 
 
@@ -1741,7 +1739,7 @@ In this example:
         }
     }
 
-**🧠 What is onException in GoRouter?**
+**What is onException in GoRouter?**
 
 onException is a **global error handler for routing problems**
 in your app.
@@ -1795,7 +1793,7 @@ and **NOT:**
 
     context.go('/error');   // ❌ causes "No GoRouter found in context"
 
-**📌 Simple Example**
+**Simple Example**
 
 .. code-block:: dart 
 

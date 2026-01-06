@@ -83,7 +83,7 @@ It adds a bar at the **top of the screen** that can contain a title, icons, and 
         }
     }
 
-**🧠 What this program teaches you**
+**What this program teaches you**
 
 +------------------------------+--------------------------------+
 | Part                         | Meaning                        |
@@ -168,7 +168,7 @@ The body is the **main content area of your screen** — everything you want to 
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +-------------------------------+-------------------------------+
 | Part                          | Meaning                       |
@@ -290,7 +290,7 @@ The floatingActionButton is the **round button that floats at the bottom-right c
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +----------------------------+------------------------------------+
 | Part                       | Meaning                            |
@@ -413,7 +413,7 @@ It is commonly used in apps like **WhatsApp, Gmail, Maps.**
         }
     }
 
-**📌 Important: Add this to pubspec.yaml**
+**Important: Add this to pubspec.yaml**
 
 Because this uses **GoRouter,** you must add this dependency:
 
@@ -430,7 +430,7 @@ Then run:
 
     flutter pub get
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +----------------------------------------+--------------------------------------+
 | Part                                   | Meaning                              | 
@@ -529,7 +529,7 @@ This example lets you **see the position change clearly**.
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 The **important line** is:
 
@@ -539,7 +539,7 @@ The **important line** is:
 
 This moves the button to the **BOTTOM CENTER** of the screen instead of the default bottom-right.
 
-**📍 Try these positions (just change ONE line)**
+**Try these positions (just change ONE line)**
 
 +-----------------------------------------+----------------------------------------------+
 | Location Code                           | Button Position                              |
@@ -563,7 +563,7 @@ Example change:
 
 Now the button moves to the **top-right corner.**
 
-**📌 Dependency Required**
+**Dependency Required**
 
 Don’t forget in pubspec.yaml:
 
@@ -672,7 +672,7 @@ To make the animation visible, I use a **stateful page and a button tap to chang
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 The **important new line** is:
 
@@ -702,7 +702,7 @@ Try changing this line:
 
 Now the button will **jump instantly** without smooth animation.
 
-**🧩 Why this is important**
+**Why this is important**
 
 The floatingActionButtonAnimator is used when:
 
@@ -716,7 +716,7 @@ The floatingActionButtonAnimator is used when:
 
 This is especially useful in **professional apps** with animated UI.
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In your pubspec.yaml:
 
@@ -811,7 +811,7 @@ persistentFooterButtons creates **fixed buttons at the bottom** of the screen th
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +------------------------------------+----------------------------------------+
 | Part                               | Meaning                                |
@@ -847,7 +847,7 @@ You can add more:
 
 They will stay in a **horizontal row at the bottom.**
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In pubspec.yaml:
 
@@ -984,7 +984,7 @@ The drawer is the **sliding menu that opens from the left side.**
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +-------------------------------+------------------------------------+
 | Part                          | Meaning                            |
@@ -1010,7 +1010,7 @@ When you run this app:
 
     ✅ Tap **About** → it opens a new page
 
-**📌 Pubspec dependency (Important)**
+**Pubspec dependency (Important)**
 
 In pubspec.yaml, you must have:
 
@@ -1128,7 +1128,7 @@ endDrawer is a drawer that **slides from the RIGHT side** of the screen (opposit
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +--------------------------------------+--------------------------------------+
 | Part                                 | Meaning                              |
@@ -1150,7 +1150,7 @@ When you run the app:
 
     ✅ Contains “Settings” and “Profile”
 
-**🔑 Difference Between drawer and endDrawer**
+**Difference Between drawer and endDrawer**
 
 +-----------------------------+-------------------------------------+
 | drawer                      | endDrawer                           |
@@ -1162,7 +1162,7 @@ When you run the app:
 | Uses menu icon automatically| Needs manual open button            |
 +-----------------------------+-------------------------------------+
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In pubspec.yaml:
 
@@ -1337,7 +1337,7 @@ The bottomNavigationBar creates a **navigation bar at the bottom** of the screen
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +--------------------------------+--------------------------------+
 | Part                           | Meaning                        |
@@ -1453,7 +1453,7 @@ The bottomSheet is a **panel attached to the bottom of the screen** that is alwa
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +----------------------------------+------------------------------------+
 | Part                             | Meaning                            |
@@ -1509,7 +1509,7 @@ Now the bottom sheet is bigger and orange.
 | Can’t drag to close        | Can be dismissed         |
 +----------------------------+--------------------------+
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In pubspec.yaml:
 
@@ -1593,7 +1593,7 @@ The backgroundColor changes the **full screen background color** of the Scaffold
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 +------------------------------+--------------------------------------------+
 | Part                         | Meaning                                    |
@@ -1637,7 +1637,7 @@ Change this line to test different colors:
 
 You’ll see the screen change immediately.
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In your pubspec.yaml:
 
@@ -1742,7 +1742,7 @@ This parameter controls **whether the screen resizes when the keyboard opens.**
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 The **key line** is:
 
@@ -1784,7 +1784,7 @@ Now when the keyboard opens:
 
 This is the **default behavior** in most forms.
 
-**📌 When to use false?**
+**When to use false?**
 
 You use:
 
@@ -1802,7 +1802,7 @@ When:
 
     ✅ Fixed layout screens
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In your pubspec.yaml:
 
@@ -1885,7 +1885,7 @@ The primary parameter tells Flutter **whether this Scaffold should align itself 
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 The key line is:
 
@@ -2053,7 +2053,7 @@ The drawerScrimColor changes the **transparent dark overlay color** that appears
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 The **important line is:**
 
@@ -2097,7 +2097,7 @@ If you use:
 
 Then **no dimming / overlay happens at all.**
 
-**🔑 Why use drawerScrimColor?**
+**Why use drawerScrimColor?**
 
 It is useful when:
 
@@ -2109,7 +2109,7 @@ It is useful when:
 
     ✅ You want light or dark mode matching
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In your pubspec.yaml add:
 
@@ -2209,7 +2209,7 @@ The extendBody parameter tells Flutter **whether the body should extend behind t
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 The key line is:
 
@@ -2251,7 +2251,7 @@ Now:
 
 This helps you understand the difference clearly.
 
-**📌 When to use extendBody**
+**When to use extendBody**
 
 Use it when:
 
@@ -2263,7 +2263,7 @@ Use it when:
 
     ✅ You need layered visual effects
 
-**📌 Dependency Reminder**
+**Dependency Reminder**
 
 In your pubspec.yaml:
 
@@ -2356,7 +2356,7 @@ This parameter allows the **body to extend behind (under) the AppBar.**
         }
     }
 
-**🧠 What this program teaches**
+**What this program teaches**
 
 The key line is:
 

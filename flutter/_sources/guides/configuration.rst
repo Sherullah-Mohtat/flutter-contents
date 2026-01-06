@@ -4,7 +4,7 @@ Configuration
 Confuguration Notes
 --------------------
 
-**📌 Meaning of “configuration” inside a Flutter project**
+**Meaning of “configuration” inside a Flutter project**
 
 After creating a Flutter project, **configuration** refers to all the files and settings that control how your app behaves on different platforms (Android, iOS, web, macOS, Windows, Linux).
 
@@ -176,7 +176,7 @@ Contains:
 
 	•	App metadata
 
-**⭐ 3. Flutter-wide configuration commands**
+**3. Flutter-wide configuration commands**
 
 You can also configure Flutter using commands:
 
@@ -189,7 +189,7 @@ You can also configure Flutter using commands:
 
 These change your Flutter tool configuration.
 
-**🔥 Final Simple Definition (Flutter-specific)**
+**Final Simple Definition (Flutter-specific)**
 
     **Configuration in Flutter = all the settings inside each platform folder and pubspec.yaml that control how your app behaves on Android, iOS, web, macOS, Windows, and Linux.**
     
@@ -753,7 +753,7 @@ Change to:
 
 That’s a **Linux-specific configuration.**
 
-🧠 Final mental picture
+Final mental picture
 ------------------------
 
 •	**pubspec.yaml** → global config (version, dependencies, assets)

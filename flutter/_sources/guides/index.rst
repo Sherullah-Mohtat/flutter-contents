@@ -20,6 +20,7 @@ Start with the shared Flutter configuration, then open the guide for your target
 ==============================================================================================================================================
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
 
    2_installation.rst

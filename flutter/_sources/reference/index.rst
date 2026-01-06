@@ -26,6 +26,7 @@ Use this page as a quick, factual handbook while you build Flutter apps: open a 
 ===================================================================================================================================================
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
    
    0_widget.rst 

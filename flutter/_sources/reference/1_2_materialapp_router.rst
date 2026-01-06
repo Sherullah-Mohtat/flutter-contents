@@ -5,7 +5,7 @@
 MaterialApp.router 
 ====================
 
-📌 What is MaterialApp.router()?
+What is MaterialApp.router()?
 ----------------------------------
 
 MaterialApp.router() is a **special version of MaterialApp** that uses Flutter’s **new navigation system (Navigator 2.0 / Router API)** instead of the old one.
@@ -25,7 +25,7 @@ It is mainly used for:
 
 	•	Professional routing (GoRouter, Beamer, etc.)
 
-**🧠 Big idea in ONE LINE**
+**Big idea in ONE LINE**
 
 +-----------------------------+-------------------------------------------------+
 | Old way                     | New way                                         |
@@ -232,7 +232,7 @@ Run:
         }
     }
 
-**🔍 What exactly is routerConfig doing?**
+**What exactly is routerConfig doing?**
 
 routerConfig is the **brain of the navigation system.**
 
@@ -254,7 +254,7 @@ Without this, the app doesn’t know how to handle the routes.
 
 ---------------------------------------------------------------------------------------------------------------------
 
-🧠 Short explanation (easy words)
+Short explanation (easy words)
 
 Think of routerConfig like a **map:**
 	•	/ → HomePage
@@ -801,7 +801,7 @@ You can run this on **mobile or web.**
         }
     }
 
-**🧠 What is routeInformationParser in simple words?**
+**What is routeInformationParser in simple words?**
 
 **Very simple definition:**
 
@@ -867,7 +867,7 @@ So:
 ✅4.routeInformationProvider:
 ---------------------------------
 
-**🧠 First – What is routeInformationProvider?**
+**First – What is routeInformationProvider?**
 
 In simple words:
 
@@ -1090,7 +1090,7 @@ In your buttons:
 
 That is how you **change the URL/route** using the **provider.**
 
-**🧠 Simple understanding (remember this)**
+**Simple understanding (remember this)**
 
 +----------------------------+------------------------------------+
 | Part                       | Job                                |
@@ -1115,7 +1115,7 @@ Think like this:
 ✅5.backButtonDispatcher:
 -----------------------------
 
-**🧠 What is backButtonDispatcher (in simple words)?**
+**What is backButtonDispatcher (in simple words)?**
 
 **backButtonDispatcher controls who handles the BACK button first.**
 
@@ -1287,7 +1287,7 @@ Using back button:
         }
     }
 
-**🔍 What part is backButtonDispatcher?**
+**What part is backButtonDispatcher?**
 
 This is the key line:
 
@@ -1314,7 +1314,7 @@ When you press:
 
 The RootBackButtonDispatcher automatically gives **priority to the router.**
 
-**🧠 Ultra-simple summary (remember this)**
+**Ultra-simple summary (remember this)**
 
 +------------------------------------+----------------------------------------------------+
 | Parameter                          | Job                                                |
@@ -1335,7 +1335,7 @@ The RootBackButtonDispatcher automatically gives **priority to the router.**
 ✅6.builder:
 ----------------
 
-**🧠 What is builder: in MaterialApp.router?**
+**What is builder: in MaterialApp.router?**
 
 **In very simple words:**
 
@@ -1502,7 +1502,7 @@ This example wraps **every page** inside a **blue border and padding**, so you c
         }
     }
 
-**🔍 Focus: THIS is the builder parameter**
+**Focus: THIS is the builder parameter**
 
 .. code-block:: dart 
 
@@ -1531,7 +1531,7 @@ So **every page in your app** will appear inside that blue bordered container.
 
 This is why it is called **global wrapper.**
 
-**🧠 Simple memory tip**
+**Simple memory tip**
 
 +-------------------------+------------------------------------+
 | Parameter               | What it does                       |
@@ -1633,7 +1633,7 @@ This is why it is called **global wrapper.**
         }
     }
 
-**🧠 What does title: actually do?**
+**What does title: actually do?**
 
 This line:
 
@@ -1665,7 +1665,7 @@ For that, you still use:
 
     AppBar(title: Text('Home Page'))
 
-**🧩 Simple comparison**
+**Simple comparison**
 
 +----------------------------+------------------------------------+
 | Code                       | Result                             |
@@ -1768,7 +1768,7 @@ For that, you still use:
         }
     }
 
-**🧠 What does onGenerateTitle really do?**
+**What does onGenerateTitle really do?**
 
 This line is the main point:
 
@@ -1912,7 +1912,7 @@ If both are present → onGenerateTitle wins.
         }
     }
 
-**🧠 What does color: actually do?**
+**What does color: actually do?**
 
 This line:
 
@@ -2073,7 +2073,7 @@ It’s basically the **base / root color of the app window.**
         }
     }
 
-**🧠 What does theme: do?**
+**What does theme: do?**
 
 This part is the key:
 
@@ -2223,7 +2223,7 @@ Instead of setting colors on every widget, you define them once in MaterialApp.r
         }
     }
 
-**🧠 What is darkTheme: doing here?**
+**What is darkTheme: doing here?**
 
 This line is the key:
 
@@ -2282,7 +2282,7 @@ You can also force it:
     themeMode: ThemeMode.dark   // Always dark
     themeMode: ThemeMode.light  // Always light
 
-**🧩 Super simple meaning**
+**Super simple meaning**
 
     **darkTheme: is the design your app uses when system is in Dark Mode.**
 
@@ -2407,7 +2407,7 @@ You can also force it:
         }
     }
 
-**🧠 What does highContrastTheme: do?**
+**What does highContrastTheme: do?**
 
 This part is the key:
 
@@ -2615,7 +2615,7 @@ That’s how the app knows what to display.
         }
     }
 
-**🧠 What is highContrastDarkTheme in simple words?**
+**What is highContrastDarkTheme in simple words?**
 
 **highContrastDarkTheme is used when the user turns ON:**
     ✅ Dark Mode
@@ -2833,7 +2833,7 @@ This example lets you **switch between Light, Dark, and System mode** by pressin
         }
     }
 
-**🧠 What does themeMode: do (simple words)?**
+**What does themeMode: do (simple words)?**
 
 This line is the key:
 
@@ -2978,7 +2978,7 @@ This example lets you switch between **light and dark themes**, and the change h
         }
     }
 
-**🧠 What does themeAnimationDuration do?**
+**What does themeAnimationDuration do?**
 
 This is the key line:
 
@@ -3119,7 +3119,7 @@ So now you can see the animation **style/shape** of the transition.
         }
     }
 
-**🧠 What does themeAnimationCurve do?**
+**What does themeAnimationCurve do?**
 
 This is the key line in the program:
 
@@ -3289,7 +3289,7 @@ While:
         }
     }
 
-**🧠 What is themeAnimationStyle actually doing?**
+**What is themeAnimationStyle actually doing?**
 
 This line is the key:
 
@@ -3629,7 +3629,7 @@ You can now reuse this pattern later for **English + Pashto + any other language
         }
     }
 
-**🧠 What does supportedLocales: actually do?**
+**What does supportedLocales: actually do?**
 
 This is the key part:
 
@@ -3820,7 +3820,7 @@ This example uses:
         }
     }
 
-**🧠 What does localizationsDelegates REALLY do?**
+**What does localizationsDelegates REALLY do?**
 
 This is the **most important part:**
 
@@ -4177,7 +4177,7 @@ If you write:
 
 ✅ The red **DEBUG** banner will **appear.**
 
-**🧠 In very simple words**
+**In very simple words**
 
 debugShowCheckedModeBanner means:
 
@@ -5003,7 +5003,7 @@ Now your app can:
 
     ✅ Restore previous counter
 
-🧠 In simple words (again)
+In simple words (again)
 
 restorationScopeId is like giving a memory name to your app.
 
@@ -5301,7 +5301,7 @@ And when a page is removed:
 
 onNavigationNotification means:
 
-    💬 “Flutter, tell me whenever navigation happens in my app.”
+    “Flutter, tell me whenever navigation happens in my app.”
 
 You can use it for:
 

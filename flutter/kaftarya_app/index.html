@@ -1,0 +1,762 @@
+ 
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>kaftarya_app &#8212; Flutter</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=873836d9" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=d6ed2d86" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=52fd3798" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/ad_style.css?v=34d129f9" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/navbar-scroll.css?v=4d5946c0" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'kaftarya_app/index';</script>
+    <script src="../_static/js/custom.js?v=6f0278c6"></script>
+    <script src="../_static/js/navbar-scroll.js?v=cb524ae2"></script>
+    <link rel="icon" href="../_static/sherullah.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title=".dart_tool" href=".dart_tool/index.html" />
+    <link rel="prev" title="Flutter" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-P4GQM59"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="../_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
+
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
+
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
+
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
+  </ul>
+</nav>
+
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+<nav class="dask-nav container-fluid navbar-scroll-wrap">
+
+    <!-- Left arrow -->
+  <button class="scroll-btn scroll-left" id="navLeft" aria-label="Scroll left">
+    &#10094;
+  </button>
+
+  <ul class="nav-scroll" id="nav-scroll">
+
+    <!-- 🔥 Home = external site -->
+    <li>
+      <a href="https://sherullah.com/" target="_blank" rel="noopener" class="nav-icon">
+        <img src="../_static/images/logo/home48.png" alt="Home" />
+      </a>
+    </li>
+
+     <!-- pathto inside repository project-->
+    <li class="">
+      <a href="../index.html">FLUTTER</a>
+    </li>
+<!--
+    <li>
+      <a href="https://sherullah.com/firebase-contents/firebase/"
+        target="_blank"
+        rel="noopener">
+        FIREBASE
+      </a>
+    </li> 
+
+    <li>
+      <a href="https://sherullah.com/dart-contents/dart/"
+        target="_blank"
+        rel="noopener">
+        DART
+      </a>
+    </li> 
+  -->
+       <!-- 🔥 SDJANGO= external docs -->
+    <li>
+      <a href="https://sherullah.com/django-contents/django/"
+        target="_blank"
+        rel="noopener">
+        DJANGO
+      </a>
+    </li> 
+
+<!--
+    <li>
+      <a href="https://sherullah.com/python-contents/python/"
+        target="_blank"
+        rel="noopener">
+        PYTHON
+      </a>
+    </li> 
+  -->
+
+    <li>
+      <a href="https://sherullah.com/postgresql-contents/postgresql/"
+        target="_blank"
+        rel="noopener">
+        POSTGRESQL
+      </a>
+    </li>
+
+<!--
+     <li>
+      <a href="https://sherullah.com/mongodb-contents/mongodb/"
+        target="_blank"
+        rel="noopener">
+        MONGODB
+      </a>
+    </li> 
+
+    <li>
+      <a href="https://sherullah.com/git-contents/git/"
+        target="_blank"
+        rel="noopener">
+        GIT
+      </a>
+    </li> 
+
+    <li>
+      <a href="https://sherullah.com/github-contents/github/"
+        target="_blank"
+        rel="noopener">
+        GITHUB
+      </a>
+    </li> 
+
+    <li>
+      <a href="https://sherullah.com/docker-contents/docker/"
+        target="_blank"
+        rel="noopener">
+        DOCKER
+      </a>
+    </li> 
+
+    <li>
+      <a href="https://sherullah.com/kubernetes-contents/kubernetes/"
+        target="_blank"
+        rel="noopener">
+        KUBERNETES
+      </a>
+     </li> 
+    -->
+
+  </ul>
+
+
+    <!-- Right arrow -->
+  <button class="scroll-btn scroll-right" id="navRight" aria-label="Scroll right">
+    &#10095;
+  </button>
+</nav>
+
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="_static/images/dask-horizontal-white.svg">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Flutter</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Explanations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">kaftarya_app</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href=".dart_tool/index.html">.dart_tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href=".idea/index.html">.idea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android/index.html">android [kaftarya_app_android]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build/index.html">build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ios/index.html">ios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/index.html">lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux/index.html">linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macos/index.html">macos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test/index.html">test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web/index.html">web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows/index.html">windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href=".gitignore.html">.gitignore</a></li>
+<li class="toctree-l2"><a class="reference internal" href=".metadata.html">.metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis_options.html">analysis_options.yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kaftarya_app.html">kaftarya_app.iml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pubspeclock.html">pubspec.lock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pubspecyaml.html">pubspec.yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme.html">README.md</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/first_project.html">First Project</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/index.html">Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/2_installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/configuration.html">Configuration</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/0_widget.html">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/1_materialapp.html">MaterialApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/1_2_materialapp_router.html">MaterialApp.router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/1_3_gorouter.html">GoRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/1_4_goroute.html">GoRoute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/2_scaffold.html">Scaffold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/3_appbar.html">AppBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/4_center.html">Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/4_1_routerconfig.html">RouterConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/5_container.html">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/6_column.html">Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/7_row.html">Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/8_page.html">Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/9_materialpage.html">MaterialPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/10_customtransitionpage.html">CustomTransitionPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/callbacks_handlers.html">Callback and Handlers</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>kaftarya_app</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-kaftarya-app">1. What is kaftarya_app?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-kaftarya-app-important">2. Why is kaftarya_app important?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-inside-kaftarya-app">3. What happens inside kaftarya_app?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands-always-run-from-kaftarya-app">4. Commands always run from kaftarya_app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-rules-for-the-root-project">5. Naming rules for the root project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-should-and-should-not-do">6. What you should and should NOT do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="kaftarya-app">
+<h1>kaftarya_app<a class="headerlink" href="#kaftarya-app" title="Link to this heading">#</a></h1>
+<section id="what-is-kaftarya-app">
+<h2>1. What is kaftarya_app?<a class="headerlink" href="#what-is-kaftarya-app" title="Link to this heading">#</a></h2>
+<p>kaftarya_app is the root directory of your Flutter project.</p>
+<p>When you run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>flutter<span class="w"> </span>create<span class="w"> </span>--org<span class="w"> </span>com.kaftarya<span class="w"> </span>--platforms<span class="o">=</span>android,ios,web,macos,windows,linux<span class="w"> </span>kaftarya_app
+</pre></div>
+</div>
+<p>Flutter creates a <strong>single project folder</strong> named kaftarya_app.
+Everything related to your application lives <strong>inside this directory.</strong></p>
+<p>Think of kaftarya_app as the <strong>container</strong> for your entire Flutter application.</p>
+</section>
+<hr class="docutils" />
+<section id="why-is-kaftarya-app-important">
+<h2>2. Why is kaftarya_app important?<a class="headerlink" href="#why-is-kaftarya-app-important" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>This folder represents <strong>one Flutter application</strong> that can run on:</dt><dd><ul class="simple">
+<li><p>📱 Android</p></li>
+<li><p>🍎 iOS</p></li>
+<li><p>🌐 Web</p></li>
+<li><p>🖥 macOS</p></li>
+<li><p>🪟 Windows</p></li>
+<li><p>🐧 Linux</p></li>
+</ul>
+</dd>
+</dl>
+<p>All platforms share <strong>one codebase,</strong> managed from this root.</p>
+</section>
+<hr class="docutils" />
+<section id="what-happens-inside-kaftarya-app">
+<h2>3. What happens inside kaftarya_app?<a class="headerlink" href="#what-happens-inside-kaftarya-app" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Inside this directory, Flutter organizes the project into:</dt><dd><ul class="simple">
+<li><p><strong>Platform-specific folders</strong> (android, ios, web, etc.)</p></li>
+<li><p><strong>Flutter source code</strong> (lib/)</p></li>
+<li><p><strong>Configuration files</strong> (pubspec.yaml, analysis_options.yaml)</p></li>
+<li><p><strong>Build and tooling files</strong> (.dart_tool, build/)</p></li>
+</ul>
+</dd>
+</dl>
+<p>You never run Flutter commands outside this folder.</p>
+</section>
+<hr class="docutils" />
+<section id="commands-always-run-from-kaftarya-app">
+<h2>4. Commands always run from kaftarya_app<a class="headerlink" href="#commands-always-run-from-kaftarya-app" title="Link to this heading">#</a></h2>
+<p>Examples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>kaftarya_app
+flutter<span class="w"> </span>run
+flutter<span class="w"> </span>build<span class="w"> </span>web
+flutter<span class="w"> </span>pub<span class="w"> </span>get
+flutter<span class="w"> </span>doctor
+</pre></div>
+</div>
+<p>If you run these commands <strong>outside</strong> kaftarya_app, Flutter will not detect your project.</p>
+</section>
+<hr class="docutils" />
+<section id="naming-rules-for-the-root-project">
+<h2>5. Naming rules for the root project<a class="headerlink" href="#naming-rules-for-the-root-project" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>The name kaftarya_app:</dt><dd><ul class="simple">
+<li><p>✅ Must be lowercase</p></li>
+<li><p>✅ Uses underscores instead of spaces</p></li>
+<li><p>✅ Becomes the <strong>Dart package name</strong></p></li>
+<li><p>⚠️ Should not be changed after creation</p></li>
+</ul>
+</dd>
+<dt>Changing the root folder name later can break:</dt><dd><ul class="simple">
+<li><p>Imports</p></li>
+<li><p>IDE configuration</p></li>
+<li><p>Build tools</p></li>
+</ul>
+</dd>
+</dl>
+<hr class="docutils" />
+<p><strong>Relation to app identity (–org)</strong></p>
+<p>Your root folder name works together with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--org<span class="w"> </span>com.kaftarya
+</pre></div>
+</div>
+<dl class="simple">
+<dt>So the full app identity becomes:</dt><dd><ul class="simple">
+<li><p><strong>Android package name</strong></p></li>
+</ul>
+</dd>
+<dt>com.kaftarya.kaftarya_app</dt><dd><ul class="simple">
+<li><p><strong>iOS / macOS bundle ID</strong></p></li>
+</ul>
+</dd>
+</dl>
+<p>com.kaftarya.kaftarya_app</p>
+<p>The folder name is part of the <strong>application identity</strong> across platforms.</p>
+</section>
+<hr class="docutils" />
+<section id="what-you-should-and-should-not-do">
+<h2>6. What you should and should NOT do<a class="headerlink" href="#what-you-should-and-should-not-do" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>✅ You should</dt><dd><ul class="simple">
+<li><p>Open this folder in Android Studio / VS Code</p></li>
+<li><p>Run Flutter commands from here</p></li>
+<li><p>Version-control this folder with Git</p></li>
+</ul>
+</dd>
+<dt>❌ You should NOT</dt><dd><ul class="simple">
+<li><p>Put Flutter code directly in kaftarya_app/</p></li>
+<li><p>Delete this folder</p></li>
+<li><p>Rename it after creation</p></li>
+</ul>
+</dd>
+</dl>
+<hr class="docutils" />
+<p><strong>Mental model (important)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kaftarya_app
+│
+├──<span class="w"> </span>Flutter<span class="w"> </span>engine
+├──<span class="w"> </span>Dart<span class="w"> </span>code<span class="w"> </span><span class="o">(</span>lib/<span class="o">)</span>
+├──<span class="w"> </span>Native<span class="w"> </span>shells<span class="w"> </span><span class="o">(</span>android,<span class="w"> </span>ios,<span class="w"> </span>web…<span class="o">)</span>
+└──<span class="w"> </span>Build<span class="w"> </span>system
+</pre></div>
+</div>
+<p><strong>One folder → one app → all platforms</strong></p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>7. Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>kaftarya_app is the project root</p></li>
+<li><p>It holds everything for your Flutter application</p></li>
+<li><p>All development starts here</p></li>
+<li><p>All platforms are managed from here</p></li>
+<li><p>This is standard, official, and production-ready</p></li>
+</ul>
+</div></blockquote>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Flutter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href=".dart_tool/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">.dart_tool</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-kaftarya-app">1. What is kaftarya_app?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-kaftarya-app-important">2. Why is kaftarya_app important?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-inside-kaftarya-app">3. What happens inside kaftarya_app?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands-always-run-from-kaftarya-app">4. Commands always run from kaftarya_app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-rules-for-the-root-project">5. Naming rules for the root project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-should-and-should-not-do">6. What you should and should NOT do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 Sherullah Mohtat. All rights reserved..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      "gtm.start": new Date().getTime(),
+      event: "gtm.js",
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(
+    window,
+    document,
+    "script",
+    "dataLayer",
+    "GTM-P4GQM59"
+  );
+</script>
+<!-- End Google Tag Manager -->
+
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

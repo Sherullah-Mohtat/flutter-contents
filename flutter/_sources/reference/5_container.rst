@@ -152,7 +152,7 @@ Bottom – Right
 
 So your **blue 100×100 box** is placed at the **top-right corner** of the **300×300 grey container.**
 
-**🧠 Very short explanation**
+**Very short explanation**
 
 **alignment: = where the child sits inside the Container**
 
@@ -299,7 +299,7 @@ or
 
 See how the space changes.
 
-**🧠 Very short explanation**
+**Very short explanation**
 
 **padding = space INSIDE the Container between the edge and the child**
 
@@ -588,7 +588,7 @@ When you use **decoration:**, you **must NOT** use color: directly in Container.
         color: Colors.blue,
     ),
 
-**🧠 Very short explanation**
+**Very short explanation**
 
     **decoration: = advanced styling (color + border + shadow + radius + gradient)**
 
@@ -728,7 +728,7 @@ It is like putting a **transparent glass** on top of the container.
 | Under text/image       | Over text/image         |
 +------------------------+-------------------------+
 
-**🧠 Very short explanation**
+**Very short explanation**
 
 **foregroundDecoration: = style drawn OVER the child**
 
@@ -885,7 +885,7 @@ Then to:
 
 And run again to see the difference.
 
-**🧠 Very short explanation**
+**Very short explanation**
 
 **width: = how wide the Container is on the screen (in pixels)**
 
@@ -1026,7 +1026,7 @@ Or:
 
 Run again and see how the box becomes shorter or taller.
 
-**🧠 Very short explanation**
+**Very short explanation**
 
 **height: = how tall the Container is on the screen (in pixels)**
 
@@ -1128,7 +1128,7 @@ Here’s a **clean, simple, working Flutter example** that uses
         }
     }
 
-**🧠 What constraints: is doing here**
+**What constraints: is doing here**
 
 This line is the key:
 
@@ -1508,7 +1508,7 @@ This example rotates the box from the **top-left corner** instead of the center 
         }
     }
 
-**🧠 What transformAlignment is doing here**
+**What transformAlignment is doing here**
 
 .. code-block:: dart 
 
@@ -1655,7 +1655,7 @@ clipBehavior decides whether the child is **cut (clipped) or allowed to overflow
         }
     }
 
-🧠 What clipBehavior is doing
+What clipBehavior is doing
 
 .. code-block:: dart 
 
@@ -1784,7 +1784,7 @@ This example puts a Text widget as the child of a Container so you can clearly s
         }
     }
 
-**🧠 What the child parameter does**
+**What the child parameter does**
 
 .. code-block:: dart 
 

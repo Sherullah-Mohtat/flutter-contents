@@ -46,6 +46,7 @@ Use these tutorials as a starting point. Once you complete them, you’ll have t
 Start here if you’re new.
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
 
    quickstart.rst
